@@ -1,0 +1,91 @@
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.ujar.loremipsum</groupId>
+    <artifactId>lorem-ipsum-services</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>lorem-ipsum-services</name>
+    <description>Services helps grub and scan loremipsum.net text, generate statistic reports.</description>
+
+    <organization>
+        <name>uJar Bootcamp</name>
+        <url>https://www.ujar.org</url>
+    </organization>
+    <developers>
+        <developer>
+            <id>1</id>
+            <name>Dima Denysenko</name>
+            <email>coding@dimdnk.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <properties>
+        <java.version>17</java.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven-checkstyle-plugin.version>3.1.2</maven-checkstyle-plugin.version>
+        <checkstyle.version>9.2.1</checkstyle.version>
+        <nohttp-checkstyle.version>0.0.10</nohttp-checkstyle.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <version>${maven-checkstyle-plugin.version}</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.puppycrawl.tools</groupId>
+                            <artifactId>checkstyle</artifactId>
+                            <version>${checkstyle.version}</version>
+                        </dependency>
+                        <dependency>
+                            <groupId>io.spring.nohttp</groupId>
+                            <artifactId>nohttp-checkstyle</artifactId>
+                            <version>${nohttp-checkstyle.version}</version>
+                        </dependency>
+                    </dependencies>
+                    <configuration>
+                        <configLocation>checkstyle.xml</configLocation>
+                        <includes>pom.xml,README.md</includes>
+                        <sourceDirectories>./</sourceDirectories>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>validate</id>
+                            <phase>validate</phase>
+                            <goals>
+                                <goal>check</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.8.0</version>
+            <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+            </configuration>
+        </plugin></plugins>
+    </build>
+
+    <scm>
+        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-analyzer.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+</project>
