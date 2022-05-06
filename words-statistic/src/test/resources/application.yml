@@ -1,3 +1,9 @@
 spring :
   application :
     name : words-statistic
+
+loremipsum :
+  net-client :
+    api-server-url-template: http://localhost:${wiremock.server.port}/{paragraphsNum}/{lengthType}
+    connect-timeout: 1  # sec
+    request-timeout: 2

@@ -14,23 +14,7 @@ spring :
 server :
   port : ${PORT:8080}
   shutdown : graceful
-logbook :
-  exclude :
-    - /actuator/**
-    - /v3/**
-    - /swagger-ui/**
-    - /swagger-resources/**
-    - /metrics
-  filter.enabled : true
-  format.style : json
-  obfuscate :
-    headers :
-      - Authorization
-      - X-Secret
-    parameters :
-      - access_token
-      - password
-  minimum-status : ${MINIMUM_STATUS_LOG_BODY:400}
+
 management :
   server :
     add-application-context-header : true
@@ -46,3 +30,9 @@ management :
   endpoint :
     health :
       enabled : true
+
+loremipsum :
+  net-client :
+    api-server-url-template: https://loripsum.net/api/{paragraphsNum}/{lengthType}
+    connect-timeout: 1  # sec
+    request-timeout: 2

@@ -4,6 +4,6 @@ import org.springframework.stereotype.Service;
 import org.ujar.loremipsum.wordsstatistic.model.Report;
 @Service
 public class HistoryNotifier {
-  public void send(Report report) {
+  public void notifyReport(Report report) {
   }
 }

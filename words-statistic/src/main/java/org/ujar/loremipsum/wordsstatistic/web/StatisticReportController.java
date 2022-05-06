@@ -1,5 +1,7 @@
 package org.ujar.loremipsum.wordsstatistic.web;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.ujar.loremipsum.wordsstatistic.enums.LengthType;
 import org.ujar.loremipsum.wordsstatistic.model.Report;
 import org.ujar.loremipsum.wordsstatistic.service.HistoryNotifier;
+import org.ujar.loremipsum.wordsstatistic.service.LoremIpsumNetClient;
 import org.ujar.loremipsum.wordsstatistic.service.WordsAnalyser;
 
 @RestController
@@ -20,14 +23,19 @@ import org.ujar.loremipsum.wordsstatistic.service.WordsAnalyser;
 @RequiredArgsConstructor
 public class StatisticReportController {
 
+  private final LoremIpsumNetClient httpClient;
   private final WordsAnalyser wordsAnalyser;
   private final HistoryNotifier historyNotifier;
 
   @GetMapping
-  public ResponseEntity<Report> getReport(@Positive @RequestParam("p") Integer paragraphsNum,
-                                          @RequestParam("l") LengthType lengthType) {
-    var report = wordsAnalyser.analyse(paragraphsNum, lengthType);
-    historyNotifier.send(report);
+  @Operation(description = "Make http request to loremipsum.net, process response & generate report")
+  public ResponseEntity<Report> getReport(
+      @RequestParam(name = "p") @Parameter(description = "indicates the max number of paragraphs")
+      @Positive Integer paragraphsNum,
+      @RequestParam("l") @Parameter(description = "indicates length of each paragraph") LengthType lengthType) {
+    var text = httpClient.getText(paragraphsNum, lengthType);
+    var report = wordsAnalyser.analyze(text);
+    historyNotifier.notifyReport(report);
     return new ResponseEntity<>(report, HttpStatus.OK);
   }
 }
