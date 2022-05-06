@@ -1,0 +1,9 @@
+build :
+  relativePath : ""
+
+spring :
+  jpa :
+    show-sql : true
+management :
+  endpoints :
+    enabled-by-default : true
