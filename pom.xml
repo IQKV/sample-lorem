@@ -11,8 +11,8 @@
     <description>Services helps grub and scan loremipsum.net text, generate statistic reports.</description>
 
     <modules>
-        <module>words-reporter</module>
-        <module>reporter-history</module>
+        <module>words-statistic</module>
+        <module>reports-history</module>
     </modules>
 
     <organization>

@@ -1,0 +1,48 @@
+build :
+  version : @project.version@
+  description : "Words statistic generator"
+  relativePath : ${SWAGGER_RELATIVE_PATH:}
+spring :
+  application :
+    name : words-statistic
+  jackson :
+    default-property-inclusion : NON_NULL
+    open-in-view : true
+  lifecycle :
+    timeout-per-shutdown-phase : ${TIMEOUT_PER_SHUTDOWN:20s}
+
+server :
+  port : ${PORT:8080}
+  shutdown : graceful
+logbook :
+  exclude :
+    - /actuator/**
+    - /v3/**
+    - /swagger-ui/**
+    - /swagger-resources/**
+    - /metrics
+  filter.enabled : true
+  format.style : json
+  obfuscate :
+    headers :
+      - Authorization
+      - X-Secret
+    parameters :
+      - access_token
+      - password
+  minimum-status : ${MINIMUM_STATUS_LOG_BODY:400}
+management :
+  server :
+    add-application-context-header : true
+  endpoints :
+    enabled-by-default : false
+    web :
+      path-mapping :
+        health : actuator/health
+        prometheus : metrics
+      base-path : /
+      exposure :
+        include : health, prometheus
+  endpoint :
+    health :
+      enabled : true

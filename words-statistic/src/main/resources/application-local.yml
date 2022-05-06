@@ -1,0 +1,5 @@
+build :
+  relativePath : ""
+management :
+  endpoints :
+    enabled-by-default : true
