@@ -13,6 +13,14 @@ import org.springframework.kafka.config.TopicBuilder;
 @ConditionalOnProperty(value = "loremipsum.kafka.create-topics-on-startup", havingValue = "true")
 public class KafkaTopicsConfiguration {
   private final KafkaTopics topics;
+  @Bean
+  public NewTopic rejectedMessagesKafkaTopic() {
+    return TopicBuilder
+        .name(topics.getRejectedMessagesTopic())
+        .partitions(1)
+        .config(TopicConfig.RETENTION_MS_CONFIG, "-1")
+        .build();
+  }
   
   @Bean
   public NewTopic wordsProcessedKafkaTopic() {

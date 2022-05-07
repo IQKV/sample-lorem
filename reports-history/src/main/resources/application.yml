@@ -35,6 +35,17 @@ spring :
       check-template-location : false
 
   kafka:
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+      auto-offset-reset: earliest
+      threads: ${KAFKA_CONSUMER_THREADS:4}
+      properties:
+        basic.auth.credentials.source : SASL_INHERIT
+        security.protocol: ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
+        sasl.mechanism: SCRAM-SHA-512
+        sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
+        isolation.level: read_committed
+      group-id : ${KAFKA_CONSUMERS_GROUP:reports-history}
     producer:
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
       properties :
@@ -73,6 +84,7 @@ loremipsum :
   kafka:
     create-topics-on-startup: ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
     topics:
+      rejected-messages-topic : ${KAFKA_TOPIC_REJECTED_MESSAGES:dlq.rejected_messages}
       words-processed-topic : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
       words-processed-partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
       words-processed-retention-ms : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:600000}

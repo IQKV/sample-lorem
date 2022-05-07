@@ -21,6 +21,13 @@ spring :
       hibernate.jdbc.time_zone : UTC
     show-sql : false
   kafka :
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      group-id: update-log-consumer
+      auto-offset-reset: earliest
+      threads: 4
+      properties:
+        isolation.level: read_committed
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
       properties :
@@ -34,6 +41,7 @@ loremipsum :
   kafka:
     create-topics-on-startup: true
     topics:
+      rejected-messages-topic : dlq.rejected_messages
       words-processed-topic : words.processed
       words-processed-partitions : 4
       words-processed-retention-ms : 600000
