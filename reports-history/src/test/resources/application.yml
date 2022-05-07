@@ -25,7 +25,6 @@ spring :
       bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
       group-id: update-log-consumer
       auto-offset-reset: earliest
-      threads: 4
       properties:
         isolation.level: read_committed
     producer :
@@ -40,6 +39,8 @@ spring :
 loremipsum :
   kafka:
     create-topics-on-startup: true
+    consumer :
+      threads : 4
     topics:
       rejected-messages-topic : dlq.rejected_messages
       words-processed-topic : words.processed

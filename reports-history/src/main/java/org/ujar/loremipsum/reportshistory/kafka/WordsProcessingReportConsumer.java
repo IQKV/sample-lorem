@@ -17,9 +17,9 @@ public class WordsProcessingReportConsumer {
                  groupId = "${spring.kafka.consumer.group-id}")
   public void consume(ConsumerRecord<String, Report> consumerRecord) {
     try {
-      log.info("Received word processing report, key: {}, value: {}", consumerRecord.key(), consumerRecord.value());
+      log.info("Received report, key: {}, value: {}", consumerRecord.key(), consumerRecord.value());
     } catch (Exception e) {
-      throw new ConsumerRecordProcessingException("Error processing words report.", e);
+      throw new ConsumerRecordProcessingException("Error processing report data.", e);
     }
   }
 }

@@ -48,7 +48,7 @@ public class KafkaConfiguration {
   public ConcurrentKafkaListenerContainerFactory<String, Report> processingReportKafkaListenerContainerFactory(
       ConsumerFactory<String, Report> processingReportConsumerFactory,
       KafkaTemplate<String, String> rejectedMessageKafkaTemplate,
-      @Value("${spring.kafka.consumer.threads:4}") int threads) {
+      @Value("${loremipsum.kafka.consumer.threads:4}") int threads) {
     ConcurrentKafkaListenerContainerFactory<String, Report> factory =
         new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(processingReportConsumerFactory);

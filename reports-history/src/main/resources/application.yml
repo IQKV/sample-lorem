@@ -38,7 +38,6 @@ spring :
     consumer:
       bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
       auto-offset-reset: earliest
-      threads: ${KAFKA_CONSUMER_THREADS:4}
       properties:
         basic.auth.credentials.source : SASL_INHERIT
         security.protocol: ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
@@ -83,6 +82,8 @@ management :
 loremipsum :
   kafka:
     create-topics-on-startup: ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
+    consumer:
+      threads: ${KAFKA_CONSUMER_THREADS:4}
     topics:
       rejected-messages-topic : ${KAFKA_TOPIC_REJECTED_MESSAGES:dlq.rejected_messages}
       words-processed-topic : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
