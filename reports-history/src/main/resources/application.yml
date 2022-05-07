@@ -44,7 +44,7 @@ spring :
         sasl.mechanism: SCRAM-SHA-512
         sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
         isolation.level: read_committed
-      group-id : ${KAFKA_CONSUMERS_GROUP:reports-history-consumer}
+      group-id : ${KAFKA_CONSUMERS_GROUP:reports-history}
     producer:
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
       properties :
