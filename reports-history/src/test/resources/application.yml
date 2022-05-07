@@ -4,7 +4,7 @@ spring :
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
     driver-class-name :  ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
-    url :  ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///sa_test_db}
+    url :  ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///lorem_ipsum_db}
     username : ${DATASOURCE_USERNAME:postgres}
     password : ${DATASOURCE_PASSWORD:postgres}
     hikari :
@@ -20,3 +20,20 @@ spring :
     properties :
       hibernate.jdbc.time_zone : UTC
     show-sql : false
+  kafka :
+    producer :
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      properties :
+        security.protocol : PLAINTEXT
+    admin :
+      properties :
+        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+        security.protocol : PLAINTEXT
+
+loremipsum :
+  kafka:
+    create-topics-on-startup: true
+    topics:
+      words-processed-topic : words.processed
+      words-processed-partitions : 4
+      words-processed-retention-ms : 600000

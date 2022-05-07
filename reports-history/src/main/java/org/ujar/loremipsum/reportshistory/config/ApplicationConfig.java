@@ -3,6 +3,7 @@ package org.ujar.loremipsum.reportshistory.config;
 import javax.sql.DataSource;
 import liquibase.integration.spring.SpringLiquibase;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -13,6 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories({"org.ujar.loremipsum.reportshistory.repository"})
 @EnableJpaAuditing
 @EnableTransactionManagement
+@EnableConfigurationProperties({KafkaTopics.class})
 public class ApplicationConfig {
 
   @Bean

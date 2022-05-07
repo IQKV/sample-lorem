@@ -1,9 +1,24 @@
 spring :
   application :
     name : words-statistic
+  kafka :
+    producer :
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      properties :
+        security.protocol : PLAINTEXT
+    admin :
+      properties :
+        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+        security.protocol : PLAINTEXT
 
 loremipsum :
   net-client :
     api-server-url-template: http://localhost:${wiremock.server.port}/{paragraphsNum}/{lengthType}
     connect-timeout: 1  # sec
     request-timeout: 2
+  kafka:
+    create-topics-on-startup: true
+    topics:
+      words-processed-topic : words.processed
+      words-processed-partitions : 4
+      words-processed-retention-ms : 600000

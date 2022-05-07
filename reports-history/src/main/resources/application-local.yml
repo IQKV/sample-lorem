@@ -4,6 +4,19 @@ build :
 spring :
   jpa :
     show-sql : true
+  kafka :
+    producer :
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+      properties :
+        security.protocol : PLAINTEXT
+    admin :
+      properties :
+        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+        security.protocol : PLAINTEXT
 management :
   endpoints :
     enabled-by-default : true
+
+loremipsum :
+  kafka:
+    create-topics-on-startup: true

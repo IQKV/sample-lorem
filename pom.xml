@@ -46,6 +46,7 @@
         <postgresql.version>42.3.3</postgresql.version>
         <archunit.version>0.22.0</archunit.version>
         <testcontainers.version>1.17.1</testcontainers.version>
+        <spring-cloud-starter-bootstrap.version>3.1.2</spring-cloud-starter-bootstrap.version>
         <playtika.testcontainers.version>2.1.7</playtika.testcontainers.version>
         <gaul.modernizer-maven-plugin.version>2.4.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.8.1</codehaus.versions-maven-plugin.version>
@@ -127,34 +128,46 @@
             </dependency>
             <!--Test dependencies-->
             <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-bootstrap</artifactId>
+                <version>${spring-cloud-starter-bootstrap.version}</version>
+                <scope>test</scope>
+                <optional>true</optional>
+            </dependency>
+            <dependency>
                 <groupId>com.playtika.testcontainers</groupId>
                 <artifactId>embedded-kafka</artifactId>
                 <version>${playtika.testcontainers.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>kafka</artifactId>
                 <version>${testcontainers.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.springframework.kafka</groupId>
                 <artifactId>spring-kafka-test</artifactId>
                 <version>${spring-kafka.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.awaitility</groupId>
                 <artifactId>awaitility</artifactId>
                 <version>${org.awaitility.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>junit-jupiter</artifactId>
                 <version>${testcontainers.version}</version>
                 <scope>test</scope>
+                <optional>true</optional>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
