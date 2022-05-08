@@ -17,7 +17,7 @@ import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.ErrorHandlingDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerde;
 import org.ujar.loremipsum.history.kafka.RejectedMessageHandler;
-import org.ujar.loremipsum.history.model.Report;
+import org.ujar.loremipsum.history.kafka.dto.ReportDto;
 
 @Configuration
 @RequiredArgsConstructor
@@ -37,19 +37,19 @@ public class KafkaConfiguration {
   }
 
   @Bean
-  public ConsumerFactory<String, Report> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
+  public ConsumerFactory<String, ReportDto> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
     var consumerProperties = kafkaProperties.getConsumer().buildProperties();
     return new DefaultKafkaConsumerFactory<>(consumerProperties,
         new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
-        new JsonSerde<>(Report.class, new ObjectMapper()).deserializer()));
+        new JsonSerde<>(ReportDto.class, new ObjectMapper()).deserializer()));
   }
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, Report> processingReportKafkaListenerContainerFactory(
-      ConsumerFactory<String, Report> processingReportConsumerFactory,
+  public ConcurrentKafkaListenerContainerFactory<String, ReportDto> processingReportKafkaListenerContainerFactory(
+      ConsumerFactory<String, ReportDto> processingReportConsumerFactory,
       KafkaTemplate<String, String> rejectedMessageKafkaTemplate,
       @Value("${loremipsum.kafka.consumer.threads:4}") int threads) {
-    ConcurrentKafkaListenerContainerFactory<String, Report> factory =
+    ConcurrentKafkaListenerContainerFactory<String, ReportDto> factory =
         new ConcurrentKafkaListenerContainerFactory<>();
     factory.setConsumerFactory(processingReportConsumerFactory);
     factory.setErrorHandler(new RejectedMessageHandler(

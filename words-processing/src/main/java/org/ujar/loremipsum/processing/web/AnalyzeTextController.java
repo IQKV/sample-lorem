@@ -7,7 +7,6 @@ import javax.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,7 +21,7 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 @Tag(name = "Statistic report controller", description = "Retrieve statistic information.")
 @RequestMapping("/v1/betvictor/text")
 @RequiredArgsConstructor
-public class StatisticReportController {
+public class AnalyzeTextController {
 
   private final LoremIpsumNetClient httpClient;
   private final WordsAnalyser wordsAnalyser;
