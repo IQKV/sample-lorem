@@ -1,13 +1,16 @@
 ## loripsum.net - Words Processor
 
-Lorem ipsum text processor based on the loripsum.net API.
+Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
 Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
 and generate statistic reports.
 
 ### Technology stack
 
-Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5
+Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5.
+
+_Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
+custom _checkstyle_ configuration, etc.
 
 ### Environment variables
 
