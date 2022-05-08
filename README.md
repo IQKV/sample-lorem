@@ -9,6 +9,25 @@ and generate statistic reports.
 
 Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5
 
+### Environment variables
+
+Applications are highly-configurable, supports many env vars, such as: 
+
+| ENV Variable                           | Default Value   |
+|----------------------------------------|-----------------|
+| SERVER_PORT                            | 8081, 8082      |
+| KAFKA_BOOTSTRAP_SERVERS                | localhost:29092 |
+| KAFKA_SECURITY_PROTOCOL                | PLAINTEXT       |
+| KAFKA_TOPIC_WORDS_PROCESSED            |words.processed|
+| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED |4|
+| KAFKA_CONSUMER_THREADS                 | 4               |
+| KAFKA_CONSUMERS_GROUP                  | reports-history |
+| KAFKA_CREATE_TOPICS_ON_STARTUP         | true            |
+| DATASOURCE_URL                         |jdbc:postgresql://localhost:5432/lorem_ipsum_db|
+| DATASOURCE_USERNAME                    |postgres|
+| DATASOURCE_PASSWORD                    |postgres|
+| DATASOURCE_DRIVER                      |org.postgresql.Driver|
+
 ### Tests
 
 This project has standard JUnit tests. To run them execute this command:
@@ -18,33 +37,47 @@ mvn test
 ```
 
 ### Pre-Requisites to run this example locally
+
 - Setup git command line tool (https://help.github.com/articles/set-up-git)
 - Clone source code to the local machine:
- 
-```
-git clone https://github.com/ujar-org/lorem-ipsum-words-statistic.git
 
-cd lorem-ipsum-words-statistic
 ```
+git clone https://github.com/ujar-org/lorem-ipsum-words-processor.git
+
+cd lorem-ipsum-words-processor
+```
+
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) - at least 1.6.0
 - Add new version of docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 - Spin-up single instance of Kafka broker, zookeeper and Postgresql by running command:
- 
+
 ```text
 docker-compose -f docker-compose.dev.yml up -d
 ```
 
 ### Running locally
+
 This application is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built
 using [Maven](https://spring.io/guides/gs/maven/). You can build a jar files and run it from the command line:
 
 - Create jar packages:
+
 ```
 mvn package
 ```
+
 - Run **words-processing** app:
+
 ```
 java -jar words-processing/target/*.jar
 ```
 
-You can then access Swagger UI here: http://localhost:8080/swagger-ui.html
+You can then access Swagger UI here: http://localhost:8081/swagger-ui.html
+
+- Run **reports-history** app:
+
+```
+java -jar reports-history/target/*.jar
+```
+
+Swagger UI is here: http://localhost:8082/swagger-ui.html

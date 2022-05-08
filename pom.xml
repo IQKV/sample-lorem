@@ -311,7 +311,7 @@
     </build>
 
     <scm>
-        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-words-statistic.git</connection>
+        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-words-processor.git</connection>
         <tag>HEAD</tag>
     </scm>
 </project>
