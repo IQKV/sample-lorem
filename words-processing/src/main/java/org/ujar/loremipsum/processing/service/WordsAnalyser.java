@@ -9,7 +9,6 @@ import org.ujar.loremipsum.processing.model.Report;
 public class WordsAnalyser {
 
   public Report analyze(String rawSource) {
-    log.info("Source: " + rawSource);
     return new Report("Lorem", (short) 1, (short) 1, (short) 1);
   }
 }
