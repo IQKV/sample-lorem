@@ -44,6 +44,7 @@
         <liquibase.version>4.9.1</liquibase.version>
         <javax-servlet-api.version>4.0.1</javax-servlet-api.version>
         <postgresql.version>42.3.3</postgresql.version>
+        <junit.jupiter.version>5.8.2</junit.jupiter.version>
         <archunit.version>0.22.0</archunit.version>
         <testcontainers.version>1.17.1</testcontainers.version>
         <spring-cloud-starter-bootstrap.version>3.1.2</spring-cloud-starter-bootstrap.version>
@@ -161,6 +162,12 @@
                 <version>${org.awaitility.version}</version>
                 <scope>test</scope>
                 <optional>true</optional>
+            </dependency>
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-params</artifactId>
+                <version>${junit.jupiter.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
@@ -304,7 +311,7 @@
     </build>
 
     <scm>
-        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-analyzer.git</connection>
+        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-words-statistic.git</connection>
         <tag>HEAD</tag>
     </scm>
 </project>
