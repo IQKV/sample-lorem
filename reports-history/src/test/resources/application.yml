@@ -42,7 +42,7 @@ loremipsum :
     consumer :
       threads : 4
     topics:
-      rejected-messages-topic : dlq.rejected_messages
-      words-processed-topic : words.processed
+      rejected-messages-topic : test.dlq.rejected_messages
+      words-processed-topic : test.words.processed
       words-processed-partitions : 4
-      words-processed-retention-ms : 600000
+      words-processed-retention-ms : 30000
