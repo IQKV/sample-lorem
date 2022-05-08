@@ -16,20 +16,20 @@ custom _checkstyle_ configuration, etc.
 
 Applications are highly-configurable, supports many env vars, such as: 
 
-| ENV Variable                           | Default Value   |
-|----------------------------------------|-----------------|
-| SERVER_PORT                            | 8081, 8082      |
-| KAFKA_BOOTSTRAP_SERVERS                | localhost:29092 |
-| KAFKA_SECURITY_PROTOCOL                | PLAINTEXT       |
-| KAFKA_TOPIC_WORDS_PROCESSED            |words.processed|
-| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED |4|
-| KAFKA_CONSUMER_THREADS                 | 4               |
-| KAFKA_CONSUMERS_GROUP                  | reports-history |
-| KAFKA_CREATE_TOPICS_ON_STARTUP         | true            |
-| DATASOURCE_URL                         |jdbc:postgresql://localhost:5432/lorem_ipsum_db|
-| DATASOURCE_USERNAME                    |postgres|
-| DATASOURCE_PASSWORD                    |postgres|
-| DATASOURCE_DRIVER                      |org.postgresql.Driver|
+| ENV Variable                           | Description                            | Default Value   |
+|----------------------------------------|----------------------------------------|-----------------|
+| SERVER_PORT                            | Application port                       | 8081, 8082      |
+| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                   | localhost:29092 |
+| KAFKA_SECURITY_PROTOCOL                |                                        | PLAINTEXT       |
+| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                             |words.processed|
+| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                       |4|
+| KAFKA_CONSUMER_THREADS                 | Consumer threads count                 | 4               |
+| KAFKA_CONSUMERS_GROUP                  | Consumer group name                    | reports-history |
+| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation | true            |
+| DATASOURCE_URL                         |                                        |jdbc:postgresql://localhost:5432/lorem_ipsum_db|
+| DATASOURCE_USERNAME                    |                                        |postgres|
+| DATASOURCE_PASSWORD                    |                                        |postgres|
+| DATASOURCE_DRIVER                      |                                        |org.postgresql.Driver|
 
 ### Tests
 
