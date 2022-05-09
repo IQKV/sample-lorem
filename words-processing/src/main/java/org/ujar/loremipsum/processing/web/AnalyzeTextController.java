@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.ujar.loremipsum.processing.service.HistoryNotifier;
 import org.ujar.loremipsum.processing.enums.LengthType;
 import org.ujar.loremipsum.processing.model.Report;
-import org.ujar.loremipsum.processing.service.LoremIpsumNetClient;
+import org.ujar.loremipsum.processing.service.LorIpsumNetClient;
 import org.ujar.loremipsum.processing.service.WordsAnalyser;
 
 @RestController
@@ -23,12 +23,12 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 @RequiredArgsConstructor
 public class AnalyzeTextController {
 
-  private final LoremIpsumNetClient httpClient;
+  private final LorIpsumNetClient httpClient;
   private final WordsAnalyser wordsAnalyser;
   private final HistoryNotifier historyNotifier;
 
   @GetMapping
-  @Operation(description = "Make http request to loremipsum.net, process response & generate report")
+  @Operation(description = "Make http request to loripsum.net API, process response & generate report")
   public ResponseEntity<Report> getReport(
       @RequestParam(name = "p") @Parameter(description = "indicates the max number of paragraphs")
       @Positive Integer paragraphsNum,

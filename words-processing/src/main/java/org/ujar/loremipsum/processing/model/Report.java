@@ -1,9 +1,20 @@
 package org.ujar.loremipsum.processing.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public record Report(@JsonProperty("freq_word") String freqWord,
-                     @JsonProperty("avg_paragraph_size") short avgParagraphSize,
-                     @JsonProperty("avg_paragraph_processing_time") short avgParagraphProcessingTime,
-                     @JsonProperty("total_processing_time") short totalProcessingTime) {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class Report {
+  @JsonProperty("freq_word")
+  String freqWord;
+  @JsonProperty("avg_paragraph_size")
+  short avgParagraphSize = 0;
+  @JsonProperty("avg_paragraph_processing_time")
+  long avgParagraphProcessingTime = 0L;
+  @JsonProperty("total_processing_time")
+  long totalProcessingTime = 0L;
 }

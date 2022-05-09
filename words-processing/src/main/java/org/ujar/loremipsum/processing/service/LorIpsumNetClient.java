@@ -14,11 +14,11 @@ import org.ujar.loremipsum.processing.exception.NetClientCommunicationException;
 import org.ujar.loremipsum.processing.exception.NetClientMisconfigurationException;
 
 @Service
-public class LoremIpsumNetClient {
+public class LorIpsumNetClient {
   private final NetClientProperties properties;
   private final HttpClient httpClient;
 
-  public LoremIpsumNetClient(NetClientProperties properties) {
+  public LorIpsumNetClient(NetClientProperties properties) {
     this.properties = properties;
     this.httpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(properties.getConnectTimeout()))

@@ -27,8 +27,8 @@ class WordsAnalyserTest {
   private static Stream<Arguments> provideStringsForAnalyze() {
     return Stream.of(
         Arguments.of(
-            getFileAsString("response/1_short.html"),
-            new Report("Lorem", (short) 1, (short) 1, (short) 1))
+            getFileAsString("response/2_short.html"),
+            new Report("Lorem",  (short) 1,  1, 1))
     );
   }
 }
