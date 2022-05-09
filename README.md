@@ -93,8 +93,11 @@ java -jar reports-history/target/*.jar
 Swagger UI is here: http://localhost:8092/swagger-ui.html
 
 
-###### Also, don't forget to stop dev services:
+###### Also, don't forget to clean up after testing & stop dev services:
 
 ```
+mvn clean
+
 docker-compose -f docker-compose.dev.yml down
+
 ```
