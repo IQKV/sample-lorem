@@ -1,12 +1,15 @@
 package org.ujar.loremipsum.history.config;
 
-import lombok.Data;
+import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-@Data
+import org.springframework.boot.context.properties.ConstructorBinding;
+
+@Value
+@ConstructorBinding
 @ConfigurationProperties(prefix = "loremipsum.kafka.topics")
 public class KafkaTopics {
-  private String rejectedMessagesTopic;
-  private String wordsProcessedTopic;
-  private int wordsProcessedPartitions;
-  private String wordsProcessedRetentionMs;
+  String rejectedMessagesTopic;
+  String wordsProcessedTopic;
+  int wordsProcessedPartitions;
+  String wordsProcessedRetentionMs;
 }

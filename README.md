@@ -1,4 +1,4 @@
-## loripsum.net - Words Processor
+## Words Processor
 
 Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
@@ -11,6 +11,13 @@ Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
 custom _checkstyle_ configuration, etc.
+
+### Applications
+
+| App Name             | Description                                       | REST Endpont                            |
+|----------------------|---------------------------------------------------|-----------------------------------------|
+| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8081/betvictor/text    |
+| __reports-history__  | Provide pageable processing reports list          | http://localhost:8082/betvictor/history |
 
 ### Environment variables
 

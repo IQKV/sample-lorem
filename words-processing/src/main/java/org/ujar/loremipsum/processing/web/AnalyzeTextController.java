@@ -2,8 +2,10 @@ package org.ujar.loremipsum.processing.web;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import javax.validation.constraints.Positive;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +21,7 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 
 @RestController
 @Tag(name = "Statistic report controller", description = "Retrieve statistic information.")
-@RequestMapping("/v1/betvictor/text")
+@RequestMapping("/betvictor/text")
 @RequiredArgsConstructor
 public class AnalyzeTextController {
 
@@ -30,8 +32,11 @@ public class AnalyzeTextController {
   @GetMapping
   @Operation(description = "Make http request to loripsum.net API, process response & generate report")
   public ResponseEntity<Report> getReport(
-      @RequestParam(name = "p") @Parameter(description = "indicates the max number of paragraphs")
-      @Positive Integer paragraphsNum,
+      @RequestParam(name = "p")
+      @Parameter(description = "indicates the max number of paragraphs")
+      @Schema(minimum = "1", maximum = "5")
+      @Min(1)
+      @Max(5) Integer paragraphsNum,
       @RequestParam("l") @Parameter(description = "indicates length of each paragraph") LengthType lengthType) {
     var text = httpClient.getText(paragraphsNum, lengthType);
     var report = wordsAnalyser.analyze(text);

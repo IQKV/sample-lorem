@@ -18,7 +18,7 @@ import org.ujar.loremipsum.history.web.dto.PageRequestDto;
 
 @RestController
 @Tag(name = "History of words processing report controller", description = "Retrieve pageable statistic information.")
-@RequestMapping("/v1/betvictor/history")
+@RequestMapping("/betvictor/history")
 @RequiredArgsConstructor
 public class ReportsController {
   private final ReportRepository reportRepository;

@@ -9,8 +9,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -32,25 +36,41 @@ record StatisticReportControllerTest(MockMvc mockMvc) {
     WireMock.reset();
   }
 
-  @Test
-  void getReport_Success() throws Exception {
-    stubFor(WireMock.get("/api/1/short").willReturn(
+  @ParameterizedTest
+  @MethodSource("provideStringsForAnalysis")
+  void getReport_Success(String externalUrl, String apiUrl, String file, String result) throws Exception {
+    stubFor(WireMock.get(externalUrl).willReturn(
             aResponse()
                 .withStatus(HttpStatus.OK.value())
-                .withBody(getFileAsString("response/1_short.html"))
+                .withBody(getFileAsString("response/" + file + ".html"))
                 .withHeader("Content-Type", MediaType.TEXT_PLAIN_VALUE)
         )
     );
-    mockMvc.perform(get("/v1/betvictor/text?p=1&l=short"))
+    mockMvc.perform(get(apiUrl))
         .andDo(print())
         .andExpect(status().isOk())
-        .andExpect(content().json(
-            "{\n"
-            + "  \"freq_word\":\"Lorem\",\n"
-            + "  \"avg_paragraph_size\":1,\n"
-            + "  \"avg_paragraph_processing_time\":1,\n"
-            + "  \"total_processing_time\":1\n"
-            + "}"
-        ));
+        .andExpect(content().json(result, false));
+  }
+
+  private static Stream<Arguments> provideStringsForAnalysis() {
+    return Stream.of(
+        Arguments.of(
+            "/api/1/short",
+            "/betvictor/text?p=1&l=short",
+            "1_short",
+            "{"
+            + "  \"freq_word\":\"vacuitate\",\n"
+            + "  \"avg_paragraph_size\":27\n"
+            + "}"),
+        Arguments.of(
+            "/api/10/verylong",
+            "/betvictor/text?p=10&l=verylong",
+            "10_verylong",
+            "{"
+            + "  \"freq_word\":\"et\",\n"
+            + "  \"avg_paragraph_size\":215\n"
+            + "}")
+
+    );
   }
 }

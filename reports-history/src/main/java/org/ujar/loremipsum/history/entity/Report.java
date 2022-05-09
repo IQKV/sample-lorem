@@ -1,5 +1,6 @@
 package org.ujar.loremipsum.history.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,6 +32,7 @@ public class Report {
       strategy = GenerationType.SEQUENCE,
       generator = "report_id_seq"
   )
+  @JsonIgnore
   private Long id;
 
   @Column(name = "freq_word")

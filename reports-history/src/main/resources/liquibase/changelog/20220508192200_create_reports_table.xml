@@ -7,7 +7,7 @@
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <changeSet id="20220508192200" author="ujar-loremipsum">
-        <createSequence sequenceName="report_id_seq" startValue="1" incrementBy="50"/>
+        <createSequence sequenceName="report_id_seq" startValue="1050" incrementBy="50"/>
         <createTable tableName="loremipsum_reports">
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>

@@ -15,9 +15,9 @@ public class PageRequestDto {
   @Min(0)
   private int page;
   @Parameter(description = "Size of page")
-  @Schema(minimum = "1", maximum = "100")
+  @Schema(minimum = "1", maximum = "50")
   @Min(1)
-  @Max(100)
+  @Max(50)
   private Integer size = 10;
 }
 

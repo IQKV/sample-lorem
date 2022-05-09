@@ -1,12 +1,14 @@
 package org.ujar.loremipsum.processing.config;
 
-import lombok.Data;
+import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
-@Data
+@Value
+@ConstructorBinding
 @ConfigurationProperties(prefix = "loremipsum.net-client")
 public class NetClientProperties {
-  private String apiServerUrlTemplate;
-  private int connectTimeout = 1;
-  private int requestTimeout = 2;
+  String apiServerUrlTemplate;
+  int connectTimeout = 1;
+  int requestTimeout = 2;
 }

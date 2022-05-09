@@ -24,10 +24,10 @@ public class WordsProcessingReportConsumer {
     try {
       log.info("Received report, key: {}, value: {}", consumerRecord.key(), consumerRecord.value());
       var dto = consumerRecord.value();
-      var report = new Report(dto.freqWord(),
+      var report = new Report(dto.mostFrequentWord(),
           dto.avgParagraphSize(),
-          dto.avgParagraphProcessingTime(),
-          dto.totalProcessingTime());
+          (int) dto.avgParagraphProcessingTime(),
+          (int) dto.totalProcessingTime());
       repository.saveAndFlush(report);
     } catch (Exception e) {
       throw new ConsumerRecordProcessingException("Error processing report data.", e);

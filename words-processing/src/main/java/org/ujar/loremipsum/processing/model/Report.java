@@ -10,11 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Report {
   @JsonProperty("freq_word")
-  String freqWord;
+  String mostFrequentWord;
   @JsonProperty("avg_paragraph_size")
   short avgParagraphSize = 0;
   @JsonProperty("avg_paragraph_processing_time")
-  long avgParagraphProcessingTime = 0L;
+  long avgParagraphProcessingTime = 0;
   @JsonProperty("total_processing_time")
-  long totalProcessingTime = 0L;
+  long totalProcessingTime = 0;
 }
