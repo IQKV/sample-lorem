@@ -22,7 +22,8 @@ public class WordsProcessingReportConsumer {
                  groupId = "${spring.kafka.consumer.group-id}")
   public void consume(ConsumerRecord<String, ReportDto> consumerRecord) {
     try {
-      log.info("Received report, key: {}, value: {}", consumerRecord.key(), consumerRecord.value());
+      log.info("( {} ) Received report, key: {}, value: {}",
+          Thread.currentThread().getName(), consumerRecord.key(), consumerRecord.value());
       var dto = consumerRecord.value();
       var report = new Report(dto.mostFrequentWord(),
           dto.avgParagraphSize(),

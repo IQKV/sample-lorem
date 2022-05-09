@@ -16,11 +16,13 @@ spring :
   kafka:
     producer:
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
       properties :
         basic.auth.credentials.source : SASL_INHERIT
         security.protocol : ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
         sasl.mechanism : SCRAM-SHA-512
         sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
+        spring.json.add.type.headers: false
     admin:
       properties :
         bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
@@ -29,7 +31,7 @@ spring :
         sasl.jaas.config : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
 
 server :
-  port : ${SERVER_PORT:8081}
+  port : ${SERVER_PORT:8091}
   shutdown : graceful
 
 management :

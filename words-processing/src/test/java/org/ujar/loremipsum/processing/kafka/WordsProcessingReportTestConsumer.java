@@ -16,6 +16,7 @@ public class WordsProcessingReportTestConsumer {
                  topics = "${loremipsum.kafka.topics.words-processed-topic}",
                  groupId = "${spring.kafka.consumer.group-id}")
   public void consume(ConsumerRecord<String, Report> consumerRecord) {
-      log.info("Received report, key: {}, value: {}", consumerRecord.key(), consumerRecord.value());
+    log.info("( {} ) Received report, key: {}, value: {}",
+        Thread.currentThread().getName(), consumerRecord.key(), consumerRecord.value());
   }
 }

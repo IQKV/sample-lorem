@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +25,6 @@ public class ReportsController {
   @GetMapping
   public ResponseEntity<Page<Report>> findAll(@ParameterObject @Valid PageRequestDto request) {
     var pageRequest = PageRequest.of(request.getPage(), request.getSize());
-    pageRequest.withSort(Sort.Direction.DESC, "id");
-    return new ResponseEntity<>(reportRepository.findAll(pageRequest), HttpStatus.OK);
+    return new ResponseEntity<>(reportRepository.findAllByOrderByIdDesc(pageRequest), HttpStatus.OK);
   }
 }
