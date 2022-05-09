@@ -6,8 +6,8 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import org.ujar.loremipsum.history.entity.Report;
-import org.ujar.loremipsum.history.kafka.exception.ConsumerRecordProcessingException;
 import org.ujar.loremipsum.history.kafka.dto.ReportDto;
+import org.ujar.loremipsum.history.kafka.exception.ConsumerRecordProcessingException;
 import org.ujar.loremipsum.history.repository.ReportRepository;
 
 @Component

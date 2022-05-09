@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.ujar.loremipsum.processing.web.dto.ErrorResponse;
 import org.ujar.loremipsum.processing.exception.IllegalEnumParameterException;
+import org.ujar.loremipsum.processing.web.dto.ErrorResponse;
 
 @Slf4j
 @RestControllerAdvice
@@ -27,7 +27,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       @NonNull HttpStatus status,
       @NonNull WebRequest request
   ) {
-    var errorResponse =  ErrorResponse.singleError(ex.getCause().getCause().getMessage());
+    var errorResponse = ErrorResponse.singleError(ex.getCause().getCause().getMessage());
     return new ResponseEntity<>(errorResponse, headers, status);
   }
 

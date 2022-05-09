@@ -27,7 +27,7 @@ public class RejectedMessageHandler extends SeekToCurrentErrorHandler {
 
   @Override
   public void handle(Exception thrownException, @NonNull List<ConsumerRecord<?, ?>> consumerRecords,
-     @NonNull Consumer<?, ?> consumer, @NonNull MessageListenerContainer container) {
+                     @NonNull Consumer<?, ?> consumer, @NonNull MessageListenerContainer container) {
     Throwable cause = thrownException.getCause();
     if (cause instanceof DeserializationException) {
       consumerRecords.forEach(consumerRecord -> {

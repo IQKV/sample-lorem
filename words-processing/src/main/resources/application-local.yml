@@ -1,6 +1,6 @@
 build :
   relativePath : ""
-spring:
+spring :
   kafka :
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
@@ -15,5 +15,5 @@ management :
     enabled-by-default : true
 
 loremipsum :
-  kafka:
-    create-topics-on-startup: true
+  kafka :
+    create-topics-on-startup : true

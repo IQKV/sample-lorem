@@ -8,12 +8,12 @@ public class ErrorResponse {
 
   List<Error> errors;
 
+  public static ErrorResponse singleError(String message) {
+    return new ErrorResponse(List.of(new Error(message)));
+  }
+
   @Value
   public static class Error {
     String message;
-  }
-
-  public static ErrorResponse singleError(String message) {
-    return new ErrorResponse(List.of(new Error(message)));
   }
 }

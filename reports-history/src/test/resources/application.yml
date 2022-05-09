@@ -3,8 +3,8 @@ spring :
     name : reports-history
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
-    driver-class-name :  ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
-    url :  ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///lorem_ipsum_db}
+    driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
+    url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///lorem_ipsum_db}
     username : ${DATASOURCE_USERNAME:postgres}
     password : ${DATASOURCE_PASSWORD:postgres}
     hikari :
@@ -21,12 +21,12 @@ spring :
       hibernate.jdbc.time_zone : UTC
     show-sql : false
   kafka :
-    consumer:
-      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
-      group-id: reports-history
-      auto-offset-reset: earliest
-      properties:
-        isolation.level: read_committed
+    consumer :
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      group-id : reports-history
+      auto-offset-reset : earliest
+      properties :
+        isolation.level : read_committed
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
       properties :
@@ -37,11 +37,11 @@ spring :
         security.protocol : PLAINTEXT
 
 loremipsum :
-  kafka:
-    create-topics-on-startup: true
+  kafka :
+    create-topics-on-startup : true
     consumer :
       threads : 4
-    topics:
+    topics :
       rejected-messages-topic : test.dlq.rejected_messages
       words-processed-topic : test.words.processed
       words-processed-partitions : 4

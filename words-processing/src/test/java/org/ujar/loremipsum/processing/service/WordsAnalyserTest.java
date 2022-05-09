@@ -1,7 +1,7 @@
 package org.ujar.loremipsum.processing.service;
 
-import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
 
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
@@ -15,20 +15,6 @@ import org.ujar.loremipsum.processing.model.Report;
 class WordsAnalyserTest {
   private WordsAnalyser service;
 
-  @BeforeEach
-  void setUp() {
-   service = new WordsAnalyser();
-  }
-
-  @ParameterizedTest
-  @MethodSource("provideStringsForAnalysis")
-  void analyze(String fileName, Report expected) {
-    var input = getFileAsString("response/" + fileName + ".html");
-    var result = service.analyze(input);
-    assertThat(result.getMostFrequentWord()).isEqualTo(expected.getMostFrequentWord());
-    assertThat(result.getAvgParagraphSize()).isEqualTo(expected.getAvgParagraphSize());
-  }
-
   private static Stream<Arguments> provideStringsForAnalysis() {
     return Stream.of(
         Arguments.of("1_short", fakeReport("vacuitate", 27)),
@@ -40,6 +26,20 @@ class WordsAnalyserTest {
   }
 
   private static Report fakeReport(String frequentWord, int avgParagraphSize) {
-    return new Report(frequentWord, (short) avgParagraphSize, 0,0);
+    return new Report(frequentWord, (short) avgParagraphSize, 0, 0);
+  }
+
+  @BeforeEach
+  void setUp() {
+    service = new WordsAnalyser();
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideStringsForAnalysis")
+  void analyze(String fileName, Report expected) {
+    var input = getFileAsString("response/" + fileName + ".html");
+    var result = service.analyze(input);
+    assertThat(result.getMostFrequentWord()).isEqualTo(expected.getMostFrequentWord());
+    assertThat(result.getAvgParagraphSize()).isEqualTo(expected.getAvgParagraphSize());
   }
 }

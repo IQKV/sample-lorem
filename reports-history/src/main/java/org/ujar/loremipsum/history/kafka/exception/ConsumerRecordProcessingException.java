@@ -1,6 +1,7 @@
 package org.ujar.loremipsum.history.kafka.exception;
 
 import java.io.Serial;
+
 public class ConsumerRecordProcessingException extends RuntimeException {
 
   @Serial

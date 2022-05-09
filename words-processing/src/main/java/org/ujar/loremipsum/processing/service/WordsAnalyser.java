@@ -50,8 +50,8 @@ public class WordsAnalyser {
   private String findMostFrequentWord(Map<String, Integer> wordsFrequency) {
     String mostFrequentWord = null;
     var maxQty = 0;
-    for(final String word : wordsFrequency.keySet()) {
-      if(wordsFrequency.get(word) > maxQty) {
+    for (final String word : wordsFrequency.keySet()) {
+      if (wordsFrequency.get(word) > maxQty) {
         maxQty = wordsFrequency.get(word);
         mostFrequentWord = word;
       }
@@ -81,6 +81,7 @@ public class WordsAnalyser {
         .filter(s -> !s.isEmpty())
         .toList();
   }
+
   private long measureTime(Runnable task) {
     var startTime = System.nanoTime();
     task.run();

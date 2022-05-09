@@ -13,17 +13,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.ujar.loremipsum.processing.service.HistoryNotifier;
 import org.ujar.loremipsum.processing.enums.LengthType;
 import org.ujar.loremipsum.processing.model.Report;
+import org.ujar.loremipsum.processing.service.HistoryNotifier;
 import org.ujar.loremipsum.processing.service.LorIpsumNetClient;
 import org.ujar.loremipsum.processing.service.WordsAnalyser;
 
 @RestController
-@Tag(name = "Statistic report controller", description = "Retrieve statistic information.")
+@Tag(name = "Words processing controller", description = "Retrieve statistic information.")
 @RequestMapping("/betvictor/text")
 @RequiredArgsConstructor
-public class AnalyzeTextController {
+public class WordsProcessingController {
 
   private final LorIpsumNetClient httpClient;
   private final WordsAnalyser wordsAnalyser;

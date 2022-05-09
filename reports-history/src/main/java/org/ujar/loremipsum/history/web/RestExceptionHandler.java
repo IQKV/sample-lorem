@@ -24,7 +24,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       @NonNull HttpStatus status,
       @NonNull WebRequest request
   ) {
-    var errorResponse =  ErrorResponse.singleError(ex.getMessage());
+    var errorResponse = ErrorResponse.singleError(ex.getMessage());
     return new ResponseEntity<>(errorResponse, headers, status);
   }
 }

@@ -34,27 +34,27 @@ spring :
     template :
       check-template-location : false
 
-  kafka:
-    consumer:
-      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
-      auto-offset-reset: earliest
-      properties:
-        basic.auth.credentials.source : SASL_INHERIT
-        security.protocol: ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
-        sasl.mechanism: SCRAM-SHA-512
-        sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
-        isolation.level: read_committed
-      group-id : ${KAFKA_CONSUMERS_GROUP:reports-history}
-    producer:
+  kafka :
+    consumer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      auto-offset-reset : earliest
       properties :
         basic.auth.credentials.source : SASL_INHERIT
         security.protocol : ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
         sasl.mechanism : SCRAM-SHA-512
-        sasl.jaas.config: "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
-        spring.json.add.type.headers: false
-    admin:
+        sasl.jaas.config : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
+        isolation.level : read_committed
+      group-id : ${KAFKA_CONSUMERS_GROUP:reports-history}
+    producer :
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+      value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
+      properties :
+        basic.auth.credentials.source : SASL_INHERIT
+        security.protocol : ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
+        sasl.mechanism : SCRAM-SHA-512
+        sasl.jaas.config : "org.apache.kafka.common.security.scram.ScramLoginModule required username=\"${KAFKA_USERNAME}\" password=\"${KAFKA_PASSWORD}\";"
+        spring.json.add.type.headers : false
+    admin :
       properties :
         bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
         security.protocol : ${KAFKA_SECURITY_PROTOCOL:PLAINTEXT}
@@ -81,11 +81,11 @@ management :
       enabled : true
 
 loremipsum :
-  kafka:
-    create-topics-on-startup: ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
-    consumer:
-      threads: ${KAFKA_CONSUMER_THREADS:4}
-    topics:
+  kafka :
+    create-topics-on-startup : ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
+    consumer :
+      threads : ${KAFKA_CONSUMER_THREADS:4}
+    topics :
       rejected-messages-topic : ${KAFKA_TOPIC_REJECTED_MESSAGES:dlq.rejected_messages}
       words-processed-topic : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
       words-processed-partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}

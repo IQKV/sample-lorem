@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.ujar.loremipsum.processing.kafka.ReportMessageProducer;
 import org.ujar.loremipsum.processing.model.Report;
+
 @Service
 @RequiredArgsConstructor
 public class HistoryNotifier {

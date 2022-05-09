@@ -21,7 +21,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Table(name = Report.TABLE_NAME)
 public class Report {
 
-  protected static final String TABLE_NAME =  "loremipsum_reports";
+  protected static final String TABLE_NAME = "loremipsum_reports";
 
   @Id
   @SequenceGenerator(

@@ -24,11 +24,13 @@ public class KafkaConfiguration {
     producerFactory.setTransactionIdPrefix(getTransactionPrefix());
     return producerFactory;
   }
+
   @Bean
   public KafkaTemplate<String, Report> reportMessageKafkaTemplate(
       ProducerFactory<String, Report> reportMessageProducerFactory) {
     return new KafkaTemplate<>(reportMessageProducerFactory);
   }
+
   private String getTransactionPrefix() {
     return "tx-" + UUID.randomUUID() + "-";
   }

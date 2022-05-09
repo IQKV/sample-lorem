@@ -18,5 +18,5 @@ management :
     enabled-by-default : true
 
 loremipsum :
-  kafka:
-    create-topics-on-startup: true
+  kafka :
+    create-topics-on-startup : true

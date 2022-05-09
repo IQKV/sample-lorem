@@ -13,7 +13,7 @@ import org.springframework.kafka.config.TopicBuilder;
 @ConditionalOnProperty(value = "loremipsum.kafka.create-topics-on-startup", havingValue = "true")
 public class KafkaTopicsConfiguration {
   private final KafkaTopics topics;
-  
+
   @Bean
   public NewTopic wordsProcessedKafkaTopic() {
     return TopicBuilder

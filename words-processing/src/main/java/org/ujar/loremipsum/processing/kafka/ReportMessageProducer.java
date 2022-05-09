@@ -12,13 +12,13 @@ import org.ujar.loremipsum.processing.model.Report;
 @Slf4j
 @RequiredArgsConstructor
 public class ReportMessageProducer {
-   private final KafkaTemplate<String, Report> kafkaTemplate;
-   private final KafkaTopics topics;
+  private final KafkaTemplate<String, Report> kafkaTemplate;
+  private final KafkaTopics topics;
 
   /**
    * Send message to Kafka broker with avoiding transaction-aware configuration environment
    */
-   public void send(Report report) {
+  public void send(Report report) {
     var key = UUID.randomUUID().toString();
     log.info("( {} ) Send report message, key: {}, value: {}", Thread.currentThread().getName(), key, report);
     kafkaTemplate.executeInTransaction((t) -> t.send(topics.getWordsProcessedTopic(), key, report));

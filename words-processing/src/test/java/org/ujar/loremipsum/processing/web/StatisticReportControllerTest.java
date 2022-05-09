@@ -11,7 +11,6 @@ import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -29,27 +28,6 @@ import org.springframework.test.web.servlet.MockMvc;
 record StatisticReportControllerTest(MockMvc mockMvc) {
   StatisticReportControllerTest(@Autowired MockMvc mockMvc) {
     this.mockMvc = mockMvc;
-  }
-
-  @BeforeEach
-  void setUp() {
-    WireMock.reset();
-  }
-
-  @ParameterizedTest
-  @MethodSource("provideStringsForAnalysis")
-  void getReport_Success(String externalUrl, String apiUrl, String file, String result) throws Exception {
-    stubFor(WireMock.get(externalUrl).willReturn(
-            aResponse()
-                .withStatus(HttpStatus.OK.value())
-                .withBody(getFileAsString("response/" + file + ".html"))
-                .withHeader("Content-Type", MediaType.TEXT_PLAIN_VALUE)
-        )
-    );
-    mockMvc.perform(get(apiUrl))
-        .andDo(print())
-        .andExpect(status().isOk())
-        .andExpect(content().json(result, false));
   }
 
   private static Stream<Arguments> provideStringsForAnalysis() {
@@ -72,5 +50,26 @@ record StatisticReportControllerTest(MockMvc mockMvc) {
             + "}")
 
     );
+  }
+
+  @BeforeEach
+  void setUp() {
+    WireMock.reset();
+  }
+
+  @ParameterizedTest
+  @MethodSource("provideStringsForAnalysis")
+  void getReport_Success(String externalUrl, String apiUrl, String file, String result) throws Exception {
+    stubFor(WireMock.get(externalUrl).willReturn(
+            aResponse()
+                .withStatus(HttpStatus.OK.value())
+                .withBody(getFileAsString("response/" + file + ".html"))
+                .withHeader("Content-Type", MediaType.TEXT_PLAIN_VALUE)
+        )
+    );
+    mockMvc.perform(get(apiUrl))
+        .andDo(print())
+        .andExpect(status().isOk())
+        .andExpect(content().json(result, false));
   }
 }
