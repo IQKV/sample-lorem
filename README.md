@@ -14,29 +14,29 @@ custom _checkstyle_ configuration, etc.
 
 ### Applications
 
-| App Name             | Description                                       | REST Endpont                            |
-|----------------------|---------------------------------------------------|-----------------------------------------|
-| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8091/betvictor/text    |
-| __reports-history__  | Provide pageable processing reports list          | http://localhost:8092/betvictor/history |
+| App Name             | Description                                       | REST Endpoint (with default port settings) |
+|----------------------|---------------------------------------------------|--------------------------------------------|
+| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8091/betvictor/text       |
+| __reports-history__  | Provide pageable processing reports list          | http://localhost:8092/betvictor/history    |
 
 ### Environment variables
 
 Applications are highly-configurable, supports many env vars, such as: 
 
-| ENV Variable                           | Description                            | Default Value   |
-|----------------------------------------|----------------------------------------|-----------------|
-| SERVER_PORT                            | Application port                       | 8091, 8092      |
-| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                   | localhost:29092 |
-| KAFKA_SECURITY_PROTOCOL                |                                        | PLAINTEXT       |
-| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                             |words.processed|
-| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                       |4|
-| KAFKA_CONSUMER_THREADS                 | Consumer threads count                 | 4               |
-| KAFKA_CONSUMERS_GROUP                  | Consumer group name                    | reports-history |
-| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation | true            |
-| DATASOURCE_URL                         |                                        |jdbc:postgresql://localhost:5432/lorem_ipsum_db|
-| DATASOURCE_USERNAME                    |                                        |postgres|
-| DATASOURCE_PASSWORD                    |                                        |postgres|
-| DATASOURCE_DRIVER                      |                                        |org.postgresql.Driver|
+| ENV Variable                           | Description                            | Default Value                                   |
+|----------------------------------------|----------------------------------------|-------------------------------------------------|
+| SERVER_PORT                            | Application port                       | 8091, 8092                                      |
+| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                   | localhost:29092                                 |
+| KAFKA_SECURITY_PROTOCOL                |                                        | PLAINTEXT                                       |
+| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                             | words.processed                                 |
+| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                       | 4                                               |
+| KAFKA_CONSUMER_THREADS                 | Consumer threads count                 | 4                                               |
+| KAFKA_CONSUMERS_GROUP                  | Consumer group name                    | reports-history                                 |
+| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation | true                                            |
+| DATASOURCE_URL                         |                                        | jdbc:postgresql://localhost:5432/lorem_ipsum_db |
+| DATASOURCE_USERNAME                    |                                        | postgres                                        |
+| DATASOURCE_PASSWORD                    |                                        | postgres                                        |
+| DATASOURCE_DRIVER                      |                                        | org.postgresql.Driver                           |
 
 ### Tests
 
@@ -61,7 +61,7 @@ cd lorem-ipsum-words-processor
 - Add new version of docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 - Spin-up single instance of Kafka broker, zookeeper and Postgresql by running command:
 
-```text
+```
 docker-compose -f docker-compose.dev.yml up -d
 ```
 
@@ -95,6 +95,6 @@ Swagger UI is here: http://localhost:8092/swagger-ui.html
 
 ###### Also, don't forget to stop dev services:
 
-```text
+```
 docker-compose -f docker-compose.dev.yml down
 ```
