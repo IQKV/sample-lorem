@@ -16,8 +16,8 @@ custom _checkstyle_ configuration, etc.
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
 |----------------------|---------------------------------------------------|--------------------------------------------|
-| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8091/betvictor/text       |
-| __reports-history__  | Provide pageable processing reports list          | http://localhost:8092/betvictor/history    |
+| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/betvictor/text       |
+| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/betvictor/history    |
 
 ### Environment variables
 
@@ -25,7 +25,7 @@ Applications are highly-configurable, supports many env vars, such as:
 
 | ENV Variable                           | Description                            | Default Value                                   |
 |----------------------------------------|----------------------------------------|-------------------------------------------------|
-| SERVER_PORT                            | Application port                       | 8091, 8092                                      |
+| SERVER_PORT                            | Application port                       | 8085                                      |
 | KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                   | localhost:29092                                 |
 | KAFKA_SECURITY_PROTOCOL                |                                        | PLAINTEXT                                       |
 | KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                             | words.processed                                 |
@@ -82,7 +82,7 @@ mvn package
 java -jar words-processing/target/*.jar
 ```
 
-You can then access Swagger UI here: http://localhost:8091/swagger-ui.html
+You can then access Swagger UI here: http://localhost:8085/swagger-ui.html
 
 - Run **reports-history** app:
 
@@ -90,7 +90,7 @@ You can then access Swagger UI here: http://localhost:8091/swagger-ui.html
 java -jar reports-history/target/*.jar
 ```
 
-Swagger UI is here: http://localhost:8092/swagger-ui.html
+Swagger UI is here: http://localhost:8086/swagger-ui.html
 
 
 ###### Also, don't forget to clean up after testing & stop dev services:
