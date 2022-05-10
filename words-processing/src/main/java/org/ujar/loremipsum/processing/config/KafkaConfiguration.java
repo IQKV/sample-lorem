@@ -16,13 +16,14 @@ import org.ujar.loremipsum.processing.model.Report;
 public class KafkaConfiguration {
   @Bean
   public ProducerFactory<String, Report> reportMessageProducerFactory(KafkaProperties kafkaProperties) {
-    var serde = new JsonSerde<>(Report.class, new ObjectMapper());
-    var producerProperties = kafkaProperties.getProducer().buildProperties();
-    var producerFactory = new DefaultKafkaProducerFactory<>(producerProperties,
-        new StringSerializer(),
-        serde.serializer());
-    producerFactory.setTransactionIdPrefix(getTransactionPrefix());
-    return producerFactory;
+    try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
+      var producerProperties = kafkaProperties.getProducer().buildProperties();
+      var producerFactory = new DefaultKafkaProducerFactory<>(producerProperties,
+          new StringSerializer(),
+          serde.serializer());
+      producerFactory.setTransactionIdPrefix(getTransactionPrefix());
+      return producerFactory;
+    }
   }
 
   @Bean

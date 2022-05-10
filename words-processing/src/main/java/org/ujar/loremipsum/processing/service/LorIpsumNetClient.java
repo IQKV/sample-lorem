@@ -7,6 +7,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.ujar.loremipsum.processing.config.NetClientProperties;
 import org.ujar.loremipsum.processing.enums.LengthType;
@@ -14,6 +15,7 @@ import org.ujar.loremipsum.processing.exception.NetClientCommunicationException;
 import org.ujar.loremipsum.processing.exception.NetClientMisconfigurationException;
 
 @Service
+@Slf4j
 public class LorIpsumNetClient {
   private final NetClientProperties properties;
   private final HttpClient httpClient;
@@ -41,6 +43,7 @@ public class LorIpsumNetClient {
         .GET()
         .build();
     try {
+      log.info("{} {}", properties, uri);
       return httpClient.send(request, HttpResponse.BodyHandlers.ofString()).body();
     } catch (IOException | InterruptedException e) {
       throw new NetClientCommunicationException(e);

@@ -20,9 +20,11 @@ public class KafkaTestConfiguration {
   @Bean
   public ConsumerFactory<String, Report> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
     var consumerProperties = kafkaProperties.getConsumer().buildProperties();
-    return new DefaultKafkaConsumerFactory<>(consumerProperties,
-        new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
-        new JsonSerde<>(Report.class, new ObjectMapper()).deserializer()));
+    try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
+      return new DefaultKafkaConsumerFactory<>(consumerProperties,
+          new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
+          serde.deserializer()));
+    }
   }
 
   @Bean

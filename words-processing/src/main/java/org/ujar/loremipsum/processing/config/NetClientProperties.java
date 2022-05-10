@@ -9,6 +9,6 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @ConfigurationProperties(prefix = "loremipsum.net-client")
 public class NetClientProperties {
   String apiServerUrlTemplate;
-  int connectTimeout = 1;
-  int requestTimeout = 2;
+  int connectTimeout = 10;
+  int requestTimeout = 10;
 }

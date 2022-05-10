@@ -1,5 +1,8 @@
 ## Words Processor
 
+[![Build Status](https://drone.ujar.org/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](https://drone.ujar.org/ujar-org/lorem-ipsum-words-processor)
+[![Quality Gate Status](https://sonarqube.ujar.org/api/project_badges/measure?project=ujar-org%3Alorem-ipsum-words-processor&metric=alert_status&token=baac8826c2acbee4108d9379b53c1ab9cf48b62f)](https://sonarqube.ujar.org/dashboard?id=ujar-org%3Alorem-ipsum-words-processor)
+
 Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
 Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
@@ -14,6 +17,12 @@ custom _checkstyle_ configuration, etc.
 
 ### Applications
 
+**TLDR:** All-in-one docker compose: 
+
+``
+docker-compose -f ./etc/all-in-one-demo.yml up
+``
+
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
 |----------------------|---------------------------------------------------|--------------------------------------------|
 | __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/betvictor/text       |
@@ -23,20 +32,20 @@ custom _checkstyle_ configuration, etc.
 
 Applications are highly-configurable, supports many env vars, such as: 
 
-| ENV Variable                           | Description                            | Default Value                                   |
-|----------------------------------------|----------------------------------------|-------------------------------------------------|
-| SERVER_PORT                            | Application port                       | 8085                                      |
-| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                   | localhost:29092                                 |
-| KAFKA_SECURITY_PROTOCOL                |                                        | PLAINTEXT                                       |
-| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                             | words.processed                                 |
-| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                       | 4                                               |
-| KAFKA_CONSUMER_THREADS                 | Consumer threads count                 | 4                                               |
-| KAFKA_CONSUMERS_GROUP                  | Consumer group name                    | reports-history                                 |
-| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation | true                                            |
-| DATASOURCE_URL                         |                                        | jdbc:postgresql://localhost:5432/lorem_ipsum_db |
-| DATASOURCE_USERNAME                    |                                        | postgres                                        |
-| DATASOURCE_PASSWORD                    |                                        | postgres                                        |
-| DATASOURCE_DRIVER                      |                                        | org.postgresql.Driver                           |
+| ENV Variable                           | Description                                         | Default Value                                   |
+|----------------------------------------|-----------------------------------------------------|-------------------------------------------------|
+| SERVER_PORT                            | Application port                                    | 8085, 8086                                      |
+| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                                | localhost:29092                                 |
+| KAFKA_SECURITY_PROTOCOL                |                                                     | PLAINTEXT                                       |
+| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                                          | words.processed                                 |
+| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                                    | 4                                               |
+| KAFKA_CONSUMER_THREADS                 | Consumer threads count,<br>respective to partitions | 4                                               |
+| KAFKA_CONSUMERS_GROUP                  | Consumer group name                                 | reports-history                                 |
+| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation              | true                                            |
+| DATASOURCE_URL                         |                                                     | jdbc:postgresql://localhost:5432/lorem_ipsum_db |
+| DATASOURCE_USERNAME                    |                                                     | postgres                                        |
+| DATASOURCE_PASSWORD                    |                                                     | postgres                                        |
+| DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                           |
 
 ### Tests
 
@@ -93,11 +102,13 @@ java -jar reports-history/target/*.jar
 Swagger UI is here: http://localhost:8086/swagger-ui.html
 
 
-###### Also, don't forget to clean up after testing & stop dev services:
+##### After all, don't forget to clean up working directory & stop dev services:
 
 ```
 mvn clean
 
 docker-compose -f docker-compose.dev.yml down
+
+docker-compose -f ./etc/all-in-one-demo.yml down
 
 ```

@@ -1,11 +1,33 @@
-# This configuration is intended for development purpose
+# This configuration is intended for staging/demo purpose
 version: '3.8'
 services:
+  lorem-ipsum-words-processing:
+    image: "docker-registry.ujar.org/ujar/lorem-ipsum-words-processing:latest"
+    container_name: lorem-ipsum-words-processing
+    depends_on :
+      - kafka
+    ports :
+      - "8085:8085"
+    environment:
+      - KAFKA_BOOTSTRAP_SERVERS=lorem-ipsum-kafka:29092
+
+  lorem-ipsum-reports-history:
+    image: "docker-registry.ujar.org/ujar/lorem-ipsum-reports-history:latest"
+    container_name: lorem-ipsum-reports-history
+    depends_on :
+      - postgres
+      - kafka
+    ports :
+      - "8086:8086"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=lorem_ipsum_db
+      - KAFKA_BOOTSTRAP_SERVERS=lorem-ipsum-kafka:29092
+
   postgres:
     image: "postgres:13.5"
     container_name: lorem-ipsum-postgres
-    ports :
-      - "5432:5432"
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -21,12 +43,10 @@ services:
     container_name: lorem-ipsum-kafka
     depends_on :
       - zookeeper
-    ports:
-      - "29092:29092"
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: lorem-ipsum-zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://lorem-ipsum-kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://lorem-ipsum-kafka:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1

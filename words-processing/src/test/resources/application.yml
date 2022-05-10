@@ -19,9 +19,9 @@ spring :
 
 loremipsum :
   net-client :
-    api-server-url-template : http://localhost:${wiremock.server.port}/api/{paragraphsNum}/{lengthType}
-    connect-timeout : 1  # sec
-    request-timeout : 2
+    api-server-url-template : http://127.0.0.1:${wiremock.server.port}/api/{paragraphsNum}/{lengthType}
+    connect-timeout : 10  # sec
+    request-timeout : 10
   kafka :
     create-topics-on-startup : true
     consumer :

@@ -39,9 +39,11 @@ public class KafkaConfiguration {
   @Bean
   public ConsumerFactory<String, ReportDto> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
     var consumerProperties = kafkaProperties.getConsumer().buildProperties();
-    return new DefaultKafkaConsumerFactory<>(consumerProperties,
-        new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
-        new JsonSerde<>(ReportDto.class, new ObjectMapper()).deserializer()));
+    try (var serde = new JsonSerde<>(ReportDto.class, new ObjectMapper())) {
+      return new DefaultKafkaConsumerFactory<>(consumerProperties,
+          new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
+          serde.deserializer()));
+    }
   }
 
   @Bean
