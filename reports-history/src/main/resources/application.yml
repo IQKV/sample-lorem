@@ -65,6 +65,10 @@ server :
   port : ${SERVER_PORT:8092}
   shutdown : graceful
 
+logging :
+  level :
+    ROOT : INFO
+    liquibase : INFO
 management :
   server :
     add-application-context-header : true

@@ -1,6 +1,7 @@
 package org.ujar.loremipsum.history.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.time.Instant;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -35,20 +36,25 @@ public class Report {
   @JsonIgnore
   private Long id;
 
-  @Column(name = "freq_word")
+  @Column(name = "most_frequent_word")
+  @JsonProperty("freq_word")
   private String mostFrequentWord;
 
   @Column(name = "avg_paragraph_size")
+  @JsonProperty("avg_paragraph_size")
   private int avgParagraphSize;
 
   @Column(name = "avg_paragraph_processing_time")
+  @JsonProperty("avg_paragraph_processing_time")
   private int avgParagraphProcessingTime;
 
   @Column(name = "total_processing_time")
+  @JsonProperty("total_processing_time")
   private int totalProcessingTime;
 
   @CreatedDate
   @Column(name = "created_at")
+  @JsonProperty("created_at")
   private Instant createdAt;
 
   public Report(String mostFrequentWord, int avgParagraphSize, int avgParagraphProcessingTime,
