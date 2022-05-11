@@ -4,6 +4,7 @@ services:
   lorem-ipsum-words-processing:
     image: "docker-registry.ujar.org/ujar/lorem-ipsum-words-processing:latest"
     container_name: lorem-ipsum-words-processing
+    restart: unless-stopped
     depends_on :
       - kafka
     ports :
@@ -14,6 +15,7 @@ services:
   lorem-ipsum-reports-history:
     image: "docker-registry.ujar.org/ujar/lorem-ipsum-reports-history:latest"
     container_name: lorem-ipsum-reports-history
+    restart: unless-stopped
     depends_on :
       - postgres
       - kafka
@@ -28,6 +30,7 @@ services:
   postgres:
     image: "postgres:13.5"
     container_name: lorem-ipsum-postgres
+    restart: unless-stopped
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -35,12 +38,14 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:6.2.0
     container_name: lorem-ipsum-zookeeper
+    restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   kafka:
     image: confluentinc/cp-kafka:6.2.0
     container_name: lorem-ipsum-kafka
+    restart: unless-stopped
     depends_on :
       - zookeeper
     environment:

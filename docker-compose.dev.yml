@@ -4,6 +4,7 @@ services:
   postgres:
     image: "postgres:13.5"
     container_name: lorem-ipsum-postgres
+    restart: unless-stopped
     ports :
       - "5432:5432"
     environment:
@@ -13,12 +14,14 @@ services:
   zookeeper:
     image: confluentinc/cp-zookeeper:6.2.0
     container_name: lorem-ipsum-zookeeper
+    restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   kafka:
     image: confluentinc/cp-kafka:6.2.0
     container_name: lorem-ipsum-kafka
+    restart: unless-stopped
     depends_on :
       - zookeeper
     ports:
