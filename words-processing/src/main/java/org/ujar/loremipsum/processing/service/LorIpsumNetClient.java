@@ -42,10 +42,13 @@ public class LorIpsumNetClient {
         .timeout(Duration.ofSeconds(properties.getRequestTimeout()))
         .GET()
         .build();
-    try {
       log.info("{} {}", properties, uri);
+    try {
       return httpClient.send(request, HttpResponse.BodyHandlers.ofString()).body();
-    } catch (IOException | InterruptedException e) {
+    } catch (IOException e) {
+      throw new NetClientCommunicationException(e);
+    } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       throw new NetClientCommunicationException(e);
     }
   }
