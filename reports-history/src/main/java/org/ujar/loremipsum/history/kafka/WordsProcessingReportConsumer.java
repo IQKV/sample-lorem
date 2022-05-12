@@ -1,5 +1,6 @@
 package org.ujar.loremipsum.history.kafka;
 
+import javax.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -20,6 +21,7 @@ public class WordsProcessingReportConsumer {
   @KafkaListener(containerFactory = "processingReportKafkaListenerContainerFactory",
                  topics = "${loremipsum.kafka.topics.words-processed-topic}",
                  groupId = "${spring.kafka.consumer.group-id}")
+  @Transactional
   public void consume(ConsumerRecord<String, ReportDto> consumerRecord) {
     try {
       log.info("( {} ) Received report, key: {}, value: {}",
