@@ -2,6 +2,7 @@ package org.ujar.loremipsum.history.kafka;
 
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.Consumer;
@@ -26,21 +27,26 @@ public class RejectedMessageHandler extends SeekToCurrentErrorHandler {
   }
 
   @Override
-  public void handle(Exception thrownException, @NonNull List<ConsumerRecord<?, ?>> consumerRecords,
+  public void handle(Exception thrownException, @Nullable List<ConsumerRecord<?, ?>> consumerRecords,
                      @NonNull Consumer<?, ?> consumer, @NonNull MessageListenerContainer container) {
     Throwable cause = thrownException.getCause();
     if (cause instanceof DeserializationException) {
-      consumerRecords.forEach(consumerRecord -> {
-        log.error("Exception occurred while handle message: {}", consumerRecord.value(), cause);
-        String key = Objects.isNull(consumerRecord.key()) ? null : consumerRecord.key().toString();
-        rejectedMessageKafkaTemplate.send(rejectedTopic, key, new String(((DeserializationException) cause).getData()));
-      });
+      if (consumerRecords != null) {
+        consumerRecords.forEach(consumerRecord -> {
+          log.error("Exception occurred while handle message: {}", consumerRecord.value(), cause);
+          String key = Objects.isNull(consumerRecord.key()) ? null : consumerRecord.key().toString();
+          rejectedMessageKafkaTemplate.send(rejectedTopic, key,
+              new String(((DeserializationException) cause).getData()));
+        });
+      }
     } else if (cause instanceof ConsumerRecordProcessingException) {
-      consumerRecords.forEach(consumerRecord -> {
-        log.error("Exception occurred while handle message: {}", consumerRecord.value(), cause);
-        String key = Objects.isNull(consumerRecord.key()) ? null : consumerRecord.key().toString();
-        rejectedMessageKafkaTemplate.send(rejectedTopic, key, consumerRecord.value().toString());
-      });
+      if (consumerRecords != null) {
+        consumerRecords.forEach(consumerRecord -> {
+          log.error("Exception occurred while handle message: {}", consumerRecord.value(), cause);
+          String key = Objects.isNull(consumerRecord.key()) ? null : consumerRecord.key().toString();
+          rejectedMessageKafkaTemplate.send(rejectedTopic, key, consumerRecord.value().toString());
+        });
+      }
     } else {
       super.handle(thrownException, consumerRecords, consumer, container);
     }

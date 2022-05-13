@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.ujar.loremipsum.processing.model.Report;
@@ -21,7 +23,7 @@ public class WordsAnalyser {
     final Report report = new Report();
     final ArrayList<Long> pElapsedTimes = new ArrayList<>();
 
-    final Map<String, Integer> wordsFrequency = new HashMap<>();
+    final Map<String, Integer> allWordsFrequency = new HashMap<>();
     var totalProcessingTime = measureTime(() -> {
       var paragraphs = getParagraphs(rawSource);
 
@@ -30,13 +32,18 @@ public class WordsAnalyser {
 
       for (String paragraph : paragraphs) {
         var elapsedTime = measureTime(() -> {
-          var words = computeParagraphWordsUsage(paragraph, wordsFrequency);
+          String[] words = paragraph.split("\\s+");
+
+          var paragraphWords = computeParagraphWordsUsage(words);
+
+          paragraphWords.forEach((word, wordCount) -> allWordsFrequency.merge(word, wordCount.intValue(), Integer::sum));
+
           paragraphSizes[paragraphIndex.getAndIncrement()] = words.length;
         });
         pElapsedTimes.add(elapsedTime);
       }
 
-      report.setMostFrequentWord(findMostFrequentWord(wordsFrequency));
+      report.setMostFrequentWord(findMostFrequentWord(allWordsFrequency));
       report.setAvgParagraphSize((short) Arrays.stream(paragraphSizes).average().orElse(0.0));
 
       var avgParagraphProcessingTime = (long) pElapsedTimes.stream().mapToInt(Long::intValue).average().orElse(0.0);
@@ -48,29 +55,15 @@ public class WordsAnalyser {
   }
 
   private String findMostFrequentWord(Map<String, Integer> wordsFrequency) {
-    String mostFrequentWord = null;
-    var maxQty = 0;
-    for (final String word : wordsFrequency.keySet()) {
-      if (wordsFrequency.get(word) > maxQty) {
-        maxQty = wordsFrequency.get(word);
-        mostFrequentWord = word;
-      }
-    }
-    return mostFrequentWord;
+    return wordsFrequency.entrySet()
+        .stream()
+        .max(Map.Entry.comparingByValue()
+        ).orElseThrow().getKey();
   }
 
-  private String[] computeParagraphWordsUsage(String paragraph, Map<String, Integer> wordsUsage) {
-    String[] words = paragraph.split("\\s+");
-    for (final String word : words) {
-      Integer qty = wordsUsage.get(word.toLowerCase());
-      if (qty == null) {
-        qty = 1;
-      } else {
-        qty = qty + 1;
-      }
-      wordsUsage.put(word.toLowerCase(), qty);
-    }
-    return words;
+  private Map<String, Long> computeParagraphWordsUsage(String[] words) {
+    return Arrays.stream(words).map(String::toLowerCase)
+        .collect(Collectors.groupingByConcurrent(Function.identity(), Collectors.counting()));
   }
 
   private List<String> getParagraphs(String rawSource) {

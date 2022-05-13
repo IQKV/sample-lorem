@@ -33,7 +33,6 @@ steps:
     when:
       branch:
         include:
-          - feature/*
           - main
       event:
         include:
@@ -57,7 +56,6 @@ steps:
     when:
       branch:
         include:
-          - feature/*
           - main
       event:
         include:
@@ -83,7 +81,6 @@ steps:
     when:
       branch:
         include:
-          - feature/*
           - main
       event:
         include:
@@ -109,7 +106,6 @@ steps:
     when:
       branch:
         include:
-          - feature/*
           - main
       event:
         include:

@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing;
+package org.ujar.loremipsum.processing.util;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

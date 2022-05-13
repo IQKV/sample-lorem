@@ -13,7 +13,7 @@ and generate statistic reports.
 Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
-custom _checkstyle_ configuration, etc.
+logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
 
 ### Applications
 

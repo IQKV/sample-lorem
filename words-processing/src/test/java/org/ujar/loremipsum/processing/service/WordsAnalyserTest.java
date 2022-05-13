@@ -1,7 +1,7 @@
 package org.ujar.loremipsum.processing.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
+import static org.ujar.loremipsum.processing.util.TestUtils.getFileAsString;
 
 import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;

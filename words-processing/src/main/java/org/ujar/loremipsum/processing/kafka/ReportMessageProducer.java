@@ -1,5 +1,6 @@
 package org.ujar.loremipsum.processing.kafka;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.ujar.loremipsum.processing.model.Report;
 @Component
 @Slf4j
 @RequiredArgsConstructor
+@SuppressFBWarnings("EI_EXPOSE_REP2")
 public class ReportMessageProducer {
   private final KafkaTemplate<String, Report> kafkaTemplate;
   private final KafkaTopics topics;

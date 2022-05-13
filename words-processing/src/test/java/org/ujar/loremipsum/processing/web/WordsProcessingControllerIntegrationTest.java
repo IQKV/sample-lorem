@@ -6,7 +6,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.ujar.loremipsum.processing.TestUtils.getFileAsString;
+import static org.ujar.loremipsum.processing.util.TestUtils.getFileAsString;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.util.stream.Stream;

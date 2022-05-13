@@ -2,6 +2,15 @@ build :
   version : @project.version@
   description : "Words statistic generator"
   relativePath : ${SWAGGER_RELATIVE_PATH:}
+
+# /info endpoint
+info :
+  app :
+    name : words-processing
+    description : ${build.description}
+    version : ${build.version}
+    env : ${ENV}
+
 spring :
   application :
     name : words-processing
@@ -42,11 +51,18 @@ management :
     web :
       path-mapping :
         health : actuator/health
+        prometheus : metrics
+        info : info
       base-path : /
       exposure :
-        include : health
+        include : health, prometheus, info
   endpoint :
     health :
+      enabled : true
+      show-details : always
+    prometheus :
+      enabled : true
+    info :
       enabled : true
 
 loremipsum :

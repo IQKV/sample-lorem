@@ -18,7 +18,7 @@ import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.CompositeArchRule;
 import org.slf4j.Logger;
 
-@AnalyzeClasses(packages = "org.ujar.loremipsum.reports")
+@AnalyzeClasses(packages = "org.ujar.loremipsum.history")
 class CodingRulesTest {
   @ArchTest
   private final ArchRule noClassesShouldAccessStandardStreams = NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS;

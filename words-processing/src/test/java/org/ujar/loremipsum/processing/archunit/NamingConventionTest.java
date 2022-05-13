@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RestController;
 
-@AnalyzeClasses(packages = "org.ujar.loremipsum.wordsstatistic")
+@AnalyzeClasses(packages = "org.ujar.loremipsum.processing")
 public class NamingConventionTest {
 
   @ArchTest
