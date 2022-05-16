@@ -13,7 +13,7 @@ import org.ujar.loremipsum.processing.model.Report;
 public class WordsProcessingReportTestConsumer {
 
   @KafkaListener(containerFactory = "processingReportKafkaListenerContainerFactory",
-                 topics = "${loremipsum.kafka.topics.words-processed-topic}",
+                 topics = "${loremipsum.kafka.topics.words-processed.name}",
                  groupId = "${spring.kafka.consumer.group-id}")
   public void consume(ConsumerRecord<String, Report> consumerRecord) {
     log.info("( {} ) Received report, key: {}, value: {}",

@@ -27,6 +27,7 @@ loremipsum :
     consumer :
       threads : 2
     topics :
-      words-processed-topic : test.words.processed
-      words-processed-partitions : 2
-      words-processed-retention-ms : 30000
+      words-processed:
+        name : test.words.processed
+        partitions : 2
+        retention : 30s

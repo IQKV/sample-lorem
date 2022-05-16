@@ -73,7 +73,7 @@ loremipsum :
   kafka :
     create-topics-on-startup : ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
     topics :
-      words-processed-topic : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
-      words-processed-partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
-      words-processed-retention-ms : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:600000} # 30 min. by default
-
+      words-processed:
+        name : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
+        partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
+        retention : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:30m}

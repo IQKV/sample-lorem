@@ -6,7 +6,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
-import org.ujar.loremipsum.processing.config.KafkaTopics;
+import org.ujar.loremipsum.processing.config.KafkaTopicsProperties;
 import org.ujar.loremipsum.processing.model.Report;
 
 @Component
@@ -15,7 +15,7 @@ import org.ujar.loremipsum.processing.model.Report;
 @SuppressFBWarnings("EI_EXPOSE_REP2")
 public class ReportMessageProducer {
   private final KafkaTemplate<String, Report> kafkaTemplate;
-  private final KafkaTopics topics;
+  private final KafkaTopicsProperties topics;
 
   /**
    * Send message to Kafka broker with avoiding transaction-aware configuration environment
@@ -23,6 +23,6 @@ public class ReportMessageProducer {
   public void send(Report report) {
     var key = UUID.randomUUID().toString();
     log.info("( {} ) Send report message, key: {}, value: {}", Thread.currentThread().getName(), key, report);
-    kafkaTemplate.executeInTransaction(t -> t.send(topics.getWordsProcessedTopic(), key, report));
+    kafkaTemplate.executeInTransaction(t -> t.send(topics.get(KafkaTopicsProperties.WORDS_PROCESSED).name(), key, report));
   }
 }

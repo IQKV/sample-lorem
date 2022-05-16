@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.history.config;
+package org.ujar.loremipsum.processing.config;
 
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.NewTopic;
@@ -11,24 +11,16 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 @RequiredArgsConstructor
 @ConditionalOnProperty(value = "loremipsum.kafka.create-topics-on-startup", havingValue = "true")
-public class KafkaTopicsConfiguration {
-  private final KafkaTopics topics;
-
-  @Bean
-  public NewTopic rejectedMessagesKafkaTopic() {
-    return TopicBuilder
-        .name(topics.getRejectedMessagesTopic())
-        .partitions(1)
-        .config(TopicConfig.RETENTION_MS_CONFIG, "-1")
-        .build();
-  }
+public class KafkaCreateTopicsConfig {
+  private final KafkaTopicsProperties topics;
 
   @Bean
   public NewTopic wordsProcessedKafkaTopic() {
+    var definition = topics.get(KafkaTopicsProperties.WORDS_PROCESSED);
     return TopicBuilder
-        .name(topics.getWordsProcessedTopic())
-        .partitions(topics.getWordsProcessedPartitions())
-        .config(TopicConfig.RETENTION_MS_CONFIG, topics.getWordsProcessedRetentionMs())
+        .name(definition.name())
+        .partitions(definition.partitions())
+        .config(TopicConfig.RETENTION_MS_CONFIG,"" + definition.retention().toMillis())
         .build();
   }
 }

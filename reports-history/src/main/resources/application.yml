@@ -102,10 +102,19 @@ management :
 loremipsum :
   kafka :
     create-topics-on-startup : ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
+    error-handling:
+      dead-letter:
+         retention: 1d
+         suffix: .DLT
+      backoff:
+        initial-interval: 500ms
+        max-interval: 2s
+        max-retries: 4
+        multiplier: 1.5
     consumer :
       threads : ${KAFKA_CONSUMER_THREADS:4}
     topics :
-      rejected-messages-topic : ${KAFKA_TOPIC_REJECTED_MESSAGES:dlq.rejected_messages}
-      words-processed-topic : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
-      words-processed-partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
-      words-processed-retention-ms : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:600000}
+      words-processed:
+         name : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
+         partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
+         retention : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:30m}

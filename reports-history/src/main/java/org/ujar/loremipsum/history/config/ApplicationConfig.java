@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories({"org.ujar.loremipsum.history.repository"})
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableConfigurationProperties({KafkaTopics.class})
+@EnableConfigurationProperties({KafkaErrorHandlingProperties.class, KafkaTopicsProperties.class})
 public class ApplicationConfig {
 
   @Bean

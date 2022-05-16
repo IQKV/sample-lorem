@@ -39,10 +39,19 @@ spring :
 loremipsum :
   kafka :
     create-topics-on-startup : true
+    error-handling:
+      dead-letter:
+        retention: 30s
+        suffix: .DLT
+      backoff:
+        initial-interval: 500ms
+        max-interval: 2s
+        max-retries: 4
+        multiplier: 1.5
     consumer :
       threads : 4
     topics :
-      rejected-messages-topic : test.dlq.rejected_messages
-      words-processed-topic : test.words.processed
-      words-processed-partitions : 4
-      words-processed-retention-ms : 30000
+      words-processed:
+        name : test.words.processed
+        partitions : 4
+        retention : 30s

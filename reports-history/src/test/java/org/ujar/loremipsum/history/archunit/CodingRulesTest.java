@@ -12,8 +12,8 @@ import static com.tngtech.archunit.library.GeneralCodingRules.NO_CLASSES_SHOULD_
 
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.junit.AnalyzeClasses;
-import com.tngtech.archunit.junit.ArchRules;
 import com.tngtech.archunit.junit.ArchTest;
+import com.tngtech.archunit.junit.ArchTests;
 import com.tngtech.archunit.lang.ArchRule;
 import com.tngtech.archunit.lang.CompositeArchRule;
 import org.slf4j.Logger;
@@ -42,7 +42,7 @@ class CodingRulesTest {
       CompositeArchRule.of(NO_CLASSES_SHOULD_ACCESS_STANDARD_STREAMS)
           .and(NO_CLASSES_SHOULD_THROW_GENERIC_EXCEPTIONS);
   @ArchTest
-  private final ArchRules namingConventionRules = ArchRules.in(NamingConventionTest.class);
+  private final ArchTests namingConventionRules = ArchTests.in(NamingConventionTest.class);
   @ArchTest
   private final ArchRule noAccessesToUpperPackage = NO_CLASSES_SHOULD_DEPEND_UPPER_PACKAGES;
 
