@@ -34,7 +34,7 @@ record ReportsControllerIntegrationTest(MockMvc mockMvc) {
   private static Stream<Arguments> provideReports() {
     return Stream.of(
         Arguments.of(
-            "/betvictor/history?page=0&size=2",
+            "/api/v1/history?page=0&size=2",
             "[\n"
             + "  {\n"
             + "    \"freq_word\": \"et\",\n"
@@ -50,7 +50,7 @@ record ReportsControllerIntegrationTest(MockMvc mockMvc) {
             + "  }\n"
             + "]"),
         Arguments.of(
-            "/betvictor/history?page=2&size=2",
+            "/api/v1/history?page=2&size=2",
             "[\n"
             + "  {\n"
             + "    \"freq_word\": \"est\",\n"

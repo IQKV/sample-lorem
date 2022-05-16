@@ -21,7 +21,7 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 
 @RestController
 @Tag(name = "Words processing controller", description = "Retrieve statistic information.")
-@RequestMapping("/betvictor/text")
+@RequestMapping("/api/v1/text")
 @RequiredArgsConstructor
 public class WordsProcessingController {
 

@@ -25,8 +25,8 @@ docker-compose -f ./etc/all-in-one-demo.yml up
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
 |----------------------|---------------------------------------------------|--------------------------------------------|
-| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/betvictor/text       |
-| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/betvictor/history    |
+| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text       |
+| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history    |
 
 ### Environment variables
 

@@ -34,7 +34,7 @@ record WordsProcessingControllerIntegrationTest(MockMvc mockMvc) {
     return Stream.of(
         Arguments.of(
             "/api/1/short",
-            "/betvictor/text?p=1&l=short",
+            "/api/v1/text?p=1&l=short",
             "1_short",
             "{"
             + "  \"freq_word\":\"vacuitate\",\n"
@@ -42,7 +42,7 @@ record WordsProcessingControllerIntegrationTest(MockMvc mockMvc) {
             + "}"),
         Arguments.of(
             "/api/10/verylong",
-            "/betvictor/text?p=10&l=verylong",
+            "/api/v1/text?p=10&l=verylong",
             "10_verylong",
             "{"
             + "  \"freq_word\":\"et\",\n"
