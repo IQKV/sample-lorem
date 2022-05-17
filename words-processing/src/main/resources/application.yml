@@ -43,6 +43,23 @@ server :
   port : ${SERVER_PORT:8085}
   shutdown : graceful
 
+logbook :
+  exclude :
+    - /actuator/**
+    - /v3/**
+    - /swagger-ui/**
+    - /swagger-resources/**
+    - /metrics
+  filter.enabled : true
+  format.style : json
+  obfuscate :
+    headers :
+      - Authorization
+      - X-Secret
+    parameters :
+      - access_token
+      - password
+
 management :
   server :
     add-application-context-header : true
