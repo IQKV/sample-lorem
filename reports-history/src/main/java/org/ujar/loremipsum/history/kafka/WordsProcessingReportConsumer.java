@@ -14,7 +14,7 @@ import org.ujar.loremipsum.history.repository.ReportRepository;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-public class WordsProcessingReportConsumer {
+class WordsProcessingReportConsumer {
 
   private final ReportRepository repository;
 

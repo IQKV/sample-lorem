@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties(prefix = "loremipsum.kafka")
 @Validated
 @SuppressFBWarnings({"EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
-public class KafkaTopicsProperties {
+class KafkaTopicsProperties {
   public static final String WORDS_PROCESSED = "words-processed";
   Map<String, TopicDefinition> topics;
 

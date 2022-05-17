@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableConfigurationProperties({NetClientProperties.class, KafkaTopicsProperties.class})
-public class ApplicationConfig {
+class ApplicationConfig {
 }

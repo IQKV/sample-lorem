@@ -36,7 +36,8 @@ public class WordsAnalyser {
 
           var paragraphWords = computeParagraphWordsUsage(words);
 
-          paragraphWords.forEach((word, wordCount) -> allWordsFrequency.merge(word, wordCount.intValue(), Integer::sum));
+          paragraphWords.forEach((word, wordCount) -> allWordsFrequency
+              .merge(word, wordCount.intValue(), Integer::sum));
 
           paragraphSizes[paragraphIndex.getAndIncrement()] = words.length;
         });
@@ -46,7 +47,8 @@ public class WordsAnalyser {
       report.setMostFrequentWord(findMostFrequentWord(allWordsFrequency));
       report.setAvgParagraphSize((short) Arrays.stream(paragraphSizes).average().orElse(0.0));
 
-      var avgParagraphProcessingTime = (long) pElapsedTimes.stream().mapToInt(Long::intValue).average().orElse(0.0);
+      var avgParagraphProcessingTime = (long) pElapsedTimes.stream()
+          .mapToInt(Long::intValue).average().orElse(0.0);
       report.setAvgParagraphProcessingTime(avgParagraphProcessingTime);
     });
 

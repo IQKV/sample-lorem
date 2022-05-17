@@ -42,7 +42,9 @@ public class LorIpsumNetClient {
         .timeout(Duration.ofSeconds(properties.getRequestTimeout()))
         .GET()
         .build();
-      log.info("{} {}", properties, uri);
+
+    log.info("{} {}", properties, uri);
+
     try {
       return httpClient.send(request, HttpResponse.BodyHandlers.ofString()).body();
     } catch (IOException e) {

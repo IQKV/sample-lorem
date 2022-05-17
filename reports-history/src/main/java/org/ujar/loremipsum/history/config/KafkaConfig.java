@@ -18,7 +18,7 @@ import org.ujar.loremipsum.history.kafka.dto.ReportDto;
 
 @Configuration
 @RequiredArgsConstructor
-public class KafkaConfig implements KafkaListenerConfigurer {
+class KafkaConfig implements KafkaListenerConfigurer {
   private final LocalValidatorFactoryBean validator;
 
   @Bean

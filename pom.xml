@@ -300,8 +300,10 @@
                     </dependencies>
                     <configuration>
                         <configLocation>checkstyle.xml</configLocation>
-                        <includes>pom.xml,README.md</includes>
-                        <sourceDirectories>./</sourceDirectories>
+                        <sourceDirectories>
+                            <sourceDirectory>${project.basedir}/src</sourceDirectory>
+                        </sourceDirectories>
+                        <includeTestSourceDirectory>true</includeTestSourceDirectory>
                     </configuration>
                     <executions>
                         <execution>

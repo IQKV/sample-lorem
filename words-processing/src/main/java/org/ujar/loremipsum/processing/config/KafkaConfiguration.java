@@ -13,7 +13,7 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 import org.ujar.loremipsum.processing.model.Report;
 
 @Configuration
-public class KafkaConfiguration {
+class KafkaConfiguration {
   @Bean
   public ProducerFactory<String, Report> reportMessageProducerFactory(KafkaProperties kafkaProperties) {
     try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {

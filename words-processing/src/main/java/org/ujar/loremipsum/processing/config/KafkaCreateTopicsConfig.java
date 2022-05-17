@@ -11,7 +11,7 @@ import org.springframework.kafka.config.TopicBuilder;
 @Configuration
 @RequiredArgsConstructor
 @ConditionalOnProperty(value = "loremipsum.kafka.create-topics-on-startup", havingValue = "true")
-public class KafkaCreateTopicsConfig {
+class KafkaCreateTopicsConfig {
   private final KafkaTopicsProperties topics;
 
   @Bean
@@ -20,7 +20,7 @@ public class KafkaCreateTopicsConfig {
     return TopicBuilder
         .name(definition.name())
         .partitions(definition.partitions())
-        .config(TopicConfig.RETENTION_MS_CONFIG,"" + definition.retention().toMillis())
+        .config(TopicConfig.RETENTION_MS_CONFIG, "" + definition.retention().toMillis())
         .build();
   }
 }

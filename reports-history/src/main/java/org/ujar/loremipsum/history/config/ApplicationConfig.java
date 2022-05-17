@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaAuditing
 @EnableTransactionManagement
 @EnableConfigurationProperties({KafkaErrorHandlingProperties.class, KafkaTopicsProperties.class})
-public class ApplicationConfig {
+class ApplicationConfig {
 
   @Bean
   public SpringLiquibase liquibase(@Autowired DataSource dataSource) {
