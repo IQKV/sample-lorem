@@ -1,6 +1,6 @@
 build :
   version : @project.version@
-  description : "Words statistic generator"
+  description : "Words processor"
   relativePath : ${SWAGGER_RELATIVE_PATH:}
 
 # /info endpoint
