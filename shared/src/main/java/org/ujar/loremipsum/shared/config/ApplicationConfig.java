@@ -1,10 +1,8 @@
-package org.ujar.loremipsum.processing.config;
+package org.ujar.loremipsum.shared.config;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.ujar.loremipsum.shared.config.ProjectInfoProperties;
-import org.ujar.loremipsum.shared.config.PrometheusConfiguration;
 import org.ujar.loremipsum.shared.config.logbook.LogbookConfiguration;
 import org.ujar.loremipsum.shared.config.logbook.LogbookJsonBodyFilter;
 import org.ujar.loremipsum.shared.config.logbook.LogbookResponseOnStatus;
@@ -14,7 +12,7 @@ import org.ujar.loremipsum.shared.config.logbook.LogbookResponseOnStatus;
     LogbookConfiguration.class,
     PrometheusConfiguration.class
 })
-@EnableConfigurationProperties({ProjectInfoProperties.class, NetClientProperties.class, KafkaTopicsProperties.class})
+@EnableConfigurationProperties({ProjectInfoProperties.class})
 @LogbookResponseOnStatus
 @LogbookJsonBodyFilter
 class ApplicationConfig {

@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config.logbook;
+package org.ujar.loremipsum.shared.config.logbook;
 
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Value;

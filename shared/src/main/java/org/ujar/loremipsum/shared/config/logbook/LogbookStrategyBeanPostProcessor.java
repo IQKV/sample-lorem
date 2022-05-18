@@ -1,8 +1,8 @@
-package org.ujar.loremipsum.processing.config.logbook;
+package org.ujar.loremipsum.shared.config.logbook;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.springframework.beans.factory.config.BeanPostProcessor;
-import org.ujar.loremipsum.processing.config.logbook.LogbookStrategyProperties.CustomLogbookStrategy;
+import org.ujar.loremipsum.shared.config.logbook.LogbookStrategyProperties.CustomLogbookStrategy;
 import org.zalando.logbook.Strategy;
 
 @SuppressFBWarnings("EI_EXPOSE_REP2")

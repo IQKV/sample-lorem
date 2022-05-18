@@ -7,6 +7,8 @@ trigger:
   branch:
     - main
     - feature/*
+  event:
+    - push
 
 volumes:
   - name: m2cache
@@ -41,9 +43,9 @@ steps:
       branch:
         include:
           - main
+          - feature/*
       event:
-        include:
-          - push
+        exclude:
           - pull_request
 
   - name: publish-snapshot-package
@@ -64,9 +66,9 @@ steps:
       branch:
         include:
           - main
+          - feature/*
       event:
-        include:
-          - push
+        exclude:
           - pull_request
 
   - name: docker-build-dev-words-processing
@@ -89,9 +91,9 @@ steps:
       branch:
         include:
           - main
+          - feature/*
       event:
-        include:
-          - push
+        exclude:
           - pull_request
 
   - name: docker-build-dev-reports-history
@@ -114,9 +116,9 @@ steps:
       branch:
         include:
           - main
+          - feature/*
       event:
-        include:
-          - push
+        exclude:
           - pull_request
 
 services:

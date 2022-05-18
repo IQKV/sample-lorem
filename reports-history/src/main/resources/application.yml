@@ -73,6 +73,23 @@ server :
   port : ${SERVER_PORT:8086}
   shutdown : graceful
 
+logbook :
+  exclude :
+    - /actuator/**
+    - /v3/**
+    - /swagger-ui/**
+    - /swagger-resources/**
+    - /metrics
+  filter.enabled : true
+  format.style : json
+  obfuscate :
+    headers :
+      - Authorization
+      - X-Secret
+    parameters :
+      - access_token
+      - password
+
 logging :
   level :
     ROOT : INFO

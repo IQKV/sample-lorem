@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config.logbook;
+package org.ujar.loremipsum.shared.config.logbook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -7,7 +7,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
-import org.ujar.loremipsum.processing.config.logbook.LogbookStrategyProperties.CustomLogbookStrategy;
+import org.ujar.loremipsum.shared.config.logbook.LogbookStrategyProperties.CustomLogbookStrategy;
 import org.zalando.logbook.BodyFilter;
 import org.zalando.logbook.DefaultStrategy;
 import org.zalando.logbook.Strategy;

@@ -6,15 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.ujar.loremipsum.shared.config.ProjectInfoProperties;
+import org.ujar.loremipsum.shared.config.PrometheusConfiguration;
+import org.ujar.loremipsum.shared.config.logbook.LogbookConfiguration;
+import org.ujar.loremipsum.shared.config.logbook.LogbookJsonBodyFilter;
+import org.ujar.loremipsum.shared.config.logbook.LogbookResponseOnStatus;
 
 @Configuration
+@Import(value = {
+    LogbookConfiguration.class,
+    PrometheusConfiguration.class
+})
 @EnableJpaRepositories({"org.ujar.loremipsum.history.repository"})
 @EnableJpaAuditing
 @EnableTransactionManagement
-@EnableConfigurationProperties({KafkaErrorHandlingProperties.class, KafkaTopicsProperties.class})
+@EnableConfigurationProperties({ProjectInfoProperties.class,
+    KafkaErrorHandlingProperties.class,
+    KafkaTopicsProperties.class})
+@LogbookResponseOnStatus
+@LogbookJsonBodyFilter
 class ApplicationConfig {
 
   @Bean

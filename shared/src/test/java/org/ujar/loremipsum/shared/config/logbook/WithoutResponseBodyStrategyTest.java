@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config.logbook;
+package org.ujar.loremipsum.shared.config.logbook;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;

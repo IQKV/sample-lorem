@@ -11,6 +11,7 @@
     <description>Services helps grub and scan loremipsum.net text, generate statistic reports.</description>
 
     <modules>
+        <module>shared</module>
         <module>words-processing</module>
         <module>reports-history</module>
     </modules>
@@ -67,6 +68,21 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.ujar.loremipsum</groupId>
+                <artifactId>shared</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ujar.loremipsum</groupId>
+                <artifactId>words-processing</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.ujar.loremipsum</groupId>
+                <artifactId>reports-history</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-validation</artifactId>
@@ -138,7 +154,6 @@
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>annotations</artifactId>
                 <version>${findbugs.version}</version>
-                <scope>provided</scope>
             </dependency>
             <!--Test dependencies-->
             <dependency>

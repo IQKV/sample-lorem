@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config.logbook;
+package org.ujar.loremipsum.shared.config.logbook;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -8,11 +8,11 @@ import java.lang.annotation.Target;
 import org.springframework.context.annotation.Import;
 
 /**
- * Use {@link ResponseOnStatusAtLeastStrategy} by default
+ * Use {@link WithoutResponseBodyStrategy} by default
  */
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({ResponseOnStatusAtLeastStrategy.class})
-public @interface LogbookResponseOnStatus {
+@Import({WithoutResponseBodyStrategy.class})
+public @interface LogbookWithoutResponse {
 }

@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config;
+package org.ujar.loremipsum.shared.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

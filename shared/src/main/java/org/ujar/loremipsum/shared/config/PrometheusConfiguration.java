@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.processing.config;
+package org.ujar.loremipsum.shared.config;
 
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
