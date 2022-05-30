@@ -1,5 +1,6 @@
 package org.ujar.loremipsum.processing.web;
 
+import java.util.List;
 import javax.validation.constraints.NotNull;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
-import org.ujar.loremipsum.processing.web.dto.ErrorResponse;
+import org.ujar.loremipsum.shared.web.dto.Error;
+import org.ujar.loremipsum.shared.web.dto.ErrorResponse;
 
 @Slf4j
 @RestControllerAdvice
@@ -28,13 +30,13 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       @NonNull HttpStatus status,
       @NonNull WebRequest request
   ) {
-    var errorResponse = ErrorResponse.singleError(ex.getMessage());
+    var errorResponse = new ErrorResponse(List.of(new Error(ex.getMessage())));
     return new ResponseEntity<>(errorResponse, headers, status);
   }
 
   @ExceptionHandler(MethodArgumentTypeMismatchException.class)
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ErrorResponse handleIllegalEnumParameterException(@NotNull MethodArgumentTypeMismatchException exception) {
-    return ErrorResponse.singleError(exception.getCause().getCause().getMessage());
+    return new ErrorResponse(List.of(new Error(exception.getCause().getCause().getMessage())));
   }
 }

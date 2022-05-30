@@ -1,22 +1,8 @@
-build :
-  version : @project.version@
-  description : "Words processor"
-  relativePath : ${SWAGGER_RELATIVE_PATH:}
-
-# /info endpoint
-info :
-  app :
-    name : words-processing
-    description : ${build.description}
-    version : ${build.version}
-    env : ${ENV}
-
 spring :
   application :
     name : words-processing
   jackson :
     default-property-inclusion : NON_NULL
-    open-in-view : true
   lifecycle :
     timeout-per-shutdown-phase : ${TIMEOUT_PER_SHUTDOWN:20s}
   groovy :
@@ -50,8 +36,10 @@ logbook :
     - /swagger-ui/**
     - /swagger-resources/**
     - /metrics
-  filter.enabled : true
-  format.style : json
+  filter:
+    enabled : true
+  format:
+    style : json
   obfuscate :
     headers :
       - Authorization

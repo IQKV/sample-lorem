@@ -2,8 +2,8 @@ package org.ujar.loremipsum.processing.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.ujar.loremipsum.processing.kafka.ReportMessageProducer;
 import org.ujar.loremipsum.processing.model.Report;
+import org.ujar.loremipsum.processing.producer.ReportMessageProducer;
 
 @Service
 @RequiredArgsConstructor
@@ -14,7 +14,6 @@ public class HistoryNotifier {
   /**
    * Delegate report to message producer
    */
-
   public void notifyReport(Report report) {
     messageProducer.send(report);
   }

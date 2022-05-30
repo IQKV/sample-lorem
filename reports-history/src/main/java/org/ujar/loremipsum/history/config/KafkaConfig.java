@@ -14,7 +14,7 @@ import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
 import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.support.ExponentialBackOffWithMaxRetries;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
-import org.ujar.loremipsum.history.kafka.dto.ReportDto;
+import org.ujar.loremipsum.history.consumer.dto.ReportDto;
 
 @Configuration
 @RequiredArgsConstructor
@@ -22,7 +22,7 @@ class KafkaConfig implements KafkaListenerConfigurer {
   private final LocalValidatorFactoryBean validator;
 
   @Bean
-  public ConcurrentKafkaListenerContainerFactory<String, ReportDto> processingReportKafkaListenerContainerFactory(
+  ConcurrentKafkaListenerContainerFactory<String, ReportDto> processingReportKafkaListenerContainerFactory(
       ConsumerFactory<String, ReportDto> processingReportConsumerFactory,
       @Value("${loremipsum.kafka.consumer.threads:4}") int threads,
       DefaultErrorHandler errorHandler) {
@@ -37,7 +37,7 @@ class KafkaConfig implements KafkaListenerConfigurer {
   }
 
   @Bean
-  public DefaultErrorHandler kafkaDefaultErrorHandler(
+  DefaultErrorHandler kafkaDefaultErrorHandler(
       KafkaOperations<Object, Object> operations,
       KafkaErrorHandlingProperties properties) {
     // Publish to dead letter topic any messages dropped after retries with back off

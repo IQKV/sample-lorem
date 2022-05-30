@@ -36,7 +36,7 @@ class WordsAnalyserTest {
 
   @ParameterizedTest
   @MethodSource("provideStringsForAnalysis")
-  void analyze(String fileName, Report expected) {
+  void shouldAnalyzeAndGenerateReport(String fileName, Report expected) {
     var input = getFileAsString("response/" + fileName + ".html");
     var result = service.analyze(input);
     assertThat(result.getMostFrequentWord()).isEqualTo(expected.getMostFrequentWord());

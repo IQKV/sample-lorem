@@ -1,21 +1,10 @@
 name: 'Commit Message Check'
 
 on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - reopened
-      - synchronize
-  pull_request_target:
-    types:
-      - opened
-      - edited
-      - reopened
-      - synchronize
   push:
     branches:
       - main
+      - develop
       - 'feature/*'
 
 jobs:
@@ -28,7 +17,7 @@ jobs:
         with:
           pattern: '^(feat|fix|docs|style|refactor|perf|test|chore): \w+'
           flags: 'gm'
-          error: 'Your commit title did not follow semantic versioning. Please see https://github.com/ujar-org/lorem-ipsum-words-processor/blob/main/semantic-commit-messages.md'
+          error: 'Your commit title did not follow semantic versioning. Please see https://github.com/ujar-org/lorem-ipsum-words-processor/blob/main/SEMANTIC_COMMITS.md'
       - name: Check Line Length
         uses: gsactions/commit-message-checker@v1
         with:

@@ -10,6 +10,7 @@ import static org.ujar.loremipsum.processing.util.TestUtils.getFileAsString;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 import java.util.stream.Stream;
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -36,18 +37,18 @@ record WordsProcessingControllerIntegrationTest(MockMvc mockMvc) {
             "/api/1/short",
             "/api/v1/text?p=1&l=short",
             "1_short",
-            "{"
-            + "  \"freq_word\":\"vacuitate\",\n"
-            + "  \"avg_paragraph_size\":27\n"
-            + "}"),
+            """
+                {  "freq_word":"vacuitate",
+                  "avg_paragraph_size":27
+                }"""),
         Arguments.of(
             "/api/10/verylong",
             "/api/v1/text?p=10&l=verylong",
             "10_verylong",
-            "{"
-            + "  \"freq_word\":\"et\",\n"
-            + "  \"avg_paragraph_size\":215\n"
-            + "}")
+            """
+                {  "freq_word":"et",
+                  "avg_paragraph_size":215
+                }""")
 
     );
   }
@@ -57,9 +58,10 @@ record WordsProcessingControllerIntegrationTest(MockMvc mockMvc) {
     WireMock.reset();
   }
 
+  @SneakyThrows
   @ParameterizedTest
   @MethodSource("provideStringsForAnalysis")
-  void getReport_Success(String externalUrl, String apiUrl, String file, String result) throws Exception {
+  void shouldProcessTextAndGenerateReport(String externalUrl, String apiUrl, String file, String result) {
     stubFor(WireMock.get(externalUrl).willReturn(
             aResponse()
                 .withStatus(HttpStatus.OK.value())

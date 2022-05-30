@@ -1,15 +1,3 @@
-build :
-  version : @project.version@
-  description : "History of processing reports"
-  relativePath : ${SWAGGER_RELATIVE_PATH:}
-
-# /info endpoint
-info :
-  app :
-    name : reports-history
-    description : ${build.description}
-    version : ${build.version}
-    env : ${ENV}
 spring :
   application :
     name : reports-history
@@ -35,7 +23,6 @@ spring :
 
   jackson :
     default-property-inclusion : NON_NULL
-    open-in-view : true
   lifecycle :
     timeout-per-shutdown-phase : ${TIMEOUT_PER_SHUTDOWN:20s}
   groovy :
@@ -80,8 +67,10 @@ logbook :
     - /swagger-ui/**
     - /swagger-resources/**
     - /metrics
-  filter.enabled : true
-  format.style : json
+  filter:
+    enabled : true
+  format:
+    style : json
   obfuscate :
     headers :
       - Authorization

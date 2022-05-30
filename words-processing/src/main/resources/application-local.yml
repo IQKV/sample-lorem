@@ -1,5 +1,3 @@
-build :
-  relativePath : ""
 spring :
   kafka :
     producer :

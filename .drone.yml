@@ -6,6 +6,7 @@ type : docker
 trigger:
   branch:
     - main
+    - develop
     - feature/*
   event:
     - push
@@ -43,6 +44,7 @@ steps:
       branch:
         include:
           - main
+          - develop
           - feature/*
       event:
         exclude:
@@ -66,6 +68,7 @@ steps:
       branch:
         include:
           - main
+          - develop
           - feature/*
       event:
         exclude:
@@ -76,7 +79,7 @@ steps:
       - publish-snapshot-package
     image: plugins/docker
     settings:
-      dockerfile: words-processing/src/main/docker/Dockerfile
+      dockerfile: words-processing/Dockerfile
       context: ./words-processing/
       storage_driver: vfs
       username:
@@ -91,6 +94,7 @@ steps:
       branch:
         include:
           - main
+          - develop
           - feature/*
       event:
         exclude:
@@ -101,7 +105,7 @@ steps:
       - docker-build-dev-words-processing
     image: plugins/docker
     settings:
-      dockerfile: reports-history/src/main/docker/Dockerfile
+      dockerfile: reports-history/Dockerfile
       context: ./reports-history/
       storage_driver: vfs
       username:
@@ -116,6 +120,7 @@ steps:
       branch:
         include:
           - main
+          - develop
           - feature/*
       event:
         exclude:

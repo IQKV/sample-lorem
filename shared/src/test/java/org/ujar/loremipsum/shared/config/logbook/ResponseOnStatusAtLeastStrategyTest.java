@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import org.zalando.logbook.HttpRequest;
 import org.zalando.logbook.HttpResponse;
 
 class ResponseOnStatusAtLeastStrategyTest {
   @Test
-  void shouldWriteResponseWithoutBodyIfStatusLessThanMinimum() throws Exception {
+  void shouldWriteResponseWithoutBodyIfStatusLessThanMinimum() throws IOException {
     // given
     var logbookStrategy = new ResponseOnStatusAtLeastStrategy(400);
     var httpResponse = mock(HttpResponse.class);
@@ -24,7 +25,7 @@ class ResponseOnStatusAtLeastStrategyTest {
   }
 
   @Test
-  void shouldWriteResponseWithBodyIfStatusMoreThanMinimum() throws Exception {
+  void shouldWriteResponseWithBodyIfStatusMoreThanMinimum() throws IOException {
     // given
     var logbookStrategy = new ResponseOnStatusAtLeastStrategy(200);
     var httpResponse = mock(HttpResponse.class);
