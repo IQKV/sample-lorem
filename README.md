@@ -55,6 +55,19 @@ This project has standard JUnit tests. To run them execute this command:
 mvn test
 ```
 
+It is mandatory to keep test code coverage not below **80** percents and cover all business logic and edge cases.
+
+## Code conventions
+
+The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html) without exceptions. Code
+quality is measured by:
+
+- [Sonarqube](https://sonarqube.ujar.org/)
+- [PMD](https://pmd.github.io/)
+- [CheckStyle](https://checkstyle.sourceforge.io/)
+- [SpotBugs](https://spotbugs.github.io/)
+
+
 ### Pre-Requisites to run this example locally
 
 - Setup git command line tool (https://help.github.com/articles/set-up-git)
@@ -112,12 +125,3 @@ docker-compose -f docker-compose.dev.yml down
 docker-compose -f ./etc/all-in-one-demo.yml down
 
 ```
-## Code conventions
-
-The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html) without exceptions. Code
-quality is measured by:
-
-- [Sonarqube](https://sonarqube.ujar.org/)
-- [PMD](https://pmd.github.io/)
-- [CheckStyle](https://checkstyle.sourceforge.io/)
-- [SpotBugs](https://spotbugs.github.io/)
