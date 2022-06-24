@@ -10,7 +10,7 @@ and generate statistic reports.
 
 ### Technology stack
 
-Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.0, postgres:13.5.
+Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.4, postgres:13.5.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
 logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
@@ -47,25 +47,25 @@ Applications are highly-configurable, supports many env vars, such as:
 | DATASOURCE_PASSWORD                    |                                                     | postgres                                        |
 | DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                           |
 
-### Tests
-
-This project has standard JUnit tests. To run them execute this command:
-
-```
-mvn test
-```
-
-It is mandatory to keep test code coverage not below **80** percents and cover all business logic and edge cases.
-
 ## Code conventions
 
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html) without exceptions. Code
 quality is measured by:
 
-- [Sonarqube](https://sonarqube.ujar.org/)
+- [Sonarqube](https://sonarqube.ujar.org/dashboard?id=ujar-org%3Alorem-ipsum-words-processor)
 - [PMD](https://pmd.github.io/)
 - [CheckStyle](https://checkstyle.sourceforge.io/)
 - [SpotBugs](https://spotbugs.github.io/)
+
+### Tests
+
+This project has standard JUnit tests. To run them execute this command:
+
+```
+mvn test -P testcontainers-support
+```
+
+It is mandatory to keep test code coverage not below **80** percents and cover all business logic and edge cases.
 
 
 ### Pre-Requisites to run this example locally

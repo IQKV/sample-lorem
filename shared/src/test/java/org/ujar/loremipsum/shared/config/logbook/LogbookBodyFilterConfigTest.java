@@ -19,8 +19,10 @@ class LogbookBodyFilterConfigTest {
     var logbookWriteProperties = mock(LogbookProperties.Write.class);
     when(logbookProperties.getWrite()).thenReturn(logbookWriteProperties);
     when(logbookWriteProperties.getMaxBodySize()).thenReturn(-1);
+
     // when
     var bodyFilter = logbookBodyFilterConfig.bodyFilter(logbookProperties);
+
     // then
     assertTrue(bodyFilter instanceof CompactingJsonBodyFilter);
   }
@@ -33,8 +35,10 @@ class LogbookBodyFilterConfigTest {
     var logbookWriteProperties = mock(LogbookProperties.Write.class);
     when(logbookProperties.getWrite()).thenReturn(logbookWriteProperties);
     when(logbookWriteProperties.getMaxBodySize()).thenReturn(1000);
+
     // when
     var bodyFilter = logbookBodyFilterConfig.bodyFilter(logbookProperties);
+
     // then
     assertFalse(bodyFilter instanceof CompactingJsonBodyFilter);
   }

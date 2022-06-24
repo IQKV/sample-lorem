@@ -14,7 +14,7 @@ trigger:
 volumes:
   - name: m2cache
     host:
-      path: /var/cache/m2cache
+      path: /volume1/m2cache
 steps:
 
   - name: build
@@ -35,7 +35,6 @@ steps:
       SONAR_TOKEN :
         from_secret : SONAR_TOKEN
     commands:
-      - rm -rf /root/.m2/repository/org/ujar/
       - mvn clean compile test-compile -P default -B -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn pmd:check -P default -B -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn com.github.spotbugs:spotbugs-maven-plugin:check -P default -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true -B -s settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
@@ -135,13 +134,13 @@ services:
       POSTGRES_DB: sa_test_db
 
   - name : zookeeper
-    image : confluentinc/cp-zookeeper:6.2.0
+    image : confluentinc/cp-zookeeper:6.2.4
     environment:
         ZOOKEEPER_CLIENT_PORT: 2181
         ZOOKEEPER_TICK_TIME: 2000
 
   - name: kafka
-    image: confluentinc/cp-kafka:6.2.0
+    image: confluentinc/cp-kafka:6.2.4
     environment:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181

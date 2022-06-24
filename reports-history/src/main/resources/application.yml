@@ -19,7 +19,24 @@ spring :
     open-in-view : true
     properties :
       hibernate.jdbc.time_zone : UTC
+      hibernate.id.new_generator_mappings : true
+      hibernate.connection.provider_disables_autocommit : true
+      hibernate.cache.use_second_level_cache : true
+      hibernate.cache.use_query_cache : true
+      hibernate.generate_statistics : false
+      # modify batch size as necessary
+      hibernate.jdbc.batch_size : 25
+      hibernate.order_inserts : true
+      hibernate.order_updates : true
+      hibernate.query.fail_on_pagination_over_collection_fetch : true
+      hibernate.query.in_clause_parameter_padding : true
     show-sql : false
+  devtools :
+    add-properties : false
+    restart :
+      enabled : false
+    livereload :
+      enabled : false
 
   jackson :
     default-property-inclusion : NON_NULL
@@ -67,9 +84,9 @@ logbook :
     - /swagger-ui/**
     - /swagger-resources/**
     - /metrics
-  filter:
+  filter :
     enabled : true
-  format:
+  format :
     style : json
   obfuscate :
     headers :
@@ -105,22 +122,31 @@ management :
     info :
       enabled : true
 
+embedded :
+  postgresql :
+     enabled : false
+     docker-image-version : 13.5
+  kafka :
+    enabled : false
+    docker-image-version : 6.2.4
+
+
 loremipsum :
   kafka :
     create-topics-on-startup : ${KAFKA_CREATE_TOPICS_ON_STARTUP:true}
-    error-handling:
-      dead-letter:
-         retention: 1d
-         suffix: .DLT
-      backoff:
-        initial-interval: 500ms
-        max-interval: 2s
-        max-retries: 4
-        multiplier: 1.5
+    error-handling :
+      dead-letter :
+        retention : 1d
+        suffix : .DLT
+      backoff :
+        initial-interval : 500ms
+        max-interval : 2s
+        max-retries : 4
+        multiplier : 1.5
     consumer :
       threads : ${KAFKA_CONSUMER_THREADS:4}
     topics :
-      words-processed:
-         name : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
-         partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
-         retention : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:30m}
+      words-processed :
+        name : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
+        partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
+        retention : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:30m}

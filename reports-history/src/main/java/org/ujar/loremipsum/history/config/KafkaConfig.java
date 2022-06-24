@@ -15,6 +15,9 @@ import org.springframework.kafka.listener.DefaultErrorHandler;
 import org.springframework.kafka.support.ExponentialBackOffWithMaxRetries;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.ujar.loremipsum.history.consumer.dto.ReportDto;
+import org.ujar.loremipsum.shared.config.KafkaErrorHandlingProperties;
+import org.ujar.loremipsum.shared.config.errorhandling.Backoff;
+import org.ujar.loremipsum.shared.exception.ConsumerRecordProcessingException;
 
 @Configuration
 @RequiredArgsConstructor
@@ -56,6 +59,7 @@ class KafkaConfig implements KafkaListenerConfigurer {
     // Do not try to recover from validation exceptions when validation of orders failed
     var errorHandler = new DefaultErrorHandler(recoverer, exponentialBackOff);
     errorHandler.addNotRetryableExceptions(javax.validation.ValidationException.class);
+    errorHandler.addNotRetryableExceptions(ConsumerRecordProcessingException.class);
     return errorHandler;
   }
 

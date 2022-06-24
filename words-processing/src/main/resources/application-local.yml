@@ -8,6 +8,12 @@ spring :
       properties :
         bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
         security.protocol : PLAINTEXT
+  devtools :
+    add-properties : true
+    restart :
+      enabled : true
+    livereload :
+      enabled : true
 management :
   endpoints :
     enabled-by-default : true

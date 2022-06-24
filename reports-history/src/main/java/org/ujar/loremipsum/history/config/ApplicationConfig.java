@@ -12,6 +12,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.ujar.loremipsum.shared.config.KafkaErrorHandlingProperties;
+import org.ujar.loremipsum.shared.config.KafkaTopicDefinitionProperties;
 import org.ujar.loremipsum.shared.config.PrometheusConfig;
 import org.ujar.loremipsum.shared.config.logbook.LogbookConfig;
 import org.ujar.loremipsum.shared.config.logbook.LogbookJsonBodyFilter;
@@ -28,7 +30,7 @@ import org.ujar.loremipsum.shared.config.logbook.LogbookResponseOnStatus;
 @EnableTransactionManagement
 @EnableConfigurationProperties({
     KafkaErrorHandlingProperties.class,
-    KafkaTopicsProperties.class})
+    KafkaTopicDefinitionProperties.class})
 @LogbookResponseOnStatus
 @LogbookJsonBodyFilter
 @EnableSpringDataWebSupport

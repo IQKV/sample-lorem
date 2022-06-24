@@ -3,7 +3,7 @@ version: '3.8'
 services:
   postgres:
     image: "postgres:13.5"
-    container_name: lorem-ipsum-postgres
+    container_name: lorem-ipsum-dev-postgres
     restart: unless-stopped
     ports :
       - "5432:5432"
@@ -12,15 +12,15 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_ipsum_db
   zookeeper:
-    image: confluentinc/cp-zookeeper:6.2.0
-    container_name: lorem-ipsum-zookeeper
+    image: confluentinc/cp-zookeeper:6.2.4
+    container_name: lorem-ipsum-dev-zookeeper
     restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   kafka:
-    image: confluentinc/cp-kafka:6.2.0
-    container_name: lorem-ipsum-kafka
+    image: confluentinc/cp-kafka:6.2.4
+    container_name: lorem-ipsum-dev-kafka
     restart: unless-stopped
     depends_on :
       - zookeeper
@@ -28,8 +28,8 @@ services:
       - "29092:29092"
     environment:
       KAFKA_BROKER_ID: 1
-      KAFKA_ZOOKEEPER_CONNECT: lorem-ipsum-zookeeper:2181
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://lorem-ipsum-kafka:9092,PLAINTEXT_HOST://localhost:29092
+      KAFKA_ZOOKEEPER_CONNECT: lorem-ipsum-dev-zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://lorem-ipsum-dev-kafka:9092,PLAINTEXT_HOST://localhost:29092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1

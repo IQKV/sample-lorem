@@ -19,7 +19,16 @@ spring :
     open-in-view : true
     properties :
       hibernate.jdbc.time_zone : UTC
+      hibernate.cache.use_second_level_cache : false
+      hibernate.cache.use_query_cache : false
+      hibernate.generate_statistics : false
     show-sql : false
+  devtools :
+    add-properties : false
+    restart :
+      enabled : false
+    livereload :
+      enabled : false
   kafka :
     consumer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
@@ -36,22 +45,31 @@ spring :
         bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
         security.protocol : PLAINTEXT
 
+embedded :
+  postgresql :
+    enabled : true
+    docker-image-version : 13.5
+  kafka :
+    enabled : true
+    docker-image-version : 6.2.4
+
+
 loremipsum :
   kafka :
     create-topics-on-startup : true
-    error-handling:
-      dead-letter:
-        retention: 30s
-        suffix: .DLT
-      backoff:
-        initial-interval: 500ms
-        max-interval: 2s
-        max-retries: 4
-        multiplier: 1.5
+    error-handling :
+      dead-letter :
+        retention : 30s
+        suffix : .DLT
+      backoff :
+        initial-interval : 500ms
+        max-interval : 2s
+        max-retries : 4
+        multiplier : 1.5
     consumer :
       threads : 4
     topics :
-      words-processed:
+      words-processed :
         name : test.words.processed
         partitions : 4
         retention : 30s

@@ -36,7 +36,7 @@ record ReportsControllerIntegrationTest(MockMvc mockMvc) {
   private static Stream<Arguments> provideReports() {
     return Stream.of(
         Arguments.of(
-            "/api/v1/history?limit=2",
+            "/api/v1/history?size=2",
             """
                 [
                   {
@@ -53,7 +53,7 @@ record ReportsControllerIntegrationTest(MockMvc mockMvc) {
                   }
                 ]"""),
         Arguments.of(
-            "/api/v1/history?page=2&limit=2",
+            "/api/v1/history?page=2&size=2",
             """
                 [
                   {

@@ -16,6 +16,18 @@ spring :
       auto-offset-reset : earliest
       properties :
         isolation.level : read_committed
+  devtools :
+    add-properties : false
+    restart :
+      enabled : false
+    livereload :
+      enabled : false
+
+embedded :
+  kafka :
+    enabled : true
+    docker-image-version : 6.2.4
+
 
 loremipsum :
   net-client :
@@ -27,7 +39,16 @@ loremipsum :
     consumer :
       threads : 2
     topics :
-      words-processed:
+      words-processed :
         name : test.words.processed
         partitions : 2
         retention : 30s
+    error-handling :
+      dead-letter :
+        retention : 30s
+        suffix : .DLT
+      backoff :
+        initial-interval : 500ms
+        max-interval : 2s
+        max-retries : 4
+        multiplier : 1.5

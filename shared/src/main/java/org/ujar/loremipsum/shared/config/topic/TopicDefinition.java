@@ -1,9 +1,9 @@
-package org.ujar.loremipsum.history.config;
+package org.ujar.loremipsum.shared.config.topic;
 
 import java.time.Duration;
 import javax.validation.constraints.NotNull;
 
-record TopicDefinition(
+public record TopicDefinition(
     @NotNull String name,
     @NotNull Integer partitions,
     @NotNull Duration retention) {

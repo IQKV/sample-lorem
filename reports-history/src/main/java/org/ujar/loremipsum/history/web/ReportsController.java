@@ -3,6 +3,7 @@ package org.ujar.loremipsum.history.web;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springdoc.api.annotations.ParameterObject;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class ReportsController {
   private final ReportRepository reportRepository;
 
   @GetMapping
-  public ResponseEntity<List<Report>> findAll(Pageable pageable) {
+  public ResponseEntity<List<Report>> findAll(@ParameterObject Pageable pageable) {
     return new ResponseEntity<>(reportRepository.findAllByOrderByIdDesc(pageable), HttpStatus.OK);
   }
 }

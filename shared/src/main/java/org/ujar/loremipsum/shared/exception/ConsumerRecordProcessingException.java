@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.history.consumer.exception;
+package org.ujar.loremipsum.shared.exception;
 
 import java.io.Serial;
 

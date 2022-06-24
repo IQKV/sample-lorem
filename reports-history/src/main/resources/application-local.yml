@@ -1,6 +1,12 @@
 spring :
   jpa :
     show-sql : true
+    properties :
+      hibernate.jdbc.time_zone : UTC
+      hibernate.cache.use_second_level_cache : false
+      hibernate.cache.use_query_cache : false
+      hibernate.generate_statistics : true
+      hibernate.format_sql : true
   kafka :
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
@@ -10,6 +16,12 @@ spring :
       properties :
         bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
         security.protocol : PLAINTEXT
+  devtools :
+    add-properties : true
+    restart :
+      enabled : true
+    livereload :
+      enabled : true
 management :
   endpoints :
     enabled-by-default : true
