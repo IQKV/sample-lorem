@@ -26,7 +26,7 @@ class WordsProcessingReportConsumer {
     try {
       log.info("( {} ) Received report, key: {}, value: {}",
           Thread.currentThread().getName(), consumerRecord.key(), consumerRecord.value());
-      var dto = consumerRecord.value();
+      ReportDto dto = consumerRecord.value();
       var report = new Report(dto.mostFrequentWord(),
           dto.avgParagraphSize(),
           (int) dto.avgParagraphProcessingTime(),

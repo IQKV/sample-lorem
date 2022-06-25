@@ -20,7 +20,7 @@ logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
 **TLDR:** All-in-one docker compose: 
 
 ``
-docker-compose -f ./etc/all-in-one-demo.yml up
+docker-compose -f ./lorem-ipsum-demo/all-in-one.yml up
 ``
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |

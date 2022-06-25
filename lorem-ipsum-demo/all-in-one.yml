@@ -26,6 +26,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_ipsum_db
       - KAFKA_BOOTSTRAP_SERVERS=lorem-ipsum-demo-kafka:29092
+      - DATASOURCE_URL=jdbc:postgresql://lorem-ipsum-demo-postgres:5432/lorem_ipsum_db
 
   postgres:
     image: "postgres:13.5"
@@ -43,7 +44,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   kafka:
-    image: confluentinc/cp-kafka:6.2.4
+    image: confluentinc/cp-server:6.2.4
     container_name: lorem-ipsum-demo-kafka
     restart: unless-stopped
     depends_on :
@@ -52,6 +53,7 @@ services:
       KAFKA_BROKER_ID: 1
       KAFKA_ZOOKEEPER_CONNECT: lorem-ipsum-demo-zookeeper:2181
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://lorem-ipsum-demo-kafka:29092
+      KAFKA_METRIC_REPORTERS: io.confluent.metrics.reporter.ConfluentMetricsReporter
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -59,3 +61,39 @@ services:
       KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR : 1
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR : 1
       KAFKA_TRANSACTION_STATE_LOG_MIN_ISR : 1
+      CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS : kafka:29092
+      CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT : zookeeper:2181
+      CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS : 1
+      CONFLUENT_METRICS_ENABLE : "true"
+      CONFLUENT_SUPPORT_CUSTOMER_ID : "anonymous"
+
+  confluent-schema-registry:
+    image: confluentinc/cp-schema-registry:5.5.10
+    container_name: lorem-ipsum-demo-confluent-schema-registry
+    restart: unless-stopped
+    hostname: confluent-schema-registry
+    depends_on:
+      - zookeeper
+      - kafka
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: confluent-schema-registry
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: "zookeeper:2181"
+
+  confluent-control-center:
+    image: confluentinc/cp-enterprise-control-center:latest
+    container_name: lorem-ipsum-demo-confluent-control-center
+    restart: unless-stopped
+    depends_on:
+      - zookeeper
+      - kafka
+    ports:
+      - "9021:9021"
+    environment:
+      CONTROL_CENTER_BOOTSTRAP_SERVERS: 'lorem-ipsum-demo-kafka:29092'
+      CONTROL_CENTER_ZOOKEEPER_CONNECT: 'lorem-ipsum-demo-zookeeper:2181'
+      CONTROL_CENTER_SCHEMA_REGISTRY_URL : 'http://confluent-schema-registry:8081'
+      CONTROL_CENTER_REPLICATION_FACTOR: 1
+      CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
+      CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
+      CONFLUENT_METRICS_TOPIC_REPLICATION: 1
+      PORT: 9021
