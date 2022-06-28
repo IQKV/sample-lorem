@@ -66,4 +66,16 @@ public class Report {
     this.avgParagraphProcessingTime = avgParagraphProcessingTime;
     this.totalProcessingTime = totalProcessingTime;
   }
+
+  @Override
+  public String toString() {
+    return "Report{" +
+           "id=" + id +
+           ", mostFrequentWord='" + mostFrequentWord + '\'' +
+           ", avgParagraphSize=" + avgParagraphSize +
+           ", avgParagraphProcessingTime=" + avgParagraphProcessingTime +
+           ", totalProcessingTime=" + totalProcessingTime +
+           ", createdAt=" + createdAt +
+           '}';
+  }
 }
