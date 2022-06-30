@@ -3,8 +3,10 @@ spring :
     name : reports-history
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
-    driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
-    url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///lorem_ipsum_db}
+    #driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
+    #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.5:///lorem_ipsum_db}
+    driver-class-name : ${DATASOURCE_DRIVER:org.h2.Driver}
+    url : ${DATASOURCE_URL:jdbc:h2:mem:lorem_ipsum_db}
     username : ${DATASOURCE_USERNAME:postgres}
     password : ${DATASOURCE_PASSWORD:postgres}
     hikari :
