@@ -1,10 +1,12 @@
 package org.ujar.loremipsum.shared.config;
 
-import lombok.Data;
+import lombok.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.ConstructorBinding;
 
-@Data
+@Value
+@ConstructorBinding
 @ConfigurationProperties(prefix = "management.health.kafka")
 public class KafkaHealthIndicatorProperties {
-  private int responseTimeout = 500;
+  int responseTimeout = 500;
 }
