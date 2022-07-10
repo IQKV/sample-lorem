@@ -26,8 +26,8 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureWireMock(port = 0)
-record WordsProcessingControllerIntegrationTest(MockMvc mockMvc) {
-  WordsProcessingControllerIntegrationTest(@Autowired MockMvc mockMvc) {
+record WordsProcessingControllerIT(MockMvc mockMvc) {
+  WordsProcessingControllerIT(@Autowired MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 

@@ -18,8 +18,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-record ReportsControllerIntegrationTest(MockMvc mockMvc) {
-  ReportsControllerIntegrationTest(@Autowired MockMvc mockMvc) {
+record ReportsControllerIT(MockMvc mockMvc) {
+  ReportsControllerIT(@Autowired MockMvc mockMvc) {
     this.mockMvc = mockMvc;
   }
 
