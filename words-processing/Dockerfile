@@ -6,4 +6,4 @@ WORKDIR /app
 
 COPY ./target/*.jar /app/app.jar
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Duser.timezone=UTC -jar /app/app.jar"]
-EXPOSE 8080
+EXPOSE 8085
