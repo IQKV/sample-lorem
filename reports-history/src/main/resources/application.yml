@@ -116,6 +116,7 @@ logbook :
 logging :
   level :
     ROOT : INFO
+    org.zalando.logbook.Logbook : TRACE
     liquibase : INFO
 management :
   info :
