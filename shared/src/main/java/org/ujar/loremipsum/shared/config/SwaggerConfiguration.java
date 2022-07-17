@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.shared.config.swagger;
+package org.ujar.loremipsum.shared.config;
 
 import static java.util.Objects.requireNonNullElse;
 
@@ -13,7 +13,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.ujar.loremipsum.shared.config.ProjectInfoProperties;
 
 @Configuration
 @ConditionalOnMissingBean(OpenAPI.class)
