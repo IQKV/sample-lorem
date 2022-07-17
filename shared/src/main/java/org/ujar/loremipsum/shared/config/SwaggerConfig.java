@@ -1,4 +1,4 @@
-package org.ujar.loremipsum.shared.config.swagger;
+package org.ujar.loremipsum.shared.config;
 
 import static java.util.Objects.requireNonNullElse;
 
@@ -12,15 +12,14 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.ujar.loremipsum.shared.config.ProjectInfoProperties;
 
 @Configuration
 @ConditionalOnMissingBean(OpenAPI.class)
 @Import(value = {
-    SwaggerConfiguration.K8sSwaggerConfiguration.class,
+    SwaggerConfig.K8sSwaggerConfiguration.class,
 })
 @Slf4j
-public class SwaggerConfiguration {
+public class SwaggerConfig {
 
   @Configuration
   public static class K8sSwaggerConfiguration {
