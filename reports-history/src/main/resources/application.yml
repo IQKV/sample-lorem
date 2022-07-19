@@ -100,7 +100,6 @@ logbook :
     - /v3/**
     - /swagger-ui/**
     - /swagger-resources/**
-    - /metrics
   filter :
     enabled : true
   format :
@@ -119,6 +118,11 @@ logging :
     org.zalando.logbook.Logbook : TRACE
     liquibase : INFO
 management :
+  health :
+    livenessstate :
+      enabled : true
+    readinessstate :
+      enabled : true
   info :
     env :
       enabled : true
