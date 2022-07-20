@@ -1,6 +1,6 @@
 build :
   description : '@project.description@'
-  relative-path : ${SWAGGER_RELATIVE_PATH:}
+  relative-path : ${SWAGGER_UI_RELATIVE_PATH:}
   version : '@project.version@'
 
 git :
@@ -132,7 +132,7 @@ management :
     enabled-by-default : false
     web :
       exposure :
-        include : health, prometheus, info
+        include : health, prometheus, info, openapi, swagger-ui
   endpoint :
     health :
       enabled : true
@@ -172,3 +172,9 @@ loremipsum :
         name : ${KAFKA_TOPIC_WORDS_PROCESSED:words.processed}
         partitions : ${KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED:4}
         retention : ${KAFKA_TOPIC_RETENTION_WORDS_PROCESSED:30m}
+
+springdoc :
+  show-actuator : true
+  swagger-ui :
+    config-url : ${SWAGGER_UI_RELATIVE_PATH:/}v3/api-docs/swagger-config
+    url : ${SWAGGER_UI_RELATIVE_PATH:/}v3/api-docs
