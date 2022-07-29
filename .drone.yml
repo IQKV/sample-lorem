@@ -36,7 +36,7 @@ steps :
       SONAR_TOKEN :
         from_secret : SONAR_TOKEN
     commands :
-      - sleep 60
+      - sleep 10
       - mvn clean compile test-compile -P default -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       # - mvn pmd:check -P default -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn com.github.spotbugs:spotbugs-maven-plugin:check -P default -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
@@ -130,7 +130,7 @@ steps :
 
 services :
   - name : db
-    image : docker-registry.ujar.org/ujar/postgres:13.5
+    image : postgres:13.5
     environment :
       POSTGRES_USER : postgres
       POSTGRES_PASSWORD : postgres
@@ -143,7 +143,7 @@ services :
       ZOOKEEPER_TICK_TIME : 2000
 
   - name : kafka
-    image : docker-registry.ujar.org/ujar/confluentinc/cp-kafka:6.2.4
+    image : confluentinc/cp-kafka:6.2.4
     environment :
       KAFKA_BROKER_ID : 1
       KAFKA_ZOOKEEPER_CONNECT : zookeeper:2181
