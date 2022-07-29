@@ -79,7 +79,7 @@ steps :
   - name : docker-build-dev-words-processing
     depends_on :
       - publish-snapshot-package
-    image : docker-registry.ujar.org/ujar/plugins/docker
+    image : plugins/docker
     settings :
       dockerfile : words-processing/Dockerfile
       context : ./words-processing/
@@ -105,7 +105,7 @@ steps :
   - name : docker-build-dev-reports-history
     depends_on :
       - docker-build-dev-words-processing
-    image : docker-registry.ujar.org/ujar/plugins/docker
+    image : plugins/docker
     settings :
       dockerfile : reports-history/Dockerfile
       context : ./reports-history/
