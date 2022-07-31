@@ -15,12 +15,12 @@ import org.ujar.loremipsum.history.repository.ReportRepository;
 
 @RestController
 @Tag(name = "History of words processing reports controller", description = "Retrieve pageable statistic information.")
-@RequestMapping("/api/v1/history")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class ReportsController {
   private final ReportRepository reportRepository;
 
-  @GetMapping
+  @GetMapping("/v1/history")
   public ResponseEntity<List<Report>> findAll(@ParameterObject Pageable pageable) {
     return new ResponseEntity<>(reportRepository.findAllByOrderByIdDesc(pageable), HttpStatus.OK);
   }

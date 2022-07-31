@@ -21,7 +21,7 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 
 @RestController
 @Tag(name = "Words processing controller", description = "Retrieve statistic information.")
-@RequestMapping("/api/v1/text")
+@RequestMapping("/api")
 @RequiredArgsConstructor
 public class WordsProcessingController {
 
@@ -29,7 +29,7 @@ public class WordsProcessingController {
   private final WordsAnalyser wordsAnalyser;
   private final HistoryNotifier historyNotifier;
 
-  @GetMapping
+  @GetMapping("/v1/text")
   @Operation(description = "Make http request to loripsum.net API, process response & generate report")
   public ResponseEntity<Report> getReport(
       @RequestParam(name = "p")
