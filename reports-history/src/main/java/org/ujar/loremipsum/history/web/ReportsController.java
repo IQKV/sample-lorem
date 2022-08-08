@@ -21,7 +21,7 @@ class ReportsController {
   private final ReportRepository reportRepository;
 
   @GetMapping("/v1/history")
-  ResponseEntity<List<Report>> findAll(@ParameterObject Pageable pageable) {
+  ResponseEntity<List<Report>> findAll(@ParameterObject final Pageable pageable) {
     return new ResponseEntity<>(reportRepository.findAllByOrderByIdDesc(pageable), HttpStatus.OK);
   }
 }

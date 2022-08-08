@@ -37,9 +37,9 @@ class WordsProcessingController {
       @Schema(minimum = "1", maximum = "5")
       @Min(1)
       @Max(5) Integer paragraphsNum,
-      @RequestParam("l") @Parameter(description = "indicates length of each paragraph") LengthType lengthType) {
-    var text = httpClient.getText(paragraphsNum, lengthType);
-    var report = wordsAnalyser.analyze(text);
+      @RequestParam("l") @Parameter(description = "indicates length of each paragraph") final LengthType lengthType) {
+    final var text = httpClient.getText(paragraphsNum, lengthType);
+    final var report = wordsAnalyser.analyze(text);
     historyNotifier.notifyReport(report);
     return new ResponseEntity<>(report, HttpStatus.OK);
   }
