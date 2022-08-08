@@ -23,7 +23,7 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 @Tag(name = "Words processing controller", description = "Retrieve statistic information.")
 @RequestMapping("/api")
 @RequiredArgsConstructor
-public class WordsProcessingController {
+class WordsProcessingController {
 
   private final LorIpsumNetClient httpClient;
   private final WordsAnalyser wordsAnalyser;
@@ -31,7 +31,7 @@ public class WordsProcessingController {
 
   @GetMapping("/v1/text")
   @Operation(description = "Make http request to loripsum.net API, process response & generate report")
-  public ResponseEntity<Report> getReport(
+  ResponseEntity<Report> getReport(
       @RequestParam(name = "p")
       @Parameter(description = "indicates the max number of paragraphs")
       @Schema(minimum = "1", maximum = "5")
