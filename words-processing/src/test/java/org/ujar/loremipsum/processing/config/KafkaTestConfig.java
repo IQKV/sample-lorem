@@ -19,7 +19,7 @@ import org.ujar.loremipsum.processing.model.Report;
 public class KafkaTestConfig {
   @Bean
   ConsumerFactory<String, Report> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
-    var consumerProperties = kafkaProperties.getConsumer().buildProperties();
+    final var consumerProperties = kafkaProperties.getConsumer().buildProperties();
     try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
       return new DefaultKafkaConsumerFactory<>(consumerProperties,
           new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(

@@ -23,7 +23,7 @@ public class ReportMessageProducer {
    * Send message to Kafka broker with avoiding transaction-aware configuration environment
    */
   public void send(Report report) {
-    var key = UUID.randomUUID().toString();
+    final var key = UUID.randomUUID().toString();
     log.info("( {} ) Send report message, key: {}, value: {}", Thread.currentThread().getName(), key, report);
     kafkaTemplate.executeInTransaction(t -> t.send(
         topics.get(TOPIC_DEFINITION_WORDS_PROCESSED).name(),

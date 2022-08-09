@@ -17,8 +17,8 @@ class KafkaConfig {
   @Bean
   ProducerFactory<String, Report> reportMessageProducerFactory(KafkaProperties kafkaProperties) {
     try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
-      var producerProperties = kafkaProperties.getProducer().buildProperties();
-      var producerFactory = new DefaultKafkaProducerFactory<>(producerProperties,
+      final var producerProperties = kafkaProperties.getProducer().buildProperties();
+      final var producerFactory = new DefaultKafkaProducerFactory<>(producerProperties,
           new StringSerializer(),
           serde.serializer());
       producerFactory.setTransactionIdPrefix(getTransactionPrefix());

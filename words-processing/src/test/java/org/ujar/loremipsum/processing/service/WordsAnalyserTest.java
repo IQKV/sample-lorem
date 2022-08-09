@@ -37,8 +37,8 @@ class WordsAnalyserTest {
   @ParameterizedTest
   @MethodSource("provideStringsForAnalysis")
   void shouldAnalyzeAndGenerateReport(String fileName, Report expected) {
-    var input = getFileAsString("response/" + fileName + ".html");
-    var result = service.analyze(input);
+    final var input = getFileAsString("response/" + fileName + ".html");
+    final var result = service.analyze(input);
     assertThat(result.getMostFrequentWord()).isEqualTo(expected.getMostFrequentWord());
     assertThat(result.getAvgParagraphSize()).isEqualTo(expected.getAvgParagraphSize());
   }

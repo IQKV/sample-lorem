@@ -36,7 +36,7 @@ public class LorIpsumNetClient {
     } catch (URISyntaxException e) {
       throw new NetClientMisconfigurationException(e);
     }
-    var request = HttpRequest.newBuilder()
+    final var request = HttpRequest.newBuilder()
         .uri(uri)
         .headers("Content-Type", "text/plain; charset=utf-8")
         .timeout(Duration.ofSeconds(properties.getRequestTimeout()))

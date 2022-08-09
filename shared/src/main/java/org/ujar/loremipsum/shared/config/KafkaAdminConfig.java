@@ -19,7 +19,7 @@ public class KafkaAdminConfig {
 
   @Bean
   NewTopic wordsProcessedKafkaTopic() {
-    var definition = topicDefinitions.get(TOPIC_DEFINITION_WORDS_PROCESSED);
+    final var definition = topicDefinitions.get(TOPIC_DEFINITION_WORDS_PROCESSED);
     return TopicBuilder
         .name(definition.name())
         .partitions(definition.partitions())

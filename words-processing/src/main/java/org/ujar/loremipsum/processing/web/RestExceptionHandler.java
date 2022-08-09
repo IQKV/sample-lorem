@@ -30,7 +30,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
       @NonNull HttpStatus status,
       @NonNull WebRequest request
   ) {
-    var errorResponse = new ErrorResponse(List.of(new Error(ex.getMessage())));
+    final var errorResponse = new ErrorResponse(List.of(new Error(ex.getMessage())));
     return new ResponseEntity<>(errorResponse, headers, status);
   }
 

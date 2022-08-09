@@ -24,17 +24,17 @@ public class WordsAnalyser {
     final ArrayList<Long> pElapsedTimes = new ArrayList<>();
 
     final Map<String, Integer> allWordsFrequency = new HashMap<>();
-    var totalProcessingTime = measureTime(() -> {
-      var paragraphs = getParagraphs(rawSource);
+    final var totalProcessingTime = measureTime(() -> {
+      final var paragraphs = getParagraphs(rawSource);
 
       final int[] paragraphSizes = new int[paragraphs.size()];
       AtomicInteger paragraphIndex = new AtomicInteger();
 
       for (String paragraph : paragraphs) {
-        var elapsedTime = measureTime(() -> {
+        final var elapsedTime = measureTime(() -> {
           String[] words = paragraph.split("\\s+");
 
-          var paragraphWords = computeParagraphWordsUsage(words);
+          final var paragraphWords = computeParagraphWordsUsage(words);
 
           paragraphWords.forEach((word, wordCount) -> allWordsFrequency
               .merge(word, wordCount.intValue(), Integer::sum));
@@ -47,7 +47,7 @@ public class WordsAnalyser {
       report.setMostFrequentWord(findMostFrequentWord(allWordsFrequency));
       report.setAvgParagraphSize((short) Arrays.stream(paragraphSizes).average().orElse(0.0));
 
-      var avgParagraphProcessingTime = (long) pElapsedTimes.stream()
+      final var avgParagraphProcessingTime = (long) pElapsedTimes.stream()
           .mapToInt(Long::intValue).average().orElse(0.0);
       report.setAvgParagraphProcessingTime(avgParagraphProcessingTime);
     });
@@ -78,7 +78,7 @@ public class WordsAnalyser {
   }
 
   private long measureTime(Runnable task) {
-    var startTime = System.nanoTime();
+    final var startTime = System.nanoTime();
     task.run();
     return System.nanoTime() - startTime;
   }
