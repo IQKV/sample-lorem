@@ -6,7 +6,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,12 +21,9 @@ import org.ujar.loremipsum.processing.service.WordsAnalyser;
 @RestController
 @Tag(name = "Words processing controller", description = "Retrieve statistic information.")
 @RequestMapping("/api")
-@RequiredArgsConstructor
-class WordsProcessingController {
-
-  private final LorIpsumNetClient httpClient;
-  private final WordsAnalyser wordsAnalyser;
-  private final HistoryNotifier historyNotifier;
+record WordsProcessingController(LorIpsumNetClient httpClient,
+                                 WordsAnalyser wordsAnalyser,
+                                 HistoryNotifier historyNotifier) {
 
   @GetMapping("/v1/text")
   @Operation(description = "Make http request to loripsum.net API, process response & generate report")
