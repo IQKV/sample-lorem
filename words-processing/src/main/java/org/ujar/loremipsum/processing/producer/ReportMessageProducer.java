@@ -25,10 +25,8 @@ public class ReportMessageProducer {
   public void send(Report report) {
     final var key = UUID.randomUUID().toString();
     log.info("( {} ) Send report message, key: {}, value: {}", Thread.currentThread().getName(), key, report);
-    kafkaTemplate.executeInTransaction(t -> t.send(
-        topics.get(TOPIC_DEFINITION_WORDS_PROCESSED).name(),
-        key,
-        report)
+    kafkaTemplate.executeInTransaction(op -> op.usingCompletableFuture()
+        .send(topics.get(TOPIC_DEFINITION_WORDS_PROCESSED).name(), key, report)
     );
   }
 }
