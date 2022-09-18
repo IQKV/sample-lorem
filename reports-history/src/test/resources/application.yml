@@ -39,12 +39,18 @@ spring :
   kafka :
     consumer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      value-deserializer : org.springframework.kafka.support.serializer.JsonDeserializer
       group-id : reports-history
       auto-offset-reset : earliest
       properties :
         isolation.level : read_committed
+        spring :
+          json :
+            trusted :
+              packages : *
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
       properties :
         security.protocol : PLAINTEXT
     admin :
