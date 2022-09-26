@@ -47,7 +47,7 @@ services:
       CONFLUENT_SUPPORT_CUSTOMER_ID : "anonymous"
 
   confluent-schema-registry:
-    image: confluentinc/cp-schema-registry:5.5.10
+    image: confluentinc/cp-schema-registry:5.5.12
     container_name: lorem-ipsum-dev-confluent-schema-registry
     restart: unless-stopped
     hostname: confluent-schema-registry

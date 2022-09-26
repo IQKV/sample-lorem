@@ -9,7 +9,7 @@ and generate statistic reports.
 
 ### Technology stack
 
-Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.4, postgres:13.8.
+Java 17, Maven, Spring Boot, Confluent Kafka cp-kafka:6.2.6, postgres:13.8.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
 logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
