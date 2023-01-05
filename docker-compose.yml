@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   lorem-ipsum-words-processing:
-    image: "docker-registry.ujar.org/ujar/lorem-ipsum-words-processing:latest"
+    image: "docker-registry.c2a2.com/ujar/lorem-ipsum-words-processing:latest"
     container_name: lorem-ipsum-demo-words-processing
     restart: unless-stopped
     depends_on :
@@ -13,7 +13,7 @@ services:
       - KAFKA_BOOTSTRAP_SERVERS=lorem-ipsum-demo-kafka:29092
 
   lorem-ipsum-reports-history:
-    image: "docker-registry.ujar.org/ujar/lorem-ipsum-reports-history:latest"
+    image: "docker-registry.c2a2.com/ujar/lorem-ipsum-reports-history:latest"
     container_name: lorem-ipsum-demo-reports-history
     restart: unless-stopped
     depends_on :

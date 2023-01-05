@@ -1,6 +1,6 @@
 ## Words Processor
 
-[![Build Status](https://drone.ujar.org/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](https://drone.ujar.org/ujar-org/lorem-ipsum-words-processor)
+[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](https://drone.c2a2.com/ujar-org/lorem-ipsum-words-processor)
 
 Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
@@ -51,7 +51,7 @@ Applications are highly-configurable, supports many env vars, such as:
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
 quality is measured by:
 
-- [Sonarqube](https://sonarqube.ujar.org/dashboard?id=ujar-org%3Alorem-ipsum-words-processor)
+- [Sonarqube](https://sonarqube.c2a2.com/dashboard?id=ujar-org%3Alorem-ipsum-words-processor)
 - [PMD](https://pmd.github.io/)
 - [CheckStyle](https://checkstyle.sourceforge.io/)
 - [SpotBugs](https://spotbugs.github.io/)
