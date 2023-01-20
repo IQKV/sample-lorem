@@ -7,13 +7,13 @@ git :
   commit : '@git.commit.id@'
   build_time : '@git.build.time@'
 
-info:
-  app:
-    name: '@project.name@'
-    description: '@project.description@'
-    version: '@project.version@'
-    git_commit: ${git.commit}
-    build_time: ${git.build_time}
+info :
+  app :
+    name : '@project.name@'
+    description : '@project.description@'
+    version : '@project.version@'
+    git_commit : ${git.commit}
+    build_time : ${git.build_time}
 
 spring :
   application :
@@ -148,8 +148,8 @@ management :
 
 embedded :
   postgresql :
-     enabled : false
-     docker-image-version : 13.5
+    enabled : false
+    docker-image-version : 13.5
   kafka :
     enabled : false
     docker-image-version : 6.2.4
