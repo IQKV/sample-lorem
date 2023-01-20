@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_ipsum_db
   zookeeper:
-    image: confluentinc/cp-zookeeper:6.2.6
+    image: docker.io/bitnami/zookeeper:3.8
     container_name: lorem-ipsum-dev-zookeeper
     restart: unless-stopped
     ports :
@@ -21,7 +21,7 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
   kafka:
-    image: confluentinc/cp-server:6.2.6
+    image: docker.io/bitnami/kafka:3.3
     container_name: lorem-ipsum-dev-kafka
     restart: unless-stopped
     depends_on :
