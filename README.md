@@ -1,6 +1,6 @@
 ## Words Processor
 
-[![Build Status](https://drone.c2a2.com/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](https://drone.c2a2.com/ujar-org/lorem-ipsum-words-processor)
+[![Build Status](http://iaolg9igjr3tghootxslfe.webrelay.io/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](http://iaolg9igjr3tghootxslfe.webrelay.io/ujar-org/lorem-ipsum-words-processor)
 
 Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
