@@ -396,9 +396,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <connection>scm:git:https://github.com/ujar-org/lorem-ipsum-words-processor.git</connection>
-        <tag>HEAD</tag>
-    </scm>
 </project>
