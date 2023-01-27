@@ -1,7 +1,5 @@
 ## Words Processor
 
-[![Build Status](http://iaolg9igjr3tghootxslfe.webrelay.io/api/badges/ujar-org/lorem-ipsum-words-processor/status.svg)](http://iaolg9igjr3tghootxslfe.webrelay.io/ujar-org/lorem-ipsum-words-processor)
-
 Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
 
 Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
