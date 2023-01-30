@@ -49,7 +49,7 @@ Applications are highly-configurable, supports many env vars, such as:
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
 quality is measured by:
 
-- [Sonarqube](https://sonarqube.c2a2.com/dashboard?id=ujar-org%3Alorem-ipsum-words-processor)
+- Sonarqube
 - [PMD](https://pmd.github.io/)
 - [CheckStyle](https://checkstyle.sourceforge.io/)
 - [SpotBugs](https://spotbugs.github.io/)
