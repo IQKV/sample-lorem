@@ -81,7 +81,7 @@ steps :
       - publish-snapshot-package
     image : plugins/docker
     settings :
-      dockerfile : .drone/c2a2/words-processing/Dockerfile
+      dockerfile : .drone/c2a2/Dockerfile
       context : ./words-processing/
       storage_driver : vfs
       username :
@@ -107,7 +107,7 @@ steps :
       - docker-build-dev-words-processing
     image : plugins/docker
     settings :
-      dockerfile : .drone/c2a2/reports-history/Dockerfile
+      dockerfile : .drone/c2a2/Dockerfile
       context : ./reports-history/
       storage_driver : vfs
       username :
