@@ -8,7 +8,7 @@
     <packaging>pom</packaging>
 
     <name>bs-dst-loremipsum</name>
-    <description>Services helps grub and scan loripsum.net text, generate statistic reports.</description>
+    <description>Application allows to analyze loripsum.net output, and then generate statistic reports.</description>
 
     <modules>
         <module>shared</module>
