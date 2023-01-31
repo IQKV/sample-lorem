@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.ujar.bs.dst.loremipsum</groupId>
-    <artifactId>loremipsum</artifactId>
+    <artifactId>bs-dst-loremipsum</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>loremipsum</name>
+    <name>bs-dst-loremipsum</name>
     <description>Services helps grub and scan loripsum.net text, generate statistic reports.</description>
 
     <modules>
