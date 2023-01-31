@@ -4,7 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.ConstructorBinding;
 
 @ConstructorBinding
-@ConfigurationProperties(prefix = "loripsum.net-client")
+@ConfigurationProperties(prefix = "loremipsum.net-client")
 public record NetClientProperties(String apiServerUrlTemplate, Integer connectTimeout, Integer requestTimeout) {
   public String getApiServerUrlTemplate() {
     return apiServerUrlTemplate();
