@@ -71,9 +71,9 @@ It is mandatory to keep test code coverage not below **80** percents and cover a
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/ujar-org/lorem-ipsum-words-processor.git
+git clone https://github.com/ujar-org/bs-dst-loremipsum.git
 
-cd lorem-ipsum-words-processor
+cd bs-dst-loremipsum
 ```
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) - at least 1.6.0
