@@ -4,11 +4,9 @@ name : CI
 type : docker
 
 trigger :
-  branch :
-    - develop
-    - feature/*
   event :
     - push
+    - tag
 
 volumes :
   - name : m2cache
@@ -41,13 +39,9 @@ steps :
       # - mvn com.github.spotbugs:spotbugs-maven-plugin:check -P default -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report sonar:sonar -P default -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=ujar-org:bs-dst-loremipsum -Dsonar.projectName=ujar-org:bs-dst-loremipsum --batch-mode -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
     when :
-      branch :
-        include :
-          - develop
-          - feature/*
       event :
-        exclude :
-          - pull_request
+        - push
+        - tag
 
   - name : publish-snapshot-package
     depends_on :
@@ -67,11 +61,8 @@ steps :
     when :
       branch :
         include :
-          - develop
           - feature/*
-      event :
-        exclude :
-          - pull_request
+          - develop
 
   - name : docker-build-dev-words-processing
     depends_on :
@@ -141,11 +132,11 @@ services :
   - name : kafka
     image : docker.io/bitnami/kafka:3.3
     environment :
-      KAFKA_BROKER_ID: 1
-      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,PLAINTEXT_KAFKA://:9091
-      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://kafka:9092,PLAINTEXT_KAFKA://kafka:9091
-      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
-      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE: true
-      ALLOW_PLAINTEXT_LISTENER: yes
-      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_KAFKA:PLAINTEXT
+      KAFKA_BROKER_ID : 1
+      KAFKA_CFG_LISTENERS : PLAINTEXT://:9092,PLAINTEXT_KAFKA://:9091
+      KAFKA_CFG_ADVERTISED_LISTENERS : PLAINTEXT://kafka:9092,PLAINTEXT_KAFKA://kafka:9091
+      KAFKA_CFG_ZOOKEEPER_CONNECT : zookeeper:2181
+      KAFKA_CFG_AUTO_CREATE_TOPICS_ENABLE : true
+      ALLOW_PLAINTEXT_LISTENER : yes
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP : PLAINTEXT:PLAINTEXT,PLAINTEXT_KAFKA:PLAINTEXT
 
