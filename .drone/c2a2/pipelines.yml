@@ -126,6 +126,7 @@ steps :
         include :
           - develop
           - feature/*
+
   - name : build-container-release-words-processing
     depends_on :
       - publish-release-jar
