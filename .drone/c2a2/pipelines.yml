@@ -43,7 +43,7 @@ steps :
         - push
         - tag
 
-  - name : publish-snapshot-package
+  - name : publish-snapshot-jar
     depends_on :
       - build
     image : docker-registry.c2a2.com/ujar/maven:3-openjdk-17-slim
@@ -64,7 +64,7 @@ steps :
           - feature/*
           - develop
 
-  - name : publish-release-package
+  - name : publish-release-jar
     depends_on :
       - build
     image : docker-registry.c2a2.com/ujar/maven:3-openjdk-17-slim
@@ -83,9 +83,9 @@ steps :
       ref :
         - refs/tags/*
 
-  - name : docker-build-snapshot-words-processing
+  - name : build-container-snapshot-words-processing
     depends_on :
-      - publish-snapshot-package
+      - publish-snapshot-jar
     image : plugins/docker
     settings :
       dockerfile : .drone/c2a2/Dockerfile
@@ -105,9 +105,9 @@ steps :
           - develop
           - feature/*
 
-  - name : docker-build-snapshot-reports-history
+  - name : build-container-snapshot-reports-history
     depends_on :
-      - docker-build-snapshot-words-processing
+      - build-container-snapshot-words-processing
     image : plugins/docker
     settings :
       dockerfile : .drone/c2a2/Dockerfile
@@ -126,9 +126,9 @@ steps :
         include :
           - develop
           - feature/*
-  - name : docker-build-release-words-processing
+  - name : build-container-release-words-processing
     depends_on :
-      - publish-release-package
+      - publish-release-jar
     image : plugins/docker
     settings :
       dockerfile : .drone/c2a2/Dockerfile
@@ -146,9 +146,9 @@ steps :
       ref :
         - refs/tags/*
 
-  - name : docker-build-release-reports-history
+  - name : build-container-release-reports-history
     depends_on :
-      - docker-build-release-words-processing
+      - build-container-release-words-processing
     image : plugins/docker
     settings :
       dockerfile : .drone/c2a2/Dockerfile
