@@ -64,7 +64,26 @@ steps :
           - feature/*
           - develop
 
-  - name : docker-build-dev-words-processing
+  - name : publish-release-package
+    depends_on :
+      - build
+    image : docker-registry.c2a2.com/ujar/maven:3-openjdk-17-slim
+    pull : if-not-exists
+    volumes :
+      - name : m2cache
+        path : /root/.m2
+    environment :
+      DEPLOYER_USERNAME :
+        from_secret : DEPLOYER_USERNAME
+      DEPLOYER_PASSWORD :
+        from_secret : DEPLOYER_PASSWORD
+    commands :
+      - mvn deploy -P default -DskipTests=true -Dcheckstyle.skip=true -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD -DaltDeploymentRepository=ujar-releases-repository::default::https://nexus.c2a2.com/repository/maven-releases
+    when :
+      ref :
+        - refs/tags/*
+
+  - name : docker-build-snapshot-words-processing
     depends_on :
       - publish-snapshot-package
     image : plugins/docker
@@ -76,7 +95,7 @@ steps :
         from_secret : DOCKER_USERNAME
       password :
         from_secret : DOCKER_PASSWORD
-      repo : docker-registry.c2a2.com/ujar/lorem-ipsum-words-processing
+      repo : docker-registry.c2a2.com/ujar/bs-dst-loremipsum-words-processing
       registry : docker-registry.c2a2.com
       tags :
         - latest
@@ -85,13 +104,10 @@ steps :
         include :
           - develop
           - feature/*
-      event :
-        exclude :
-          - pull_request
 
-  - name : docker-build-dev-reports-history
+  - name : docker-build-snapshot-reports-history
     depends_on :
-      - docker-build-dev-words-processing
+      - docker-build-snapshot-words-processing
     image : plugins/docker
     settings :
       dockerfile : .drone/c2a2/Dockerfile
@@ -101,7 +117,7 @@ steps :
         from_secret : DOCKER_USERNAME
       password :
         from_secret : DOCKER_PASSWORD
-      repo : docker-registry.c2a2.com/ujar/lorem-ipsum-reports-history
+      repo : docker-registry.c2a2.com/ujar/bs-dst-loremipsum-reports-history
       registry : docker-registry.c2a2.com
       tags :
         - latest
@@ -110,9 +126,45 @@ steps :
         include :
           - develop
           - feature/*
-      event :
-        exclude :
-          - pull_request
+  - name : docker-build-release-words-processing
+    depends_on :
+      - publish-release-package
+    image : plugins/docker
+    settings :
+      dockerfile : .drone/c2a2/Dockerfile
+      context : ./words-processing/
+      storage_driver : vfs
+      username :
+        from_secret : DOCKER_USERNAME
+      password :
+        from_secret : DOCKER_PASSWORD
+      repo : docker-registry.c2a2.com/ujar/bs-dst-loremipsum-words-processing
+      registry : docker-registry.c2a2.com
+      tags :
+        - 0.1.0
+    when :
+      ref :
+        - refs/tags/*
+
+  - name : docker-build-release-reports-history
+    depends_on :
+      - docker-build-release-words-processing
+    image : plugins/docker
+    settings :
+      dockerfile : .drone/c2a2/Dockerfile
+      context : ./reports-history/
+      storage_driver : vfs
+      username :
+        from_secret : DOCKER_USERNAME
+      password :
+        from_secret : DOCKER_PASSWORD
+      repo : docker-registry.c2a2.com/ujar/bs-dst-loremipsum-reports-history
+      registry : docker-registry.c2a2.com
+      tags :
+        - 0.1.0
+    when :
+      ref :
+        - refs/tags/*
 
 services :
   - name : db
