@@ -34,7 +34,7 @@ steps :
         from_secret : SONAR_TOKEN
     commands :
       - sleep 10
-      - mvn install -P default -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
+      - mvn compile test-compile -P default -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       # - mvn pmd:check -P default -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       # - mvn com.github.spotbugs:spotbugs-maven-plugin:check -P default -Dspotbugs.xmlOutput=true -Dspotbugs.failOnError=true -Dspotbugs.includeTests=true -B -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
       - mvn org.jacoco:jacoco-maven-plugin:prepare-agent package org.jacoco:jacoco-maven-plugin:report sonar:sonar -P default -Dsonar.host.url=$SONAR_HOST -Dsonar.login=$SONAR_TOKEN -Dsonar.projectKey=ujar-org:bs-dst-loremipsum -Dsonar.projectName=ujar-org:bs-dst-loremipsum --batch-mode -s ../maven-settings.xml -Ddeployer.username=$DEPLOYER_USERNAME -Ddeployer.password=$DEPLOYER_PASSWORD
@@ -225,7 +225,6 @@ steps :
       - git checkout -b v${TAG}
       - mvn versions:set -DremoveSnapshot
       - mvn versions:set -DnewVersion=${TAG}
-      - mvn versions:update-parent
       - >-
         git commit -a -m "feat: prepare new release $${TAG}"
       - git tag ${TAG} && git push origin ${TAG}
@@ -233,7 +232,6 @@ steps :
       - sleep 10
       - git tag -d ${TAG} && git checkout ${DRONE_COMMIT_BRANCH} && git branch -D v${TAG}
       - mvn versions:set -DnewVersion=$${NEXT_SNAPSHOT}
-      - mvn versions:update-parent -DallowSnapshots=true
       - >-
         git commit -a -m "feat: create new $${NEXT_SNAPSHOT}"
       - git push origin ${DRONE_COMMIT_BRANCH}
