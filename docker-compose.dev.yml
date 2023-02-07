@@ -2,7 +2,7 @@
 version : '3.8'
 services :
   postgres :
-    image : "postgres:13.8"
+    image : "postgres:13.9"
     container_name : lorem-ipsum-dev-postgres
     restart : unless-stopped
     ports :

@@ -29,7 +29,7 @@ services :
       - DATASOURCE_URL=jdbc:postgresql://lorem-ipsum-demo-postgres:5432/lorem_ipsum_db
 
   postgres :
-    image : "postgres:13.8"
+    image : "postgres:13.9"
     container_name : lorem-ipsum-demo-postgres
     restart : unless-stopped
     environment :
