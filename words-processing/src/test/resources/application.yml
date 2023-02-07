@@ -34,7 +34,7 @@ spring :
 embedded :
   kafka :
     enabled : true
-    docker-image-version : 6.2.4
+    docker-image-version : 7.2.1
 
 
 loremipsum :
