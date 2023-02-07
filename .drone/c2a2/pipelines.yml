@@ -212,7 +212,7 @@ volumes :
 steps :
   - name : create-release-tag
     image : docker-registry.c2a2.com/ujar/maven:3-openjdk-17-slim
-    pull : always
+    pull : if-not-exists
     volumes :
       - name : m2cache
         path : /root/.m2
