@@ -7,14 +7,14 @@ and generate statistic reports.
 
 ### Technology stack
 
-Java 17, Maven, Spring Boot, bitnami/kafka:3.3, postgres:13.9.
+Java 17, Maven, Spring Boot, bitnami/kafka:3.4, postgres:13.10.
 
-_Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, docker-compose._dev_.yml,
-logbook, micrometer, _checkstyle_ configuration, SpotBugs, PMD etc.
+_Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
+_checkstyle_ configuration, SpotBugs, PMD etc.
 
 ### Applications
 
-**TLDR:** All-in-one docker compose for demo propose: 
+**TLDR:** All-in-one docker compose for demo propose:
 
 ``
 docker-compose -f docker-compose.yml up
@@ -22,27 +22,27 @@ docker-compose -f docker-compose.yml up
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
 |----------------------|---------------------------------------------------|--------------------------------------------|
-| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text       |
-| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history    |
+| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text          |
+| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history       |
 
 ### Environment variables
 
-Applications are highly-configurable, supports many env vars, such as: 
+Applications are highly-configurable, supports many env vars, such as:
 
-| ENV Variable                           | Description                                         | Default Value                                   |
-|----------------------------------------|-----------------------------------------------------|-------------------------------------------------|
-| SERVER_PORT                            | Application port                                    | 8085, 8086                                      |
-| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                                | localhost:29092                                 |
-| KAFKA_SECURITY_PROTOCOL                |                                                     | PLAINTEXT                                       |
-| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                                          | words.processed                                 |
-| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                                    | 4                                               |
-| KAFKA_CONSUMER_THREADS                 | Consumer threads count,<br>respective to partitions | 4                                               |
-| KAFKA_CONSUMERS_GROUP                  | Consumer group name                                 | reports-history                                 |
-| KAFKA_CREATE_TOPICS_ON_STARTUP         | Enables Kafka Admin for topic creation              | true                                            |
-| DATASOURCE_URL                         |                                                     | jdbc:postgresql://localhost:5432/lorem_ipsum_db |
-| DATASOURCE_USERNAME                    |                                                     | postgres                                        |
-| DATASOURCE_PASSWORD                    |                                                     | postgres                                        |
-| DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                           |
+| ENV Variable                           | Description                                         | Default Value                             |
+|----------------------------------------|-----------------------------------------------------|-------------------------------------------|
+| SERVER_PORT                            | Application port                                    | 8085, 8086                                |
+| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                                | localhost:9092                            |
+| KAFKA_SECURITY_PROTOCOL                |                                                     | PLAINTEXT                                 |
+| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                                          | words.processed                           |
+| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                                    | 4                                         |
+| KAFKA_CONSUMER_THREADS                 | Consumer threads count,<br>respective to partitions | 4                                         |
+| KAFKA_CONSUMERS_GROUP                  | Consumer group name                                 | reports-history                           |
+| KAFKA_ADMIN_CREATES_TOPICS             | Enables Kafka Admin for topic creation              | true                                      |
+| DATASOURCE_URL                         |                                                     | jdbc:postgresql://localhost:5432/lorem_db |
+| DATASOURCE_USERNAME                    |                                                     | postgres                                  |
+| DATASOURCE_PASSWORD                    |                                                     | postgres                                  |
+| DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                     |
 
 ## Code conventions
 
@@ -59,11 +59,10 @@ quality is measured by:
 This project has standard JUnit tests. To run them execute this command:
 
 ```
-mvn test -P testcontainers-support
+./mvnw verify -P testcontainers-support
 ```
 
 It is mandatory to keep test code coverage not below **80** percents and cover all business logic and edge cases.
-
 
 ### Pre-Requisites to run this example locally
 
@@ -71,12 +70,12 @@ It is mandatory to keep test code coverage not below **80** percents and cover a
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/ujar-org/bs-dst-loremipsum.git
+git clone https://github.com/ujar-org/sample-lorem-mix-kafka-restful.git
 
-cd bs-dst-loremipsum
+cd sample-lorem-mix-kafka-restful
 ```
 
-- Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/) - at least 1.6.0
+- Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 - Add new version of docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 - Spin-up single instance of Kafka broker, zookeeper and Postgresql by running command:
 
@@ -92,7 +91,7 @@ using [Maven](https://spring.io/guides/gs/maven/). You can build a jar files and
 - Create jar packages:
 
 ```
-mvn package
+./mvnw package
 ```
 
 - Run **words-processing** app:
@@ -101,7 +100,7 @@ mvn package
 java -jar words-processing/target/*.jar
 ```
 
-You can then access Swagger UI here: http://localhost:8085/swagger-ui.html
+Now you can access to the Swagger UI here: http://localhost:8085/swagger-ui.html
 
 - Run **reports-history** app:
 
@@ -111,14 +110,25 @@ java -jar reports-history/target/*.jar
 
 Swagger UI is here: http://localhost:8086/swagger-ui.html
 
-
 ##### After all, don't forget to clean up working directory & stop dev services:
 
 ```
-mvn clean
-
-docker-compose -f docker-compose.dev.yml down
-
-docker-compose -f ./etc/all-in-one-demo.yml down
+./mvnw clean
+```
 
 ```
+docker-compose -f docker-compose.dev.yml down
+```
+
+## Versioning
+
+Project uses a three-segment [CalVer](https://calver.org/) scheme, with a short year in the major version slot, short month in the minor version slot, and micro/patch version in the third
+and final slot.
+
+```
+YY.MM.MICRO
+```
+
+1. **YY** - short year - 6, 16, 106
+1. **MM** - short month - 1, 2 ... 11, 12
+1. **MICRO** -  "patch" segment

@@ -9,13 +9,13 @@ spring :
       hibernate.format_sql : true
   kafka :
     producer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
       value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
       properties :
         security.protocol : PLAINTEXT
     admin :
       properties :
-        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
         security.protocol : PLAINTEXT
   devtools :
     add-properties : true
@@ -27,6 +27,10 @@ management :
   endpoints :
     enabled-by-default : true
 
-loremipsum :
+springdoc :
+  show-actuator : true
+
+lorem :
   kafka :
-    create-topics-on-startup : true
+    admin :
+      create-topics : true

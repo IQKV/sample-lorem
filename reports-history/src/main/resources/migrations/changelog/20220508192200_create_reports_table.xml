@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="20220508192200" author="ujar-lorem">
+        <createSequence sequenceName="report_id_seq" startValue="1" incrementBy="1"/>
+        <createTable tableName="lorem_reports">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="most_frequent_word" type="varchar(256)"/>
+            <column name="avg_paragraph_size" type="int"/>
+            <column name="avg_paragraph_processing_time" type="int"/>
+            <column name="total_processing_time" type="int"/>
+            <column name="created_at" type="timestamp"/>
+        </createTable>
+        <loadData file="migrations/data/reports.csv" separator=";" tableName="lorem_reports">
+            <column name="id" type="numeric"/>
+            <column name="most_frequent_word" type="string"/>
+            <column name="avg_paragraph_size"/>
+            <column name="avg_paragraph_processing_time"/>
+            <column name="total_processing_time"/>
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

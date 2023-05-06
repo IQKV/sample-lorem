@@ -1,17 +1,14 @@
-build :
-  description : '@project.description@'
-  relative-path : ''
-  version : '@project.version@'
-
 spring :
   application :
     name : reports-history
+  liquibase :
+    change-log : migrations/master.xml
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
     #driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
-    #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.9:///lorem_ipsum_db}
+    #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.10:///lorem_db}
     driver-class-name : ${DATASOURCE_DRIVER:org.h2.Driver}
-    url : ${DATASOURCE_URL:jdbc:h2:mem:lorem_ipsum_db}
+    url : ${DATASOURCE_URL:jdbc:h2:mem:lorem_db}
     username : ${DATASOURCE_USERNAME:postgres}
     password : ${DATASOURCE_PASSWORD:postgres}
     hikari :
@@ -21,7 +18,7 @@ spring :
     hibernate :
       ddl-auto : none
       naming :
-        physical-strategy : org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+        physical-strategy : org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
         implicit-strategy : org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
     open-in-view : true
     properties :
@@ -58,15 +55,20 @@ spring :
 embedded :
   postgresql :
     enabled : true
-    docker-image-version : 13.9
+    docker-image-version : 13.10
   kafka :
     enabled : true
     docker-image-version : 7.2.1
 
 
-loremipsum :
+lorem :
+  build :
+    description : '@project.description@'
+    relative-path : ''
+    version : '@project.version@'
   kafka :
-    create-topics-on-startup : true
+    admin :
+      create-topics : true
     error-handling :
       dead-letter :
         retention : 30s
