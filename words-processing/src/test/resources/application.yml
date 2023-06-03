@@ -35,7 +35,7 @@ embedded :
 lorem :
   build :
     description : '@project.description@'
-    relative-path : ''
+    relative-path : '/'
     version : '@project.version@'
   net-client :
     api-server-url-template : http://127.0.0.1:${wiremock.server.port}/api/{paragraphsNum}/{lengthType}

@@ -23,7 +23,7 @@ public class KafkaAdminConfig {
     return TopicBuilder
         .name(definition.getName())
         .partitions(definition.getPartitions())
-        .config(TopicConfig.RETENTION_MS_CONFIG, "" + definition.getRetention().toMillis())
+        .config(TopicConfig.RETENTION_MS_CONFIG, String.valueOf(definition.getRetention().toMillis()))
         .build();
   }
 
@@ -33,8 +33,8 @@ public class KafkaAdminConfig {
         .name(topicDefinitions.get(TOPIC_DEFINITION_WORDS_PROCESSED).getName() + errorHandlingProperties.getDeadLetter()
             .getSuffix())
         .partitions(1)
-        .config(TopicConfig.RETENTION_MS_CONFIG, "" + errorHandlingProperties.getDeadLetter()
-            .getRetention().toMillis())
+        .config(TopicConfig.RETENTION_MS_CONFIG, String.valueOf(errorHandlingProperties.getDeadLetter()
+            .getRetention().toMillis()))
         .build();
   }
 }

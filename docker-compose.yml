@@ -2,7 +2,7 @@
 version : '3.8'
 services :
   lorem-words-processing :
-    image : "docker-registry.continuousdelivery.store/sample-lorem-mix-words-processing:latest"
+    image : "know-how.store/sample-lorem-mix-words-processing:latest"
     container_name : lorem-demo-words-processing
     restart : unless-stopped
     depends_on :
@@ -13,7 +13,7 @@ services :
       - KAFKA_BOOTSTRAP_SERVERS=lorem-demo-kafka:9092
 
   lorem-reports-history :
-    image : "docker-registry.continuousdelivery.store/sample-lorem-mix-reports-history:latest"
+    image : "know-how.store/sample-lorem-mix-reports-history:latest"
     container_name : lorem-demo-reports-history
     restart : unless-stopped
     depends_on :
@@ -29,7 +29,7 @@ services :
       - DATASOURCE_URL=jdbc:postgresql://lorem-demo-postgres:5432/lorem_db
 
   postgres :
-    image : "postgres:13.10"
+    image : "postgres:13.11"
     container_name : lorem-demo-postgres
     restart : unless-stopped
     environment :
@@ -43,7 +43,7 @@ services :
     environment :
       ZOOKEEPER_CLIENT_PORT : 2181
       ZOOKEEPER_TICK_TIME : 2000
-      ALLOW_ANONYMOUS_LOGIN : yes
+      ALLOW_ANONYMOUS_LOGIN : "yes"
   kafka :
     image : docker.io/bitnami/kafka:3.4
     container_name : lorem-demo-kafka
@@ -52,7 +52,8 @@ services :
       - zookeeper
     environment :
       KAFKA_BROKER_ID : 1
+      KAFKA_ENABLE_KRAFT: "no"
       KAFKA_CFG_LISTENERS : PLAINTEXT://:9092
       KAFKA_CFG_ADVERTISED_LISTENERS : PLAINTEXT://127.0.0.1:9092
       KAFKA_CFG_ZOOKEEPER_CONNECT : zookeeper:2181
-      ALLOW_PLAINTEXT_LISTENER : yes
+      ALLOW_PLAINTEXT_LISTENER : "yes"

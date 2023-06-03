@@ -42,6 +42,9 @@ spring :
 server :
   port : ${SERVER_PORT:8085}
   shutdown : graceful
+  forward-headers-strategy : framework
+  tomcat:
+    redirect-context-root : false
 
 
 management :
@@ -57,14 +60,42 @@ management :
   info :
     env :
       enabled : true
+    java :
+      enabled : true
+    os :
+      enabled : true
 
   server :
+    port : ${MANAGEMENT_SERVER_PORT:8080}
     add-application-context-header : true
+
+  metrics :
+    tags :
+      application : ${spring.application.name}
+      profiles : ${spring.profiles.active}
+    distribution :
+      percentiles-histogram :
+        http :
+          server :
+            requests : true
+  tracing :
+    sampling :
+      probability : 1.0
+    enabled : true
+  prometheus :
+    metrics :
+      export :
+        step : 20s
+        enabled: true
+  zipkin :
+    tracing :
+      endpoint : ${TEMPO_URL:http://localhost:9411/api/v2/spans}
+
   endpoints :
     enabled-by-default : false
     web :
       exposure :
-        include : health, prometheus, info, kafka, openapi, swagger-ui
+        include : health, metrics, prometheus, info, env, kafka, openapi, swagger-ui
   endpoint :
     health :
       enabled : true
@@ -72,6 +103,8 @@ management :
       probes :
         enabled : true
     info :
+      enabled : true
+    env :
       enabled : true
     prometheus :
       enabled : true
@@ -85,7 +118,7 @@ embedded :
 lorem :
   build :
     description : '@project.description@'
-    relative-path : ${SWAGGER_UI_RELATIVE_PATH:}
+    relative-path : ${SERVER_SERVLET_CONTEXT_PATH:/}
     version : '@project.version@'
   net-client :
     api-server-url-template : https://loripsum.net/api/{paragraphsNum}/{lengthType}
@@ -111,6 +144,3 @@ lorem :
 
 springdoc :
   show-actuator : false
-  swagger-ui :
-    config-url : ${SWAGGER_UI_RELATIVE_PATH:/}v3/api-docs/swagger-config
-    url : ${SWAGGER_UI_RELATIVE_PATH:/}v3/api-docs

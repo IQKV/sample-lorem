@@ -6,7 +6,7 @@ spring :
   datasource :
     type : com.zaxxer.hikari.HikariDataSource
     #driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
-    #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.10:///lorem_db}
+    #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.11:///lorem_db}
     driver-class-name : ${DATASOURCE_DRIVER:org.h2.Driver}
     url : ${DATASOURCE_URL:jdbc:h2:mem:lorem_db}
     username : ${DATASOURCE_USERNAME:postgres}
@@ -55,7 +55,7 @@ spring :
 embedded :
   postgresql :
     enabled : true
-    docker-image-version : 13.10
+    docker-image-version : 13.11
   kafka :
     enabled : true
     docker-image-version : 7.2.1
@@ -64,7 +64,7 @@ embedded :
 lorem :
   build :
     description : '@project.description@'
-    relative-path : ''
+    relative-path : '/'
     version : '@project.version@'
   kafka :
     admin :
