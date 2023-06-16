@@ -43,10 +43,10 @@
         <springdoc-webmvc.version>2.1.0</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2022.0.3</spring-cloud-dependencies.version>
 
-        <micrometer.version>1.11.0</micrometer.version>
-        <micrometer-tracing.version>1.1.1</micrometer-tracing.version>
+        <micrometer.version>1.11.1</micrometer.version>
+        <micrometer-tracing.version>1.1.2</micrometer-tracing.version>
         <datasource-micrometer.version>1.0.2</datasource-micrometer.version>
-        <opentelemetry.version>1.26.0</opentelemetry.version>
+        <opentelemetry.version>1.27.0</opentelemetry.version>
         <zipkin-reporter.version>2.16.4</zipkin-reporter.version>
         <logstash-logback-encoder.version>7.3</logstash-logback-encoder.version>
         <logback.version>1.4.7</logback.version>
@@ -57,16 +57,16 @@
         <liquibase.version>4.22.0</liquibase.version>
         <jakarta-servlet-api.version>6.0.0</jakarta-servlet-api.version>
         <javax-cache-api.version>1.1.1</javax-cache-api.version>
-        <hibernate.version>6.2.3.Final</hibernate.version>
+        <hibernate.version>6.2.4.Final</hibernate.version>
         <postgresql.version>42.6.0</postgresql.version>
         <ehcache.version>3.10.8</ehcache.version>
         <junit.jupiter.version>5.9.3</junit.jupiter.version>
         <archunit.version>1.0.1</archunit.version>
-        <testcontainers.version>1.18.1</testcontainers.version>
+        <testcontainers.version>1.18.3</testcontainers.version>
         <spring-cloud-starter-bootstrap.version>4.0.3</spring-cloud-starter-bootstrap.version>
         <playtika.testcontainers.version>2.3.2</playtika.testcontainers.version>
         <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
-        <codehaus.versions-maven-plugin.version>2.15.0</codehaus.versions-maven-plugin.version>
+        <codehaus.versions-maven-plugin.version>2.16.0</codehaus.versions-maven-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
         <checkstyle.version>10.12.0</checkstyle.version>
@@ -75,7 +75,7 @@
         <maven-deploy-plugin.version>3.1.1</maven-deploy-plugin.version>
         <lombok-maven-plugin.version>1.18.20.0</lombok-maven-plugin.version>
         <git-commit-id-plugin.version>6.0.0</git-commit-id-plugin.version>
-        <maven-surefire-plugin.version>3.1.0</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
     </properties>
 
