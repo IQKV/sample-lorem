@@ -63,7 +63,7 @@
         <junit.jupiter.version>5.9.3</junit.jupiter.version>
         <archunit.version>1.0.1</archunit.version>
         <testcontainers.version>1.18.3</testcontainers.version>
-        <spring-cloud-starter-bootstrap.version>4.0.3</spring-cloud-starter-bootstrap.version>
+        <spring-cloud-starter-bootstrap.version>4.0.4</spring-cloud-starter-bootstrap.version>
         <playtika.testcontainers.version>2.3.2</playtika.testcontainers.version>
         <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.16.0</codehaus.versions-maven-plugin.version>
