@@ -40,7 +40,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <spring-boot.version>3.1.2</spring-boot.version>
         <spring-kafka.version>3.0.9</spring-kafka.version>
-        <springdoc-webmvc.version>2.1.0</springdoc-webmvc.version>
+        <springdoc-webmvc.version>2.2.0</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
 
         <micrometer.version>1.11.2</micrometer.version>
