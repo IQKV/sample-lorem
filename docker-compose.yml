@@ -2,7 +2,7 @@
 version : '3.8'
 services :
   lorem-words-processing :
-    image : "know-how.store/sample-lorem-mix-words-processing:latest"
+    image : "know-how.download/sample-lorem-mix-words-processing:latest"
     container_name : lorem-demo-words-processing
     restart : unless-stopped
     depends_on :
@@ -13,7 +13,7 @@ services :
       - KAFKA_BOOTSTRAP_SERVERS=lorem-demo-kafka:9092
 
   lorem-reports-history :
-    image : "know-how.store/sample-lorem-mix-reports-history:latest"
+    image : "know-how.download/sample-lorem-mix-reports-history:latest"
     container_name : lorem-demo-reports-history
     restart : unless-stopped
     depends_on :
