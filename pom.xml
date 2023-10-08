@@ -65,7 +65,7 @@
         <testcontainers.version>1.19.0</testcontainers.version>
         <spring-cloud-starter-bootstrap.version>4.0.4</spring-cloud-starter-bootstrap.version>
         <playtika.testcontainers.version>3.0.1</playtika.testcontainers.version>
-        <gaul.modernizer-maven-plugin.version>2.6.0</gaul.modernizer-maven-plugin.version>
+        <gaul.modernizer-maven-plugin.version>2.7.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.16.1</codehaus.versions-maven-plugin.version>
         <maven-resources-plugin.version>3.3.1</maven-resources-plugin.version>
         <maven-checkstyle-plugin.version>3.3.0</maven-checkstyle-plugin.version>
