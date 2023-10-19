@@ -7,7 +7,7 @@ and generate statistic reports.
 
 ### Technology stack
 
-Java 17, Maven, Spring Boot, bitnami/kafka:3.4, postgres:13.10.
+java 21, Maven, Spring Boot, bitnami/kafka:3.4, postgres:13.10.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
 _checkstyle_ configuration, SpotBugs, PMD etc.
@@ -70,7 +70,7 @@ It is mandatory to keep test code coverage not below **80** percents and cover a
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/ujar-org/sample-lorem-mix-kafka-restful.git
+git clone https://github.com/uJarOrg/sample-lorem-mix-kafka-restful.git
 
 cd sample-lorem-mix-kafka-restful
 ```
