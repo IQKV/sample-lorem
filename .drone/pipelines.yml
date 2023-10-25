@@ -75,21 +75,21 @@ steps :
 
 services :
   - name : db
-    image : postgres:13.11
+    image : postgres:13.12
     environment :
       POSTGRES_USER : postgres
       POSTGRES_PASSWORD : postgres
       POSTGRES_DB : svc_testing_db
 
   - name : zookeeper
-    image : docker.io/bitnami/zookeeper:3.8
+    image : docker.io/bitnami/zookeeper:3.9.1
     environment :
       ZOOKEEPER_CLIENT_PORT : 2181
       ZOOKEEPER_TICK_TIME : 2000
       ALLOW_ANONYMOUS_LOGIN : "yes"
 
   - name : kafka
-    image : docker.io/bitnami/kafka:3.4
+    image : docker.io/bitnami/kafka:3.6.0
     environment :
       KAFKA_BROKER_ID : 1
       KAFKA_ENABLE_KRAFT: "no"
