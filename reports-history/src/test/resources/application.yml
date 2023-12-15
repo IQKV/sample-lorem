@@ -34,8 +34,9 @@ spring :
     livereload :
       enabled : false
   kafka :
+    bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
     consumer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
       value-deserializer : org.springframework.kafka.support.serializer.JsonDeserializer
       group-id : reports-history
       auto-offset-reset : earliest
@@ -43,13 +44,13 @@ spring :
         isolation.level : read_committed
         spring.json.trusted.packages : '*'
     producer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
       value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
       properties :
         security.protocol : PLAINTEXT
     admin :
       properties :
-        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList}}
+        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
         security.protocol : PLAINTEXT
 
 embedded :

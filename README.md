@@ -70,7 +70,7 @@ It is mandatory to keep test code coverage not below **80** percents and cover a
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/uJarOrg/sample-lorem-mix-kafka-restful.git
+git clone https://github.com/KnowHowSpringBoot/sample-lorem-mix-kafka-restful.git
 
 cd sample-lorem-mix-kafka-restful
 ```

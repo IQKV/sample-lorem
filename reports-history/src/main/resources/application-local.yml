@@ -8,6 +8,7 @@ spring :
       hibernate.generate_statistics : true
       hibernate.format_sql : true
   kafka :
+    bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer :
       bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
       value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
