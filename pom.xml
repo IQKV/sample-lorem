@@ -42,7 +42,7 @@
         <spring-kafka.version>3.1.0</spring-kafka.version>
         <lombok.version>1.18.30</lombok.version>
         <springdoc-webmvc.version>2.3.0</springdoc-webmvc.version>
-        <spring-cloud-dependencies.version>2022.0.4</spring-cloud-dependencies.version>
+        <spring-cloud-dependencies.version>2023.0.0</spring-cloud-dependencies.version>
 
         <micrometer.version>1.12.1</micrometer.version>
         <micrometer-tracing.version>1.2.1</micrometer-tracing.version>
