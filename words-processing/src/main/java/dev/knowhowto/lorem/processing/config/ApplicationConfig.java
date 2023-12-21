@@ -22,6 +22,6 @@ import org.springframework.context.annotation.Import;
     KafkaTopicDefinitionProperties.class
 })
 @ComponentScan({"dev.knowhowto.lorem.shared.*", "dev.knowhowto.lorem.processing.*"})
-@OpenAPIDefinition(info = @Info(title = "Words Counter", version = "23.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Words Counter", version = "24.0.0"))
 class ApplicationConfig {
 }

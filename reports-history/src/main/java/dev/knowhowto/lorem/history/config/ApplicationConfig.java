@@ -29,7 +29,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
     KafkaTopicDefinitionProperties.class
 })
 @EnableSpringDataWebSupport
-@OpenAPIDefinition(info = @Info(title = "Reports", version = "23.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Reports", version = "24.0.0"))
 class ApplicationConfig {
 
 }
