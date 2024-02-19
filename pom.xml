@@ -594,6 +594,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
                     <compilerArgument>-Xlint:deprecation</compilerArgument>
+                    <parameters>true</parameters>
                 </configuration>
             </plugin>
             <plugin>
