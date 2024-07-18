@@ -3,8 +3,8 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lorem-mix-kafka-restful</artifactId>
-        <groupId>dev.knowhowto.sample-lorem-mix-kafka-restful</groupId>
+        <artifactId>lorem-mix-kafka-mvc-rest</artifactId>
+        <groupId>dev.knowhowto.sample-lorem-mix-kafka-mvc-rest</groupId>
         <version>24.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -24,7 +24,7 @@
     </properties>
     <dependencies>
         <dependency>
-            <groupId>dev.knowhowto.sample-lorem-mix-kafka-restful</groupId>
+            <groupId>dev.knowhowto.sample-lorem-mix-kafka-mvc-rest</groupId>
             <artifactId>shared</artifactId>
         </dependency>
         <dependency>
