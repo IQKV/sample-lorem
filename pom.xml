@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <name>lorem-mix-kafka-mvc-rest</name>
-    <description>Application allows to analysis of loripsum.net output and then generates statistic reports.</description>
+    <description>Application allows to do analysis of loripsum.net output and then generates statistic reports.</description>
 
     <modules>
         <module>shared</module>
