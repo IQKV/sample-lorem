@@ -540,7 +540,7 @@
                     <artifactId>jacoco-maven-plugin</artifactId>
                     <version>${jacoco-maven-plugin.version}</version>
                     <configuration>
-                        <excludes />
+                        <excludes/>
                     </configuration>
                     <executions>
                         <execution>
