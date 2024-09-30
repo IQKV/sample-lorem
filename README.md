@@ -17,7 +17,7 @@ _checkstyle_ configuration, SpotBugs, PMD etc.
 **TLDR:** All-in-one docker compose for demo propose:
 
 ``
-docker-compose -f docker-compose.yml up
+docker compose -f docker-compose.yml up
 ``
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
@@ -76,11 +76,11 @@ cd sample-lorem-mix-kafka-mvc-rest
 ```
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
-- Add new version of docker-compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-- Spin-up single instance of Kafka broker, zookeeper and Postgresql by running command:
+- Add new version of Docker Compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
+- Spin-up single instance of Kafka broker, ZooKeeper and Postgresql by running command:
 
 ```
-docker-compose -f docker-compose.dev.yml up -d
+docker compose -f compose.yaml up -d
 ```
 
 ### Running locally
@@ -117,7 +117,7 @@ Swagger UI is here: http://localhost:8086/swagger-ui.html
 ```
 
 ```
-docker-compose -f docker-compose.dev.yml down
+docker compose -f compose.yaml down
 ```
 
 ## Versioning
