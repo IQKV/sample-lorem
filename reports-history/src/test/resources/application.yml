@@ -61,7 +61,7 @@ embedded :
 
 
 lorem :
-  build :
+  info :
     description : '@project.description@'
     relative-path : '/'
     version : '@project.version@'
