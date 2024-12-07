@@ -51,7 +51,7 @@
         <logback.version>1.5.12</logback.version>
         <loki-logback-appender.version>1.5.2</loki-logback-appender.version>
 
-        <awaitility.version>4.2.0</awaitility.version>
+        <awaitility.version>4.2.2</awaitility.version>
         <mockito.version>5.14.2</mockito.version>
         <liquibase.version>4.30.0</liquibase.version>
         <jakarta-servlet-api.version>6.1.0</jakarta-servlet-api.version>
