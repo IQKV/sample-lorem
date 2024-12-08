@@ -16,6 +16,6 @@
     <property name="datetimeType" value="datetime(6)" dbms="mysql, mariadb"/>
     <property name="datetimeType" value="datetime" dbms="oracle, mssql, postgresql, h2"/>
 
-    <include file="migrations/changelog/20220508192200_create_reports_table.xml" relativeToChangelogFile="false"/>
+    <include file="migrations/changelog/20240508192200_create_reports_table.xml" relativeToChangelogFile="false"/>
 
 </databaseChangeLog>
