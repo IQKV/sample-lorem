@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.iqkv.incubator.sample.lorem</groupId>
-    <artifactId>sample-lorem-mix-kafka-mvc-rest</artifactId>
+    <artifactId>sample-mix-lorem</artifactId>
     <version>24.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>sample-lorem-mix-kafka-mvc-rest</name>
+    <name>sample-mix-lorem</name>
     <description>Application allows to do analysis of loripsum.net output and then generates statistic reports.</description>
 
     <modules>
