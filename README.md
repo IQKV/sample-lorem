@@ -1,6 +1,6 @@
 ## Words Processor
 
-Lorem ipsum text processor based on the  **[loripsum.net](https://loripsum.net/)** API.
+Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
 Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
 and generate statistic reports.
@@ -16,21 +16,19 @@ _checkstyle_ configuration, SpotBugs, PMD etc.
 
 **TLDR:** All-in-one docker compose for demo propose:
 
-``
-docker compose -f docker-compose.yml up
-``
+`docker compose -f docker-compose.yml up`
 
 | App Name             | Description                                       | REST Endpoint (with default port settings) |
-|----------------------|---------------------------------------------------|--------------------------------------------|
-| __words-processing__ | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text          |
-| __reports-history__  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history       |
+| -------------------- | ------------------------------------------------- | ------------------------------------------ |
+| **words-processing** | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text          |
+| **reports-history**  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history       |
 
 ### Environment variables
 
 Applications are highly-configurable, supports many env vars, such as:
 
 | ENV Variable                           | Description                                         | Default Value                             |
-|----------------------------------------|-----------------------------------------------------|-------------------------------------------|
+| -------------------------------------- | --------------------------------------------------- | ----------------------------------------- |
 | SERVER_PORT                            | Application port                                    | 8085, 8086                                |
 | KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                                | localhost:9092                            |
 | KAFKA_SECURITY_PROTOCOL                |                                                     | PLAINTEXT                                 |
@@ -131,4 +129,4 @@ YY.MM.MICRO
 
 1. **YY** - short year - 6, 16, 106
 1. **MM** - short month - 1, 2 ... 11, 12
-1. **MICRO** -  "patch" segment
+1. **MICRO** - "patch" segment
