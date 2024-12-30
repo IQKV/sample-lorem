@@ -49,7 +49,7 @@
         <zipkin-reporter.version>3.4.3</zipkin-reporter.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
         <logback.version>1.5.15</logback.version>
-        <loki-logback-appender.version>1.5.2</loki-logback-appender.version>
+        <loki-logback-appender.version>1.6.0</loki-logback-appender.version>
 
         <awaitility.version>4.2.2</awaitility.version>
         <mockito.version>5.14.2</mockito.version>
