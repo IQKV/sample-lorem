@@ -1,4 +1,4 @@
-## Words Processor
+## 🚀 Words Processor
 
 Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
