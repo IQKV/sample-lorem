@@ -1,59 +1,59 @@
 # This configuration is intended for staging/demo purpose
-version : '3.8'
-services :
-  lorem-words-processing :
-    image : "know-how.download/sample-lorem-mix-words-processing:latest"
-    container_name : lorem-demo-words-processing
-    restart : unless-stopped
-    depends_on :
+version: "3.8"
+services:
+  lorem-words-processing:
+    image: "know-how.download/sample-lorem-mix-words-processing:latest"
+    container_name: lorem-demo-words-processing
+    restart: unless-stopped
+    depends_on:
       - kafka
-    ports :
+    ports:
       - "8085:8085"
-    environment :
+    environment:
       - KAFKA_BOOTSTRAP_SERVERS=lorem-demo-kafka:9092
 
-  lorem-reports-history :
-    image : "know-how.download/sample-lorem-mix-reports-history:latest"
-    container_name : lorem-demo-reports-history
-    restart : unless-stopped
-    depends_on :
+  lorem-reports-history:
+    image: "know-how.download/sample-lorem-mix-reports-history:latest"
+    container_name: lorem-demo-reports-history
+    restart: unless-stopped
+    depends_on:
       - postgres
       - kafka
-    ports :
+    ports:
       - "8086:8086"
-    environment :
+    environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_db
       - KAFKA_BOOTSTRAP_SERVERS=lorem-demo-kafka:9092
       - DATASOURCE_URL=jdbc:postgresql://lorem-demo-postgres:5432/lorem_db
 
-  postgres :
-    image : "postgres:16.4"
-    container_name : lorem-demo-postgres
-    restart : unless-stopped
-    environment :
+  postgres:
+    image: "postgres:16.4"
+    container_name: lorem-demo-postgres
+    restart: unless-stopped
+    environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_db
-  zookeeper :
-    image : docker.io/bitnami/zookeeper:3.9.3
-    container_name : lorem-demo-zookeeper
-    restart : unless-stopped
-    environment :
-      ZOOKEEPER_CLIENT_PORT : 2181
-      ZOOKEEPER_TICK_TIME : 2000
-      ALLOW_ANONYMOUS_LOGIN : "yes"
-  kafka :
-    image : docker.io/bitnami/kafka:3.9.0
-    container_name : lorem-demo-kafka
-    restart : unless-stopped
-    depends_on :
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:3.9.3
+    container_name: lorem-demo-zookeeper
+    restart: unless-stopped
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+  kafka:
+    image: docker.io/bitnami/kafka:3.9.0
+    container_name: lorem-demo-kafka
+    restart: unless-stopped
+    depends_on:
       - zookeeper
-    environment :
-      KAFKA_BROKER_ID : 1
-      KAFKA_ENABLE_KRAFT : "no"
-      KAFKA_CFG_LISTENERS : PLAINTEXT://:9092
-      KAFKA_CFG_ADVERTISED_LISTENERS : PLAINTEXT://127.0.0.1:9092
-      KAFKA_CFG_ZOOKEEPER_CONNECT : zookeeper:2181
-      ALLOW_PLAINTEXT_LISTENER : "yes"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ENABLE_KRAFT: "no"
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092
+      KAFKA_CFG_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: "yes"
