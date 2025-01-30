@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 IQKV Team.
+ * Copyright 2025 IQKV Team.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,6 @@ import org.springframework.context.annotation.Import;
     KafkaTopicDefinitionProperties.class
 })
 @ComponentScan({"com.iqkv.incubator.sample.mixlorem.shared.*", "com.iqkv.incubator.sample.mixlorem.processing.*"})
-@OpenAPIDefinition(info = @Info(title = "Words Counter", version = "24.0.0"))
+@OpenAPIDefinition(info = @Info(title = "Words Counter", version = "25.0.0"))
 class ApplicationConfig {
 }
