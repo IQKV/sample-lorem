@@ -43,7 +43,7 @@
         <springdoc-webmvc.version>2.8.4</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2024.0.0</spring-cloud-dependencies.version>
 
-        <micrometer.version>1.14.3</micrometer.version>
+        <micrometer.version>1.14.4</micrometer.version>
         <micrometer-tracing.version>1.4.3</micrometer-tracing.version>
         <datasource-micrometer.version>1.0.6</datasource-micrometer.version>
         <zipkin-reporter.version>3.4.3</zipkin-reporter.version>
