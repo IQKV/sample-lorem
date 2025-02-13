@@ -68,7 +68,7 @@ It is mandatory to keep test code coverage not below **80** percents and cover a
 - Clone source code to the local machine:
 
 ```
-git clone https://github.com/KnowHowSpringBoot/sample-mix-lorem.git
+git clone https://github.com/IQKV/sample-mix-lorem.git
 
 cd sample-mix-lorem
 ```
