@@ -53,7 +53,7 @@
 
         <awaitility.version>4.2.2</awaitility.version>
         <mockito.version>5.15.2</mockito.version>
-        <liquibase.version>4.31.0</liquibase.version>
+        <liquibase.version>4.31.1</liquibase.version>
         <jakarta-servlet-api.version>6.1.0</jakarta-servlet-api.version>
         <javax-cache-api.version>1.1.1</javax-cache-api.version>
         <hibernate.version>6.6.8.Final</hibernate.version>
