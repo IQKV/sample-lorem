@@ -4,7 +4,7 @@ services:
   lorem-words-processing:
     image: "know-how.download/sample-lorem-mix-words-processing:latest"
     container_name: lorem-demo-words-processing
-    restart: unless-stopped
+    restart: no
     depends_on:
       - kafka
     ports:
@@ -15,7 +15,7 @@ services:
   lorem-reports-history:
     image: "know-how.download/sample-lorem-mix-reports-history:latest"
     container_name: lorem-demo-reports-history
-    restart: unless-stopped
+    restart: no
     depends_on:
       - postgres
       - kafka
@@ -31,7 +31,7 @@ services:
   postgres:
     image: "postgres:16.6"
     container_name: lorem-demo-postgres
-    restart: unless-stopped
+    restart: no
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
@@ -39,7 +39,7 @@ services:
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.9.3
     container_name: lorem-demo-zookeeper
-    restart: unless-stopped
+    restart: no
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
       ZOOKEEPER_TICK_TIME: 2000
@@ -47,7 +47,7 @@ services:
   kafka:
     image: docker.io/bitnami/kafka:3.9.0
     container_name: lorem-demo-kafka
-    restart: unless-stopped
+    restart: no
     depends_on:
       - zookeeper
     environment:
