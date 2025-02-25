@@ -9,7 +9,7 @@
     <packaging>pom</packaging>
 
     <name>sample-mix-lorem</name>
-    <description>Application allows to do analysis of loripsum.net output and then generates statistic reports.</description>
+    <description> The Application allows the analysis of loripsum.net output and then generates statistic reports.</description>
 
     <modules>
         <module>shared</module>
@@ -45,7 +45,7 @@
 
         <micrometer.version>1.14.4</micrometer.version>
         <micrometer-tracing.version>1.4.3</micrometer-tracing.version>
-        <datasource-micrometer.version>1.0.6</datasource-micrometer.version>
+        <datasource-micrometer.version>1.1.0</datasource-micrometer.version>
         <zipkin-reporter.version>3.5.0</zipkin-reporter.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
         <logback.version>1.5.16</logback.version>
