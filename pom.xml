@@ -48,7 +48,7 @@
         <datasource-micrometer.version>1.1.0</datasource-micrometer.version>
         <zipkin-reporter.version>3.5.0</zipkin-reporter.version>
         <logstash-logback-encoder.version>7.4</logstash-logback-encoder.version>
-        <logback.version>1.5.16</logback.version>
+        <logback.version>1.5.17</logback.version>
         <loki-logback-appender.version>1.6.0</loki-logback-appender.version>
 
         <awaitility.version>4.3.0</awaitility.version>
