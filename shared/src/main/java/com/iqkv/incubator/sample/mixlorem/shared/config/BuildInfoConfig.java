@@ -24,7 +24,7 @@ import org.springframework.core.Ordered;
 import org.springframework.web.filter.ForwardedHeaderFilter;
 
 @Configuration
-@EnableConfigurationProperties(ApplicationBuildInfoProperties.class)
+@EnableConfigurationProperties(ApplicationInfoProperties.class)
 public class BuildInfoConfig {
   @Bean
   public FilterRegistrationBean<ForwardedHeaderFilter> forwardedHeaderFilter() {

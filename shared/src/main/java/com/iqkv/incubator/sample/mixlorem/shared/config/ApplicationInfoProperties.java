@@ -21,7 +21,7 @@ import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("lorem.build")
-public record ApplicationBuildInfoProperties(@NotNull String version,
+public record ApplicationInfoProperties(@NotNull String version,
                                              @NotNull String description,
                                              @NotNull String relativePath) {
 
