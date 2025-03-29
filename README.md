@@ -7,7 +7,7 @@ and generate statistic reports.
 
 ### Technology stack
 
-java 21, Maven, Spring Boot, bitnami/kafka:3.9.0, postgres:16.6.
+java 21, Maven, Spring Boot, confluentinc/cp-kafka:7.8.2, postgres:16.6.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
 _checkstyle_ configuration, SpotBugs, PMD etc.
