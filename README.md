@@ -54,20 +54,20 @@ quality is measured by:
 
 ### Tests
 
-This project has standard JUnit tests. To run them execute this command:
+This project contains a JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, etc. You can run the test suite using
 
-```
+```bash
 ./mvnw verify -P use-testcontainers
 ```
 
-It is mandatory to keep test code coverage not below **80** percents and cover all business logic and edge cases.
+The minimum percentage of code coverage required for the workflow to pass is **80 %**.
 
 ### Pre-Requisites to run this example locally
 
 - Setup git command line tool (https://help.github.com/articles/set-up-git)
 - Clone source code to the local machine:
 
-```
+```bash
 git clone https://github.com/IQKV/sample-mix-lorem.git
 
 cd sample-mix-lorem
@@ -77,7 +77,7 @@ cd sample-mix-lorem
 - Add new version of Docker Compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
 - Spin-up single instance of Kafka broker, ZooKeeper and Postgresql by running command:
 
-```
+```bash
 docker compose -f compose.yaml up -d
 ```
 
@@ -88,13 +88,13 @@ using [Maven](https://spring.io/guides/gs/maven/). You can build a jar files and
 
 - Create jar packages:
 
-```
+```bash
 ./mvnw package
 ```
 
 - Run **words-processing** app:
 
-```
+```bash
 java -jar words-processing/target/*.jar
 ```
 
@@ -102,7 +102,7 @@ Now you can access to the Swagger UI here: http://localhost:8085/swagger-ui.html
 
 - Run **reports-history** app:
 
-```
+```bash
 java -jar reports-history/target/*.jar
 ```
 
@@ -110,11 +110,11 @@ Swagger UI is here: http://localhost:8086/swagger-ui.html
 
 ##### After all, don't forget to clean up working directory & stop dev services:
 
-```
+```bash
 ./mvnw clean
 ```
 
-```
+```bash
 docker compose -f compose.yaml down
 ```
 
