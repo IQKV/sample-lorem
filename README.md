@@ -60,7 +60,7 @@ This project contains a JUnit tests, Hamcrest matchers, Mockito test doubles, Wi
 ./mvnw verify -P use-testcontainers
 ```
 
-The minimum percentage of code coverage required for the workflow to pass is **80 %**.
+The minimum percentage of code coverage required for the workflow to pass is **80%**.
 
 ### Pre-Requisites to run this example locally
 
