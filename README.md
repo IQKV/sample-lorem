@@ -7,7 +7,7 @@ and generate statistic reports.
 
 ### Technology stack
 
-java 21, Maven, Spring Boot, confluentinc/cp-kafka:7.8.2, postgres:16.6.
+Java 21, Maven, Spring Boot, confluentinc/cp-kafka:7.8.2, postgres:16.6.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
 _checkstyle_ configuration, SpotBugs, PMD etc.
@@ -54,7 +54,7 @@ quality is measured by:
 
 ### Tests
 
-This project contains a JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, etc. You can run the test suite using
+This project contains JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, etc. You can run the test suite using
 
 ```bash
 ./mvnw verify -P use-testcontainers
