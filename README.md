@@ -68,9 +68,9 @@ The minimum percentage of code coverage required for the workflow to pass is **8
 - Clone source code to the local machine:
 
 ```bash
-git clone https://github.com/IQKV/sample-mix-lorem.git
+git clone https://github.com/IQKV/sample-lorem.git
 
-cd sample-mix-lorem
+cd sample-lorem
 ```
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
