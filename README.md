@@ -3,16 +3,16 @@
 Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
 Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
-and generate statistic reports.
+and generate statistical reports.
 
-### Technology stack
+### 💡 Technology stack
 
 Java 21, Maven, Spring Boot, confluentinc/cp-kafka:7.8.2, postgres:16.6.
 
 _Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
-_checkstyle_ configuration, SpotBugs, PMD etc.
+_checkstyle_ configuration, SpotBugs, PMD, etc.
 
-### Applications
+### ✨ Applications
 
 **TLDR:** All-in-one docker compose for demo propose:
 
@@ -23,9 +23,9 @@ _checkstyle_ configuration, SpotBugs, PMD etc.
 | **words-processing** | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text          |
 | **reports-history**  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history       |
 
-### Environment variables
+### ⚙️ Environment variables
 
-Applications are highly-configurable, supports many env vars, such as:
+Applications are highly configurable, support many env vars, such as:
 
 | ENV Variable                           | Description                                         | Default Value                             |
 | -------------------------------------- | --------------------------------------------------- | ----------------------------------------- |
@@ -42,7 +42,7 @@ Applications are highly-configurable, supports many env vars, such as:
 | DATASOURCE_PASSWORD                    |                                                     | postgres                                  |
 | DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                     |
 
-## Code conventions
+## 📚 Code conventions
 
 The code follows [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
 quality is measured by:
@@ -64,8 +64,8 @@ The minimum percentage of code coverage required for the workflow to pass is **8
 
 ### Pre-Requisites to run this example locally
 
-- Setup git command line tool (https://help.github.com/articles/set-up-git)
-- Clone source code to the local machine:
+- Set up git command line tool (https://help.github.com/articles/set-up-git)
+- Clone the source code to the local machine:
 
 ```bash
 git clone https://github.com/IQKV/sample-lorem.git
@@ -75,7 +75,7 @@ cd sample-lorem
 
 - Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
 - Add new version of Docker Compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-- Spin-up single instance of Kafka broker, ZooKeeper and Postgresql by running command:
+- Spin up a single instance of Kafka broker, ZooKeeper, and Postgresql by running the command:
 
 ```bash
 docker compose -f compose.yaml up -d
@@ -84,7 +84,7 @@ docker compose -f compose.yaml up -d
 ### Running locally
 
 This application is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built
-using [Maven](https://spring.io/guides/gs/maven/). You can build a jar files and run it from the command line:
+using [Maven](https://spring.io/guides/gs/maven/). You can build jar files and run it from the command line:
 
 - Create jar packages:
 
@@ -108,7 +108,7 @@ java -jar reports-history/target/*.jar
 
 Swagger UI is here: http://localhost:8086/swagger-ui.html
 
-##### After all, don't forget to clean up working directory & stop dev services:
+##### After all, don't forget to clean up the working directory & stop dev services:
 
 ```bash
 ./mvnw clean
