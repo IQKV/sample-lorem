@@ -2,7 +2,7 @@
 
 Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
-Spring Boot RESTful microservices example (including Swagger UI), which allows to fetch, process dummy text,
+Spring Boot RESTful microservices example (including Swagger UI), which allows fetching, processing dummy text,
 and generate statistical reports.
 
 ### 💡 Technology stack
@@ -54,7 +54,7 @@ quality is measured by:
 
 ### Tests
 
-This project contains JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, etc. You can run the test suite using
+This project includes JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, and more. You can run the test suite using
 
 ```bash
 ./mvnw verify -P use-testcontainers
@@ -118,15 +118,3 @@ Swagger UI is here: http://localhost:8086/swagger-ui.html
 docker compose -f compose.yaml down
 ```
 
-> ### Versioning
->
-> Project uses a three-segment [CalVer](https://calver.org/) scheme, with a short year in the major version slot, short month in the minor version slot, and micro/patch version in the third
-> and final slot.
->
-> ```
->  YY.MM.MICRO
-> ```
->
-> 1. **YY** - short year - 6, 16, 106
-> 2. **MM** - short month - 1, 2 ... 11, 12
-> 3. **MICRO** - "patch" segment
