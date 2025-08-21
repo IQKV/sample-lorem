@@ -12,7 +12,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=lorem_db
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.8.2
+    image: confluentinc/cp-zookeeper:7.8.3
     container_name: dev-lorem-zookeeper
     restart: no
     environment:
@@ -20,7 +20,7 @@ services:
       ZOOKEEPER_SERVER_ID: 1
       ZOOKEEPER_SERVERS: zookeeper:2888:3888
   kafka:
-    image: confluentinc/cp-kafka:7.8.2
+    image: confluentinc/cp-kafka:7.8.3
     container_name: dev-lorem-kafka
     restart: no
     depends_on:
