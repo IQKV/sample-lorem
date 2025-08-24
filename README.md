@@ -117,4 +117,3 @@ Swagger UI is here: http://localhost:8086/swagger-ui.html
 ```bash
 docker compose -f compose.yaml down
 ```
-
