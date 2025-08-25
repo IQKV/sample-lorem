@@ -17,10 +17,10 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 ### 🧩 Modules
 
-| Module | Description | Default port | Main endpoint |
-| --- | --- | --- | --- |
-| `words-processing` | Calls loripsum.net, analyzes text, publishes a report to Kafka and returns it | 8085 | `GET /api/v1/text?p={1..10}&l={short|medium|verylong}` |
-| `reports-history` | Consumes reports from Kafka and stores in Postgres; exposes pageable history | 8086 | `GET /api/v1/history?page=0&size=20&sort=id,desc` |
+| Module             | Description                                                                   | Default port | Main endpoint                                     |
+| ------------------ | ----------------------------------------------------------------------------- | ------------ | ------------------------------------------------- | ------ | ---------- |
+| `words-processing` | Calls loripsum.net, analyzes text, publishes a report to Kafka and returns it | 8085         | `GET /api/v1/text?p={1..10}&l={short              | medium | verylong}` |
+| `reports-history`  | Consumes reports from Kafka and stores in Postgres; exposes pageable history  | 8086         | `GET /api/v1/history?page=0&size=20&sort=id,desc` |
 
 Swagger UI: `http://localhost:8085/swagger-ui.html` and `http://localhost:8086/swagger-ui.html`.
 
@@ -35,6 +35,7 @@ docker compose -f docker-compose.yml up
 ```
 
 Once started:
+
 - Words Processing API: `http://localhost:8085/api/v1/text`
 - Reports History API: `http://localhost:8086/api/v1/history`
 
@@ -203,19 +204,19 @@ java -jar reports-history/target/*.jar
 
 Applications support environment variables (see `words-processing/src/main/resources/application.yml` and `reports-history/src/main/resources/application.yml`). Common ones:
 
-| Variable | Description | Default |
-| --- | --- | --- |
-| `SERVER_PORT` | HTTP port | `8085` (words), `8086` (history) |
-| `KAFKA_BOOTSTRAP_SERVERS` | Kafka broker list | `localhost:9092` |
-| `KAFKA_SECURITY_PROTOCOL` | Security protocol | `PLAINTEXT` |
-| `KAFKA_TOPIC_WORDS_PROCESSED` | Topic for processed reports | `words.processed` |
-| `KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED` | Topic partitions | `4` |
-| `KAFKA_CONSUMER_THREADS` | Consumer threads (history) | `4` |
-| `KAFKA_CONSUMERS_GROUP` | Consumer group (history) | `reports-history` |
-| `KAFKA_ADMIN_CREATES_TOPICS` | Auto-create topics on startup | `true` |
-| `DATASOURCE_URL` | JDBC URL (history) | `jdbc:postgresql://localhost:5432/lorem_db` |
-| `DATASOURCE_USERNAME` | DB username (history) | `postgres` |
-| `DATASOURCE_PASSWORD` | DB password (history) | `postgres` |
+| Variable                                 | Description                   | Default                                     |
+| ---------------------------------------- | ----------------------------- | ------------------------------------------- |
+| `SERVER_PORT`                            | HTTP port                     | `8085` (words), `8086` (history)            |
+| `KAFKA_BOOTSTRAP_SERVERS`                | Kafka broker list             | `localhost:9092`                            |
+| `KAFKA_SECURITY_PROTOCOL`                | Security protocol             | `PLAINTEXT`                                 |
+| `KAFKA_TOPIC_WORDS_PROCESSED`            | Topic for processed reports   | `words.processed`                           |
+| `KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED` | Topic partitions              | `4`                                         |
+| `KAFKA_CONSUMER_THREADS`                 | Consumer threads (history)    | `4`                                         |
+| `KAFKA_CONSUMERS_GROUP`                  | Consumer group (history)      | `reports-history`                           |
+| `KAFKA_ADMIN_CREATES_TOPICS`             | Auto-create topics on startup | `true`                                      |
+| `DATASOURCE_URL`                         | JDBC URL (history)            | `jdbc:postgresql://localhost:5432/lorem_db` |
+| `DATASOURCE_USERNAME`                    | DB username (history)         | `postgres`                                  |
+| `DATASOURCE_PASSWORD`                    | DB password (history)         | `postgres`                                  |
 
 ---
 
