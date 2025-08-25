@@ -1,119 +1,260 @@
 ## 🚀 Words Processor
 
+[![Java](https://img.shields.io/badge/Java-21-007396?logo=openjdk)](https://openjdk.org/projects/jdk/21/)
+[![Build](https://img.shields.io/badge/Build-Maven-informational?logo=apachemaven)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
+
 Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
-Spring Boot RESTful microservices example (including Swagger UI), which allows fetching, processing dummy text,
-and generate statistical reports.
+A Spring Boot microservices example showing how to fetch and process dummy text, publish results to Kafka, and expose a pageable reports history via REST. Includes Swagger UI, health checks, metrics, and a ready-to-run demo stack.
 
-### 💡 Technology stack
+### 💡 Tech stack
 
-Java 21, Maven, Spring Boot, confluentinc/cp-kafka:7.8.3, postgres:16.6.
+- **Runtime**: Java 21, Spring Boot
+- **Messaging/DB**: Kafka (Confluent 7.8.3), PostgreSQL 16.6, Liquibase
+- **Build/Tooling**: Maven, Checkstyle, PMD, SpotBugs, Testcontainers, WireMock
+- **Ops**: Docker Compose (dev and demo), Prometheus, Grafana, SonarQube
 
-_Including utils:_ liquibase, WireMock, Kafka & Postgres testcontainers, Kafka healthcheck feature, docker-compose._dev_.yml,
-_checkstyle_ configuration, SpotBugs, PMD, etc.
+### 🧩 Modules
 
-### ✨ Applications
+| Module | Description | Default port | Main endpoint |
+| --- | --- | --- | --- |
+| `words-processing` | Calls loripsum.net, analyzes text, publishes a report to Kafka and returns it | 8085 | `GET /api/v1/text?p={1..10}&l={short|medium|verylong}` |
+| `reports-history` | Consumes reports from Kafka and stores in Postgres; exposes pageable history | 8086 | `GET /api/v1/history?page=0&size=20&sort=id,desc` |
 
-**TLDR:** All-in-one docker compose for demo propose:
+Swagger UI: `http://localhost:8085/swagger-ui.html` and `http://localhost:8086/swagger-ui.html`.
 
-`docker compose -f docker-compose.yml up`
+---
 
-| App Name             | Description                                       | REST Endpoint (with default port settings) |
-| -------------------- | ------------------------------------------------- | ------------------------------------------ |
-| **words-processing** | Handle http rq, process rs text & generate report | http://localhost:8085/api/v1/text          |
-| **reports-history**  | Provide pageable processing reports list          | http://localhost:8086/api/v1/history       |
+## ⚡ Quick start (demo stack)
 
-### ⚙️ Environment variables
-
-Applications are highly configurable, support many env vars, such as:
-
-| ENV Variable                           | Description                                         | Default Value                             |
-| -------------------------------------- | --------------------------------------------------- | ----------------------------------------- |
-| SERVER_PORT                            | Application port                                    | 8085, 8086                                |
-| KAFKA_BOOTSTRAP_SERVERS                | Kafka Broker address                                | localhost:9092                            |
-| KAFKA_SECURITY_PROTOCOL                |                                                     | PLAINTEXT                                 |
-| KAFKA_TOPIC_WORDS_PROCESSED            | Topic name                                          | words.processed                           |
-| KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED | Topic partitions                                    | 4                                         |
-| KAFKA_CONSUMER_THREADS                 | Consumer threads count,<br>respective to partitions | 4                                         |
-| KAFKA_CONSUMERS_GROUP                  | Consumer group name                                 | reports-history                           |
-| KAFKA_ADMIN_CREATES_TOPICS             | Enables Kafka Admin for topic creation              | true                                      |
-| DATASOURCE_URL                         |                                                     | jdbc:postgresql://localhost:5432/lorem_db |
-| DATASOURCE_USERNAME                    |                                                     | postgres                                  |
-| DATASOURCE_PASSWORD                    |                                                     | postgres                                  |
-| DATASOURCE_DRIVER                      |                                                     | org.postgresql.Driver                     |
-
-## 📚 Code conventions
-
-The code adheres to the [Google Code Conventions](https://google.github.io/styleguide/javaguide.html). Code
-quality is measured by:
-
-- [SonarQube](https://docs.sonarsource.com/)
-- [PMD](https://pmd.github.io/)
-- [CheckStyle](https://checkstyle.sourceforge.io/)
-- [SpotBugs](https://spotbugs.github.io/)
-
-### Tests
-
-This project includes JUnit tests, Hamcrest matchers, Mockito test doubles, Wiremock stubs, and more. You can run the test suite using
+Run the pre-built images with all dependencies (Kafka, Postgres) in one go:
 
 ```bash
-./mvnw verify -P use-testcontainers
+docker compose -f docker-compose.yml up
 ```
 
-The minimum percentage of code coverage required for the workflow to pass is **80%**.
+Once started:
+- Words Processing API: `http://localhost:8085/api/v1/text`
+- Reports History API: `http://localhost:8086/api/v1/history`
 
-### Pre-Requisites to run this example locally
+Example calls:
 
-- Set up git command line tool (https://help.github.com/articles/set-up-git)
-- Clone the source code to the local machine:
+```bash
+curl "http://localhost:8085/api/v1/text?p=2&l=short"
+
+curl "http://localhost:8086/api/v1/history?page=0&size=10&sort=id,desc"
+```
+
+Stop the demo stack:
+
+```bash
+docker compose -f docker-compose.yml down
+```
+
+---
+
+## 🛠 Local development
+
+### Prerequisites
+
+- Git, JDK 21, Docker, Docker Compose
+
+Clone the repo:
 
 ```bash
 git clone https://github.com/IQKV/sample-lorem.git
-
 cd sample-lorem
 ```
 
-- Install Docker [https://docs.docker.com/get-docker/](https://docs.docker.com/get-docker/)
-- Add new version of Docker Compose [https://docs.docker.com/compose/install/](https://docs.docker.com/compose/install/)
-- Spin up a single instance of Kafka broker, ZooKeeper, and Postgresql by running the command:
+### Bring up dev infrastructure (Kafka, ZK, Postgres, optional observability)
 
 ```bash
 docker compose -f compose.yaml up -d
 ```
 
-### Running locally
+This exposes Postgres on `localhost:5432` and Kafka on `localhost:9092`. Optional services: Prometheus, Grafana, SonarQube (see `compose.yaml`).
 
-This application is a [Spring Boot](https://spring.io/guides/gs/spring-boot) application built
-using [Maven](https://spring.io/guides/gs/maven/). You can build jar files and run it from the command line:
-
-- Create jar packages:
+### Build
 
 ```bash
-./mvnw package
+./mvnw -q -DskipTests package
 ```
 
-- Run **words-processing** app:
+### Run services locally
+
+- Words Processing:
 
 ```bash
 java -jar words-processing/target/*.jar
 ```
 
-Now you can access to the Swagger UI here: http://localhost:8085/swagger-ui.html
+Open Swagger UI: `http://localhost:8085/swagger-ui.html`
 
-- Run **reports-history** app:
+- Reports History:
 
 ```bash
 java -jar reports-history/target/*.jar
 ```
 
-Swagger UI is here: http://localhost:8086/swagger-ui.html
+Open Swagger UI: `http://localhost:8086/swagger-ui.html`
 
-##### After all, don't forget to clean up the working directory & stop dev services:
+### Validate APIs
+
+```bash
+curl "http://localhost:8085/api/v1/text?p=3&l=medium"
+curl "http://localhost:8086/api/v1/history?page=0&size=5&sort=id,desc"
+```
+
+---
+
+## 📦 Maven multi‑module structure
+
+This repository is a Maven aggregator project (`packaging=pom`) with three modules:
+
+```text
+sample-lorem
+├─ shared            (artifactId: sample-lorem-shared)
+├─ words-processing  (artifactId: sample-lorem-words-processing)
+└─ reports-history   (artifactId: sample-lorem-reports-history)
+```
+
+Root coordinates: `com.iqkv:sample-lorem:25.0.0-SNAPSHOT`
+
+Dependency graph:
+
+```text
+sample-lorem (aggregator)
+├─► shared
+│
+├─► words-processing ──┐
+│        ▲             │
+│        │             │ depends on
+│        └─────────────┘
+│
+├─► reports-history ───┐
+         ▲             │
+         │             │ depends on
+         └─────────────┘
+```
+
+### Common commands (from repo root)
+
+- Build everything:
+
+```bash
+./mvnw -q clean install
+```
+
+- Build and run only `words-processing`, building its deps (`-am`):
+
+```bash
+./mvnw -q -pl words-processing -am clean package
+java -jar words-processing/target/*.jar
+```
+
+- Build and run only `reports-history`:
+
+```bash
+./mvnw -q -pl reports-history -am clean package
+java -jar reports-history/target/*.jar
+```
+
+- Run tests with Testcontainers profile for all modules:
+
+```bash
+./mvnw verify -P use-testcontainers
+```
+
+- Limit actions to a module (e.g., unit tests only for `shared`):
+
+```bash
+./mvnw -q -pl shared test
+```
+
+### Run with Spring Boot plugin
+
+- Start `words-processing` (build dependencies and run):
+
+```bash
+./mvnw -q -pl words-processing -am spring-boot:run
+```
+
+- Start `reports-history`:
+
+```bash
+./mvnw -q -pl reports-history -am spring-boot:run
+```
+
+- Optionally enable the `dev` profile while running:
+
+```bash
+./mvnw -q -pl words-processing -am spring-boot:run -Dspring-boot.run.profiles=dev
+./mvnw -q -pl reports-history -am spring-boot:run -Dspring-boot.run.profiles=dev
+```
+
+### Useful profiles
+
+- `dev`: adds Spring Boot DevTools to the service modules
+- `use-testcontainers`: enables embedded Kafka/Postgres testing
+- `use-qulice`: enables additional static analysis checks
+
+## ⚙️ Configuration
+
+Applications support environment variables (see `words-processing/src/main/resources/application.yml` and `reports-history/src/main/resources/application.yml`). Common ones:
+
+| Variable | Description | Default |
+| --- | --- | --- |
+| `SERVER_PORT` | HTTP port | `8085` (words), `8086` (history) |
+| `KAFKA_BOOTSTRAP_SERVERS` | Kafka broker list | `localhost:9092` |
+| `KAFKA_SECURITY_PROTOCOL` | Security protocol | `PLAINTEXT` |
+| `KAFKA_TOPIC_WORDS_PROCESSED` | Topic for processed reports | `words.processed` |
+| `KAFKA_TOPIC_PARTITIONS_WORDS_PROCESSED` | Topic partitions | `4` |
+| `KAFKA_CONSUMER_THREADS` | Consumer threads (history) | `4` |
+| `KAFKA_CONSUMERS_GROUP` | Consumer group (history) | `reports-history` |
+| `KAFKA_ADMIN_CREATES_TOPICS` | Auto-create topics on startup | `true` |
+| `DATASOURCE_URL` | JDBC URL (history) | `jdbc:postgresql://localhost:5432/lorem_db` |
+| `DATASOURCE_USERNAME` | DB username (history) | `postgres` |
+| `DATASOURCE_PASSWORD` | DB password (history) | `postgres` |
+
+---
+
+## 📈 Observability
+
+- Prometheus scrapes `:8080/actuator/prometheus` for each service
+- Grafana dashboards are provisioned under `src/main/docker/grafana/provisioning/`
+
+Start them via `compose.yaml` (already included when you run `docker compose -f compose.yaml up -d`).
+
+---
+
+## 🧪 Testing
+
+JUnit 5, Hamcrest, Mockito, Testcontainers, WireMock.
+
+```bash
+./mvnw verify -P use-testcontainers
+```
+
+The minimum required code coverage is **80%**.
+
+---
+
+## 📚 Code quality
+
+The code follows the [Google Java Style](https://google.github.io/styleguide/javaguide.html) and is checked by Checkstyle, PMD, and SpotBugs. Optional SonarQube is available in `compose.yaml`.
+
+---
+
+## 🧹 Cleanup
 
 ```bash
 ./mvnw clean
-```
-
-```bash
 docker compose -f compose.yaml down
 ```
+
+---
+
+## 📄 License
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE).
