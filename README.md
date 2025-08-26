@@ -30,7 +30,7 @@ Swagger UI: `http://localhost:8085/swagger-ui.html` and `http://localhost:8086/s
 
 Run the pre-built images with all dependencies (Kafka, Postgres) in one go:
 
-```bash
+```shell script
 docker compose -f docker-compose.yml up
 ```
 
@@ -41,7 +41,7 @@ Once started:
 
 Example calls:
 
-```bash
+```shell script
 curl "http://localhost:8085/api/v1/text?p=2&l=short"
 
 curl "http://localhost:8086/api/v1/history?page=0&size=10&sort=id,desc"
@@ -49,7 +49,7 @@ curl "http://localhost:8086/api/v1/history?page=0&size=10&sort=id,desc"
 
 Stop the demo stack:
 
-```bash
+```shell script
 docker compose -f docker-compose.yml down
 ```
 
@@ -63,14 +63,14 @@ docker compose -f docker-compose.yml down
 
 Clone the repo:
 
-```bash
+```shell script
 git clone https://github.com/IQKV/sample-lorem.git
 cd sample-lorem
 ```
 
 ### Bring up dev infrastructure (Kafka, ZK, Postgres, optional observability)
 
-```bash
+```shell script
 docker compose -f compose.yaml up -d
 ```
 
@@ -78,7 +78,7 @@ This exposes Postgres on `localhost:5432` and Kafka on `localhost:9092`. Optiona
 
 ### Build
 
-```bash
+```shell script
 ./mvnw -q -DskipTests package
 ```
 
@@ -86,7 +86,7 @@ This exposes Postgres on `localhost:5432` and Kafka on `localhost:9092`. Optiona
 
 - Words Processing:
 
-```bash
+```shell script
 java -jar words-processing/target/*.jar
 ```
 
@@ -94,7 +94,7 @@ Open Swagger UI: `http://localhost:8085/swagger-ui.html`
 
 - Reports History:
 
-```bash
+```shell script
 java -jar reports-history/target/*.jar
 ```
 
@@ -102,7 +102,7 @@ Open Swagger UI: `http://localhost:8086/swagger-ui.html`
 
 ### Validate APIs
 
-```bash
+```shell script
 curl "http://localhost:8085/api/v1/text?p=3&l=medium"
 curl "http://localhost:8086/api/v1/history?page=0&size=5&sort=id,desc"
 ```
@@ -143,33 +143,33 @@ sample-lorem (aggregator)
 
 - Build everything:
 
-```bash
+```shell script
 ./mvnw -q clean install
 ```
 
 - Build and run only `words-processing`, building its deps (`-am`):
 
-```bash
+```shell script
 ./mvnw -q -pl words-processing -am clean package
 java -jar words-processing/target/*.jar
 ```
 
 - Build and run only `reports-history`:
 
-```bash
+```shell script
 ./mvnw -q -pl reports-history -am clean package
 java -jar reports-history/target/*.jar
 ```
 
 - Run tests with Testcontainers profile for all modules:
 
-```bash
+```shell script
 ./mvnw verify -P use-testcontainers
 ```
 
 - Limit actions to a module (e.g., unit tests only for `shared`):
 
-```bash
+```shell script
 ./mvnw -q -pl shared test
 ```
 
@@ -177,19 +177,19 @@ java -jar reports-history/target/*.jar
 
 - Start `words-processing` (build dependencies and run):
 
-```bash
+```shell script
 ./mvnw -q -pl words-processing -am spring-boot:run
 ```
 
 - Start `reports-history`:
 
-```bash
+```shell script
 ./mvnw -q -pl reports-history -am spring-boot:run
 ```
 
 - Optionally enable the `dev` profile while running:
 
-```bash
+```shell script
 ./mvnw -q -pl words-processing -am spring-boot:run -Dspring-boot.run.profiles=dev
 ./mvnw -q -pl reports-history -am spring-boot:run -Dspring-boot.run.profiles=dev
 ```
@@ -233,7 +233,7 @@ Start them via `compose.yaml` (already included when you run `docker compose -f 
 
 JUnit 5, Hamcrest, Mockito, Testcontainers, WireMock.
 
-```bash
+```shell script
 ./mvnw verify -P use-testcontainers
 ```
 
@@ -249,7 +249,7 @@ The code follows the [Google Java Style](https://google.github.io/styleguide/jav
 
 ## 🧹 Cleanup
 
-```bash
+```shell script
 ./mvnw clean
 docker compose -f compose.yaml down
 ```
