@@ -19,7 +19,7 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 | Module             | Description                                                                   | Default port | Main endpoint                                     |        |            |
 | ------------------ | ----------------------------------------------------------------------------- | ------------ | ------------------------------------------------- | ------ | ---------- |
-| `words-processing` | Calls loripsum.net, analyzes text, publishes a report to Kafka and returns it | 8085         | `GET /api/v1/text?p={1..10}&l={short              | medium | verylong}` |
+| `words-processing` | Calls loripsum.net, analyzes text, publishes a report to Kafka and returns it | 8085         | `GET /api/v1/text?p={1..10}&l={short              | medium | verylong`  |
 | `reports-history`  | Consumes reports from Kafka and stores in Postgres; exposes pageable history  | 8086         | `GET /api/v1/history?page=0&size=20&sort=id,desc` |        |            |
 
 Swagger UI: `http://localhost:8085/swagger-ui.html` and `http://localhost:8086/swagger-ui.html`.
