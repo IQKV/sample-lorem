@@ -16,9 +16,9 @@
 
 package com.github.dimdnk.sample.lorem.processing.web;
 
+import static com.github.dimdnk.sample.lorem.processing.util.TestUtils.getFileAsString;
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
-import static com.github.dimdnk.sample.lorem.processing.util.TestUtils.getFileAsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
