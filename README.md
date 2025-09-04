@@ -120,7 +120,7 @@ sample-lorem
 └─ reports-history   (artifactId: sample-lorem-reports-history)
 ```
 
-Root coordinates: `com.iqkv:sample-lorem:25.0.0-SNAPSHOT`
+Root coordinates: `com.github.dimdnk:sample-lorem:25.0.0-SNAPSHOT`
 
 Dependency graph:
 

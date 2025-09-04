@@ -20,7 +20,7 @@
         <sonar.coverage.exclusions>**/*Config*.java,**/*Properties.java,**/*Test.java,**/Test*.java</sonar.coverage.exclusions>
         <checkstyle.skip>false</checkstyle.skip>
         <maven.gitcommitid.skip>false</maven.gitcommitid.skip>
-        <start-class>com.iqkv.sample.lorem.processing.WordsProcessingApplication</start-class>
+        <start-class>com.github.dimdnk.sample.lorem.processing.WordsProcessingApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
