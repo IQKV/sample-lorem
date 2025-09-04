@@ -40,14 +40,14 @@ record ReportsResourceIT(@Autowired MockMvc mockMvc) {
   @SneakyThrows
   @ParameterizedTest
   @MethodSource("provideReports")
-  void shouldReceiveAllReports (String apiUrl, String result){
+  void shouldReceiveAllReports(String apiUrl, String result) {
     mockMvc.perform(get(apiUrl))
         .andDo(print())
         .andExpect(status().isOk())
         .andExpect(content().json(result, false));
   }
 
-  private static Stream<Arguments> provideReports () {
+  private static Stream<Arguments> provideReports() {
     return Stream.of(
         Arguments.of(
             "/api/v1/history?size=2",
