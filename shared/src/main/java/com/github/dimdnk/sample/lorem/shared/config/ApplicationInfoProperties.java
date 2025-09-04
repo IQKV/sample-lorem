@@ -22,8 +22,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("lorem.build")
 public record ApplicationInfoProperties(@NotNull String version,
-                                             @NotNull String description,
-                                             @NotNull String relativePath) {
+                                        @NotNull String description,
+                                        @NotNull String relativePath) {
 
   public String getVersion() {
     return version();

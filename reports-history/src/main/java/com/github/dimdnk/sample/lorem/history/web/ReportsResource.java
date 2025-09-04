@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.RestController;
 record ReportsResource(ReportRepository reportRepository) {
 
   @GetMapping("/v1/history")
-  ResponseEntity<List<Report>> findAll(@ParameterObject final Pageable pageable) {
+  ResponseEntity<List<Report>> findAll ( @ParameterObject final Pageable pageable){
     return new ResponseEntity<>(reportRepository.findAllByOrderByIdDesc(pageable), HttpStatus.OK);
   }
 }
