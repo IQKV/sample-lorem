@@ -64,7 +64,7 @@ docker compose -f docker-compose.yml down
 Clone the repo:
 
 ```shell script
-git clone https://github.com/IQKV/sample-lorem.git
+git clone https://github.com/dimdnk/sample-lorem.git
 cd sample-lorem
 ```
 
