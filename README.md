@@ -245,6 +245,17 @@ The minimum required code coverage is **80%**.
 
 The code follows the [Google Java Style](https://google.github.io/styleguide/javaguide.html) and is checked by Checkstyle, PMD, and SpotBugs. Optional SonarQube is available in `compose.yaml`.
 
+
+## 📏 Cursor Rules
+
+The project includes Cursor Editor rules for consistent development practices:
+
+- **Java Language Best Practices**: Rules for code style, performance, security, and testing to ensure clean, maintainable, and efficient Java code.
+- **Spring Boot Best Practices**: Guidelines for proper implementation of Spring Boot patterns, dependency injection, configuration, and RESTful API design.
+
+These rules are available in the `.cursor/rules` directory and are automatically applied when using the Cursor Editor.
+
+
 ---
 
 ## 🧹 Cleanup
