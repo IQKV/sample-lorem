@@ -57,7 +57,7 @@
         <jakarta-servlet-api.version>6.1.0</jakarta-servlet-api.version>
         <javax-cache-api.version>1.1.1</javax-cache-api.version>
         <hibernate.version>6.6.16.Final</hibernate.version>
-        <postgresql.version>42.7.7</postgresql.version>
+        <postgresql.version>42.7.8</postgresql.version>
         <ehcache.version>3.11.1</ehcache.version>
         <junit.jupiter-params.version>5.12.2</junit.jupiter-params.version>
         <archunit.version>1.4.1</archunit.version>
