@@ -10,7 +10,7 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 ### 💡 Tech stack
 
-- **Runtime**: Java 21, Spring Boot
+- **Runtime**: Java 25, Spring Boot
 - **Messaging/DB**: Kafka (Confluent 7.8.3), PostgreSQL 16.6, Liquibase
 - **Build/Tooling**: Maven, Checkstyle, PMD, SpotBugs, Testcontainers, WireMock
 - **Ops**: Docker Compose (dev and demo), Prometheus, Grafana, SonarQube
@@ -59,7 +59,7 @@ docker compose -f docker-compose.yml down
 
 ### Prerequisites
 
-- Git, JDK 21, Docker, Docker Compose
+- Git, JDK 25, Docker, Docker Compose
 
 Clone the repo:
 
@@ -120,7 +120,7 @@ sample-lorem
 └─ reports-history   (artifactId: sample-lorem-reports-history)
 ```
 
-Root coordinates: `com.github.dimdnk:sample-lorem:25.0.0-SNAPSHOT`
+Root coordinates: `com.iqkv:sample-lorem:0.25.0-SNAPSHOT`
 
 Dependency graph:
 
