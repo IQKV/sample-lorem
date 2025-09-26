@@ -1,5 +1,5 @@
 {
-  "name": "@dimdnk/sample-lorem",
+  "name": "@iqkv/sample-lorem",
   "version": "25.0.0",
   "private": true,
   "description": "Provide an optional Git commit hooks.",
