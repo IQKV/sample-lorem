@@ -223,7 +223,7 @@ Applications support environment variables (see `words-processing/src/main/resou
 ## 📈 Observability
 
 - Prometheus scrapes `:8080/actuator/prometheus` for each service
-- Grafana dashboards are provisioned under `src/main/docker/grafana/provisioning/`
+- Grafana dashboards are provisioned under `docker/grafana/provisioning/`
 
 Start them via `compose.yaml` (already included when you run `docker compose -f compose.yaml up -d`).
 
