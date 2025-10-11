@@ -49,23 +49,31 @@ api → application → domain ← infrastructure
 
 #### 1. Java Pro Agent (`java-pro.md`)
 
-**Purpose**: Expert Java 25+ development with Spring Boot 3.x and modern JVM features
+**Purpose**: Expert Java 21+ development with Spring Boot 3.x and modern JVM features
 **Responsibilities**:
 
-- Modern Java feature implementation (virtual threads, pattern matching, records)
-- Spring Boot 3.x architecture and best practices
-- Performance optimization and JVM tuning
-- Code generation and refactoring with modern patterns
-- Testing strategy development and implementation
-- Cloud-native application development
+- **Modern Java Features**: Records, pattern matching, text blocks, sealed classes
+- **Spring Boot 3.x**: Auto-configuration, actuator endpoints, WebMvc patterns
+- **Performance Optimization**: Virtual threads, GC tuning, memory management
+- **Code Quality**: Clean code principles, SOLID design patterns
+- **Testing Excellence**: JUnit 5, Testcontainers, MockMvc, integration testing
+- **Cloud-Native Development**: Docker, health checks, observability
 
 **Activation Triggers**:
 
-- `*.java`, `pom.xml`, `application.yml`, `Dockerfile` file modifications
-- Performance optimization requests
-- Architecture reviews and modernization
-- Testing implementation and coverage improvement
-- Spring Boot upgrades and migration
+- `*.java`, `pom.xml`, `application.yml`, `Dockerfile` modifications
+- Performance optimization and JVM tuning requests
+- Architecture reviews and Spring Boot modernization
+- Testing strategy implementation and coverage improvement
+- Dependency updates and security vulnerability fixes
+
+**Code Review Focus**:
+
+- Modern Java feature adoption (records over POJOs)
+- Spring Boot best practices (constructor injection, proper annotations)
+- Performance implications (N+1 queries, memory leaks)
+- Security considerations (input validation, SQL injection prevention)
+- Test coverage and quality (unit vs integration test balance)
 
 #### 2. Spring Security Expert (`spring-security-expert.md`)
 
