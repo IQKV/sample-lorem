@@ -12,7 +12,7 @@ Use the **java-pro** subagent to perform a comprehensive code review of Java Spr
 ### 1. Code Quality Assessment
 
 - **Architecture Patterns**: Verify adherence to Spring Boot best practices and SOLID principles
-- **Modern Java Features**: Ensure proper use of Java 25+ features (records, pattern matching, virtual threads)
+- **Modern Java Features**: Ensure proper use of Java 21+ features (records, pattern matching, virtual threads)
 - **Spring Conventions**: Validate proper use of annotations, dependency injection, and configuration
 - **Code Style**: Check naming conventions, method length, class organization
 

@@ -14,7 +14,7 @@ Coordinate and delegate tasks to specialized agents based on the nature of the r
 
 ### 1. Java Pro Agent
 
-- **Expertise**: Modern Java 25+ features, Spring Boot 3.x, architecture patterns
+- **Expertise**: Modern Java 21+ features, Spring Boot 3.x, architecture patterns
 - **Use Cases**: Code generation, refactoring, modern feature adoption, general development
 - **Triggers**: General Java development, Spring Boot implementation, architecture design
 

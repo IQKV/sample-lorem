@@ -14,7 +14,7 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 #### Core Technologies
 
-- **Runtime**: Java 21 (with Java 25 features), Spring Boot 3.5.6, Spring Framework 6.x
+- **Runtime**: Java 21 (with Java 21 features), Spring Boot 3.5.6, Spring Framework 6.x
 - **Web Server**: Undertow (replacing Tomcat for better performance)
 - **Messaging**: Apache Kafka (Confluent 7.8.3) with Spring Kafka
 - **Database**: PostgreSQL 16.6 with Liquibase migrations
@@ -96,7 +96,7 @@ docker compose -f docker-compose.yml down
 ### Prerequisites
 
 - **Git**: Version control
-- **JDK 21+**: OpenJDK or Oracle JDK (Java 25 features supported)
+- **JDK 21+**: OpenJDK or Oracle JDK (Java 21 features supported)
 - **Docker & Docker Compose**: For infrastructure services
 - **Maven 3.8+**: Build tool (wrapper included)
 - **IDE**: IntelliJ IDEA, VS Code, or Eclipse with Spring Boot support

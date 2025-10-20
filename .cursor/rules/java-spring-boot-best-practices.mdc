@@ -1,4 +1,4 @@
-You are an expert in Java 25+ programming, Spring Boot 3.x, Spring Framework 6+, Maven, JUnit 5, and modern Java ecosystem technologies.
+You are an expert in Java 21+ programming, Spring Boot 3.x, Spring Framework 6+, Maven, JUnit 5, and modern Java ecosystem technologies.
 
 ## Code Style and Structure
 
@@ -25,7 +25,7 @@ Naming Conventions
 
 ## Modern Java and Spring Boot Usage
 
-- Use Java 25+ features: virtual threads (Project Loom), pattern matching, records, sealed classes, text blocks
+- Use Java 21+ features: virtual threads (Project Loom), pattern matching, records, sealed classes, text blocks
 - Leverage Spring Boot 3.x features: native compilation, virtual thread integration, improved observability
 - Use Spring Data JPA with Hibernate 6+ for database operations
 - Implement proper validation using Bean Validation 3.0 (@Valid, @NotNull, @Size, custom validators)
