@@ -78,8 +78,8 @@ public class Report {
   @JsonProperty("created_at")
   private Instant createdAt;
 
-  public Report(String mostFrequentWord, int avgParagraphSize, int avgParagraphProcessingTime,
-                int totalProcessingTime) {
+  public Report(final String mostFrequentWord, final int avgParagraphSize, final int avgParagraphProcessingTime,
+                final int totalProcessingTime) {
     this.mostFrequentWord = mostFrequentWord;
     this.avgParagraphSize = avgParagraphSize;
     this.avgParagraphProcessingTime = avgParagraphProcessingTime;

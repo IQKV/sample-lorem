@@ -37,7 +37,7 @@ public class LorIpsumNetClient {
   private final NetClientProperties properties;
   private final HttpClient httpClient;
 
-  public LorIpsumNetClient(NetClientProperties properties) {
+  public LorIpsumNetClient(final NetClientProperties properties) {
     this.properties = properties;
     this.httpClient = HttpClient.newBuilder()
         .connectTimeout(Duration.ofSeconds(properties.getConnectTimeout()))

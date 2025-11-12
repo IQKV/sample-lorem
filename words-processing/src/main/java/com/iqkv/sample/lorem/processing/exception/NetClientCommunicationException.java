@@ -17,7 +17,7 @@
 package com.iqkv.sample.lorem.processing.exception;
 
 public class NetClientCommunicationException extends RuntimeException {
-  public NetClientCommunicationException(Throwable cause) {
+  public NetClientCommunicationException(final Throwable cause) {
     super(cause);
   }
 }

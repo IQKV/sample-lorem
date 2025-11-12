@@ -17,7 +17,7 @@
 package com.iqkv.sample.lorem.processing.exception;
 
 public class NetClientMisconfigurationException extends IllegalStateException {
-  public NetClientMisconfigurationException(Throwable cause) {
+  public NetClientMisconfigurationException(final Throwable cause) {
     super("Invalid configuration in lorem.net-client properties.", cause);
   }
 }

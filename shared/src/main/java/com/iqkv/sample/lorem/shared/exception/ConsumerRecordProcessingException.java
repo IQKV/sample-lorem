@@ -23,7 +23,7 @@ public class ConsumerRecordProcessingException extends RuntimeException {
   @Serial
   private static final long serialVersionUID = 1L;
 
-  public ConsumerRecordProcessingException(String message, Throwable cause) {
+  public ConsumerRecordProcessingException(final String message, final Throwable cause) {
     super(message, cause);
   }
 }
