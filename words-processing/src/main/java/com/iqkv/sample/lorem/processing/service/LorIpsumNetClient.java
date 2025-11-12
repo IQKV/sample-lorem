@@ -50,7 +50,7 @@ public class LorIpsumNetClient {
       uri = new URI(properties.getApiServerUrlTemplate()
           .replace("{paragraphsNum}", paragraphsNum.toString())
           .replace("{lengthType}", lengthType.getType()));
-    } catch (URISyntaxException e) {
+    } catch (final URISyntaxException e) {
       throw new NetClientMisconfigurationException(e);
     }
     final var request = HttpRequest.newBuilder()
@@ -64,9 +64,9 @@ public class LorIpsumNetClient {
 
     try {
       return httpClient.send(request, HttpResponse.BodyHandlers.ofString()).body();
-    } catch (IOException e) {
+    } catch (final IOException e) {
       throw new NetClientCommunicationException(e);
-    } catch (InterruptedException e) {
+    } catch (final InterruptedException e) {
       Thread.currentThread().interrupt();
       throw new NetClientCommunicationException(e);
     }

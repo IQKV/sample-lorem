@@ -32,7 +32,7 @@ public class RequestParamToLengthTypeConverter implements Converter<String, Leng
   public LengthType convert(@NotNull String source) {
     try {
       return source.isEmpty() ? null : LengthType.valueOf(source.trim().toUpperCase(Locale.ROOT));
-    } catch (Exception e) {
+    } catch (final Exception e) {
       final var values = Arrays.stream(LengthType.values()).map(LengthType::getType).toList();
       throw new IllegalEnumParameterException("l", values);
     }

@@ -60,11 +60,11 @@ public class KafkaHealthIndicatorConfig {
               .withDetail("clusterId", clusterId)
               .withDetail("nodeCount", nodeCount)
               .build();
-        } catch (ExecutionException e) {
+        } catch (final ExecutionException e) {
           return Health.down()
               .withException(e)
               .build();
-        } catch (InterruptedException e) {
+        } catch (final InterruptedException e) {
           Thread.currentThread().interrupt();
           return Health.down()
               .withException(e)

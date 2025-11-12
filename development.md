@@ -437,7 +437,7 @@ public class ProductController {
       var product = productService.findById(id);
       log.info("Product retrieved successfully: productId={}, name={}", product.getId(), product.getName());
       return ResponseEntity.ok(product);
-    } catch (Exception ex) {
+    } catch (final Exception ex) {
       log.error("Error fetching product: productId={}, error={}", id, ex.getMessage(), ex);
       throw ex;
     }

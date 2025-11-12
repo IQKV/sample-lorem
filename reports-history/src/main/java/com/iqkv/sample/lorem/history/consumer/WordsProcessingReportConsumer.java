@@ -49,7 +49,7 @@ class WordsProcessingReportConsumer {
           (int) dto.avgParagraphProcessingTime(),
           (int) dto.totalProcessingTime());
       repository.saveAndFlush(report);
-    } catch (Exception e) {
+    } catch (final Exception e) {
       throw new ConsumerRecordProcessingException("Error processing report data.", e);
     }
   }
