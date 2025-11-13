@@ -47,7 +47,7 @@ public class WordsAnalyser {
       final int[] paragraphSizes = new int[paragraphs.size()];
       AtomicInteger paragraphIndex = new AtomicInteger();
 
-      for (String paragraph : paragraphs) {
+      for (final String paragraph : paragraphs) {
         final var elapsedTime = measureTime(() -> {
           String[] words = paragraph.split("\\s+");
 
