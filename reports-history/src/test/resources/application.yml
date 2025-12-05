@@ -1,86 +1,86 @@
-spring :
-  application :
-    name : reports-history
-  liquibase :
-    change-log : migrations/master.xml
-  datasource :
-    type : com.zaxxer.hikari.HikariDataSource
+spring:
+  application:
+    name: reports-history
+  liquibase:
+    change-log: migrations/master.xml
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
     #driver-class-name : ${DATASOURCE_DRIVER:org.testcontainers.jdbc.ContainerDatabaseDriver}
     #url : ${DATASOURCE_URL:jdbc:tc:postgresql:13.11:///lorem_db}
-    driver-class-name : ${DATASOURCE_DRIVER:org.h2.Driver}
-    url : ${DATASOURCE_URL:jdbc:h2:mem:lorem_db}
-    username : ${DATASOURCE_USERNAME:postgres}
-    password : ${DATASOURCE_PASSWORD:postgres}
-    hikari :
-      pool-name : Hikari
-      auto-commit : false
-  jpa :
-    hibernate :
-      ddl-auto : none
-      naming :
-        physical-strategy : org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-        implicit-strategy : org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
-    open-in-view : true
-    properties :
-      hibernate.jdbc.time_zone : UTC
-      hibernate.cache.use_second_level_cache : false
-      hibernate.cache.use_query_cache : false
-      hibernate.generate_statistics : false
-    show-sql : false
-  devtools :
-    add-properties : false
-    restart :
-      enabled : false
-    livereload :
-      enabled : false
-  kafka :
-    bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-    consumer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-      value-deserializer : org.springframework.kafka.support.serializer.JsonDeserializer
-      group-id : reports-history
-      auto-offset-reset : earliest
-      properties :
-        isolation.level : read_committed
-        spring.json.trusted.packages : '*'
-    producer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-      value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
-      properties :
-        security.protocol : PLAINTEXT
-    admin :
-      properties :
-        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-        security.protocol : PLAINTEXT
+    driver-class-name: ${DATASOURCE_DRIVER:org.h2.Driver}
+    url: ${DATASOURCE_URL:jdbc:h2:mem:lorem_db}
+    username: ${DATASOURCE_USERNAME:postgres}
+    password: ${DATASOURCE_PASSWORD:postgres}
+    hikari:
+      pool-name: Hikari
+      auto-commit: false
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    open-in-view: true
+    properties:
+      hibernate.jdbc.time_zone: UTC
+      hibernate.cache.use_second_level_cache: false
+      hibernate.cache.use_query_cache: false
+      hibernate.generate_statistics: false
+    show-sql: false
+  devtools:
+    add-properties: false
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: reports-history
+      auto-offset-reset: earliest
+      properties:
+        isolation.level: read_committed
+        spring.json.trusted.packages: '*'
+    producer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        security.protocol: PLAINTEXT
+    admin:
+      properties:
+        bootstrap.servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+        security.protocol: PLAINTEXT
 
-embedded :
-  postgresql :
-    enabled : true
-  kafka :
-    enabled : true
+embedded:
+  postgresql:
+    enabled: true
+  kafka:
+    enabled: true
 
 
-lorem :
-  info :
-    description : '@project.description@'
-    relative-path : '/'
-    version : '@project.version@'
-  kafka :
-    admin :
-      create-topics : true
-    error-handling :
-      dead-letter :
-        retention : 30s
-        suffix : .DLT
-      backoff :
-        initial-interval : 500ms
-        max-interval : 2s
-        max-retries : 4
-        multiplier : 1.5
-    consumer :
-      threads : 4
-    topics :
-      words-processed :
-        name : test.words.processed
-        partitions : 4
-        retention : 30s
+lorem:
+  info:
+    description: '@project.description@'
+    relative-path: '/'
+    version: '@project.version@'
+  kafka:
+    admin:
+      create-topics: true
+    error-handling:
+      dead-letter:
+        retention: 30s
+        suffix: .DLT
+      backoff:
+        initial-interval: 500ms
+        max-interval: 2s
+        max-retries: 4
+        multiplier: 1.5
+    consumer:
+      threads: 4
+    topics:
+      words-processed:
+        name: test.words.processed
+        partitions: 4
+        retention: 30s

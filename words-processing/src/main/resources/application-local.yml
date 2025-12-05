@@ -1,29 +1,29 @@
-spring :
-  kafka :
-    bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-    producer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-      value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
-      properties :
-        security.protocol : PLAINTEXT
-    admin :
-      properties :
-        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-        security.protocol : PLAINTEXT
-  devtools :
-    add-properties : true
-    restart :
-      enabled : true
-    livereload :
-      enabled : true
-management :
-  endpoints :
-    enabled-by-default : true
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        security.protocol: PLAINTEXT
+    admin:
+      properties:
+        bootstrap.servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+        security.protocol: PLAINTEXT
+  devtools:
+    add-properties: true
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+management:
+  endpoints:
+    enabled-by-default: true
 
-springdoc :
-  show-actuator : true
+springdoc:
+  show-actuator: true
 
-lorem :
-  kafka :
-    admin :
-      create-topics : true
+lorem:
+  kafka:
+    admin:
+      create-topics: true

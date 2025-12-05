@@ -1,62 +1,62 @@
-spring :
-  application :
-    name : words-processing
-  kafka :
-    bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-    producer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-      value-serializer : org.springframework.kafka.support.serializer.JsonSerializer
-      properties :
-        security.protocol : PLAINTEXT
-    admin :
-      properties :
-        bootstrap.servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-        security.protocol : PLAINTEXT
-    consumer :
-      bootstrap-servers : ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
-      value-deserializer : org.springframework.kafka.support.serializer.JsonDeserializer
-      group-id : words-processing
-      auto-offset-reset : earliest
-      properties :
-        isolation.level : read_committed
-        spring.json.trusted.packages : '*'
-  devtools :
-    add-properties : false
-    restart :
-      enabled : false
-    livereload :
-      enabled : false
+spring:
+  application:
+    name: words-processing
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+    producer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        security.protocol: PLAINTEXT
+    admin:
+      properties:
+        bootstrap.servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+        security.protocol: PLAINTEXT
+    consumer:
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:${embedded.kafka.brokerList:localhost:9092}}
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id: words-processing
+      auto-offset-reset: earliest
+      properties:
+        isolation.level: read_committed
+        spring.json.trusted.packages: '*'
+  devtools:
+    add-properties: false
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
 
-embedded :
-  kafka :
-    enabled : true
+embedded:
+  kafka:
+    enabled: true
 
 
-lorem :
-  info :
-    description : '@project.description@'
-    relative-path : '/'
-    version : '@project.version@'
-  net-client :
-    api-server-url-template : http://127.0.0.1:${wiremock.server.port}/api/{paragraphsNum}/{lengthType}
-    connect-timeout : 10  # sec
-    request-timeout : 10
-  kafka :
-    admin :
-      create-topics : true
-    consumer :
-      threads : 2
-    topics :
-      words-processed :
-        name : test.words.processed
-        partitions : 2
-        retention : 30s
-    error-handling :
-      dead-letter :
-        retention : 30s
-        suffix : .DLT
-      backoff :
-        initial-interval : 500ms
-        max-interval : 2s
-        max-retries : 4
-        multiplier : 1.5
+lorem:
+  info:
+    description: '@project.description@'
+    relative-path: '/'
+    version: '@project.version@'
+  net-client:
+    api-server-url-template: http://127.0.0.1:${wiremock.server.port}/api/{paragraphsNum}/{lengthType}
+    connect-timeout: 10  # sec
+    request-timeout: 10
+  kafka:
+    admin:
+      create-topics: true
+    consumer:
+      threads: 2
+    topics:
+      words-processed:
+        name: test.words.processed
+        partitions: 2
+        retention: 30s
+    error-handling:
+      dead-letter:
+        retention: 30s
+        suffix: .DLT
+      backoff:
+        initial-interval: 500ms
+        max-interval: 2s
+        max-retries: 4
+        multiplier: 1.5
