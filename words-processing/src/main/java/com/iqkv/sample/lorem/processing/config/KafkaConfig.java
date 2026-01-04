@@ -21,8 +21,7 @@ import java.util.UUID;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.iqkv.sample.lorem.processing.model.Report;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.boot.ssl.SslBundles;
+import org.springframework.boot.kafka.autoconfigure.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
@@ -33,9 +32,9 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 @Configuration
 class KafkaConfig {
   @Bean
-  ProducerFactory<String, Report> reportMessageProducerFactory(KafkaProperties kafkaProperties, SslBundles sslBundles) {
+  ProducerFactory<String, Report> reportMessageProducerFactory(KafkaProperties kafkaProperties) {
     try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
-      final var producerProperties = kafkaProperties.getProducer().buildProperties(sslBundles);
+      final var producerProperties = kafkaProperties.getProducer().buildProperties();
       final var producerFactory = new DefaultKafkaProducerFactory<>(producerProperties,
           new StringSerializer(),
           serde.serializer());

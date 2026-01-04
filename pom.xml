@@ -37,8 +37,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
-        <spring-boot.version>3.5.8</spring-boot.version>
-        <spring-kafka.version>3.3.10</spring-kafka.version>
+        <spring-boot.version>4.0.1</spring-boot.version>
+        <spring-kafka.version>4.0.1</spring-kafka.version>
         <lombok.version>1.18.42</lombok.version>
         <springdoc-webmvc.version>2.8.14</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2025.0.0</spring-cloud-dependencies.version>
@@ -56,13 +56,13 @@
         <liquibase.version>5.0.1</liquibase.version>
         <jakarta-servlet-api.version>6.1.0</jakarta-servlet-api.version>
         <javax-cache-api.version>1.1.1</javax-cache-api.version>
-        <hibernate.version>6.6.16.Final</hibernate.version>
+        <hibernate.version>7.1.13.Final</hibernate.version>
         <postgresql.version>42.7.8</postgresql.version>
         <ehcache.version>3.11.1</ehcache.version>
         <junit.jupiter-params.version>5.12.2</junit.jupiter-params.version>
         <archunit.version>1.4.1</archunit.version>
         <testcontainers.version>1.21.4</testcontainers.version>
-        <spring-cloud-starter-bootstrap.version>4.3.0</spring-cloud-starter-bootstrap.version>
+        <spring-cloud-starter-bootstrap.version>5.0.0</spring-cloud-starter-bootstrap.version>
         <playtika.testcontainers.version>3.1.18</playtika.testcontainers.version>
         <gaul.modernizer-maven-plugin.version>3.2.0</gaul.modernizer-maven-plugin.version>
         <codehaus.versions-maven-plugin.version>2.20.1</codehaus.versions-maven-plugin.version>
@@ -82,7 +82,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.8</version>
+        <version>4.0.1</version>
     </parent>
 
     <dependencyManagement>
@@ -312,6 +312,11 @@
                 <groupId>org.testcontainers</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${testcontainers.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-contract-wiremock</artifactId>
+                <version>5.0.1</version>
             </dependency>
             <dependency>
                 <groupId>com.tngtech.archunit</groupId>

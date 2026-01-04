@@ -14,8 +14,7 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 #### Core Technologies
 
-- **Runtime**: Java 21 (with Java 21 features), Spring Boot 3.5.6, Spring Framework 6.x
-- **Web Server**: Undertow (replacing Tomcat for better performance)
+- **Runtime**: Java 21 (with Java 21 features), Spring Boot 4.0, Spring Framework 7.x
 - **Messaging**: Apache Kafka (Confluent 7.8.3) with Spring Kafka
 - **Database**: PostgreSQL 16.6 with Liquibase migrations
 - **Caching**: EhCache with Spring Cache abstraction
@@ -380,7 +379,6 @@ open http://localhost:9090  # Prometheus
 
 ### Performance Characteristics
 
-- **Undertow Server**: Non-blocking I/O for better throughput
 - **Connection Pooling**: HikariCP for optimal database connections
 - **Caching Strategy**: EhCache for frequently accessed data
 - **Kafka Partitioning**: 4 partitions for parallel processing

@@ -22,13 +22,11 @@ import lombok.RequiredArgsConstructor;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.DescribeClusterOptions;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
-import org.springframework.boot.actuate.autoconfigure.health.ConditionalOnEnabledHealthIndicator;
-import org.springframework.boot.actuate.health.Health;
-import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.health.autoconfigure.contributor.ConditionalOnEnabledHealthIndicator;
+import org.springframework.boot.health.contributor.Health;
+import org.springframework.boot.health.contributor.HealthIndicator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.core.KafkaAdmin;
@@ -36,7 +34,6 @@ import org.springframework.kafka.core.KafkaAdmin;
 @Configuration
 @ConditionalOnEnabledHealthIndicator("kafka")
 @ConditionalOnBean(KafkaAdmin.class)
-@AutoConfigureAfter(KafkaAutoConfiguration.class)
 @EnableConfigurationProperties(KafkaHealthIndicatorProperties.class)
 @RequiredArgsConstructor
 public class KafkaHealthIndicatorConfig {

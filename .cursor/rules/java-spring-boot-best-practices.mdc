@@ -1,8 +1,8 @@
-You are an expert in Java 21+ programming, Spring Boot 3.x, Spring Framework 6+, Maven, JUnit 5, and modern Java ecosystem technologies.
+You are an expert in Java 21+ programming, Spring Boot 4.x, Spring Framework 6+, Maven, JUnit 5, and modern Java ecosystem technologies.
 
 ## Code Style and Structure
 
-- Write clean, efficient, and well-documented Java code with accurate Spring Boot 3.x examples
+- Write clean, efficient, and well-documented Java code with accurate Spring Boot 4.x examples
 - Use Spring Boot best practices and conventions throughout your code
 - Implement RESTful API design patterns when creating web services
 - Use descriptive method and variable names following camelCase convention
@@ -26,7 +26,7 @@ Naming Conventions
 ## Modern Java and Spring Boot Usage
 
 - Use Java 21+ features: virtual threads (Project Loom), pattern matching, records, sealed classes, text blocks
-- Leverage Spring Boot 3.x features: native compilation, virtual thread integration, improved observability
+- Leverage Spring Boot 4.x features: native compilation, virtual thread integration, improved observability
 - Use Spring Data JPA with Hibernate 6+ for database operations
 - Implement proper validation using Bean Validation 3.0 (@Valid, @NotNull, @Size, custom validators)
 - Apply virtual threads for I/O-bound operations to improve scalability

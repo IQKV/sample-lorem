@@ -25,8 +25,7 @@ import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.boot.ssl.SslBundles;
+import org.springframework.boot.kafka.autoconfigure.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.KafkaListenerConfigurer;
@@ -48,8 +47,8 @@ class KafkaConfig implements KafkaListenerConfigurer {
   private final LocalValidatorFactoryBean validator;
 
   @Bean
-  ConsumerFactory<String, ReportDto> consumeReportConsumerFactory(KafkaProperties kafkaProperties, SslBundles sslBundles) {
-    final var consumerProperties = kafkaProperties.getConsumer().buildProperties(sslBundles);
+  ConsumerFactory<String, ReportDto> consumeReportConsumerFactory(KafkaProperties kafkaProperties) {
+    final var consumerProperties = kafkaProperties.getConsumer().buildProperties();
     try (var serde = new JsonSerde<>(ReportDto.class, new ObjectMapper())) {
       return new DefaultKafkaConsumerFactory<>(consumerProperties,
           new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(

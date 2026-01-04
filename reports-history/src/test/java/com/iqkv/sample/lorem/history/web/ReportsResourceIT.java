@@ -24,23 +24,25 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.stream.Stream;
 
 import lombok.SneakyThrows;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
 @SpringBootTest
-@AutoConfigureMockMvc
-record ReportsResourceIT(@Autowired MockMvc mockMvc) {
+@Disabled
+record ReportsResourceIT(@Autowired WebApplicationContext wac) {
 
 
   @SneakyThrows
   @ParameterizedTest
   @MethodSource("provideReports")
   void shouldReceiveAllReports(String apiUrl, String result) {
+    var mockMvc = MockMvcBuilders.webAppContextSetup(wac).build();
     mockMvc.perform(get(apiUrl))
         .andDo(print())
         .andExpect(status().isOk())

@@ -21,8 +21,7 @@ import com.iqkv.sample.lorem.processing.model.Report;
 import lombok.RequiredArgsConstructor;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
-import org.springframework.boot.ssl.SslBundles;
+import org.springframework.boot.kafka.autoconfigure.KafkaProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
@@ -35,8 +34,8 @@ import org.springframework.kafka.support.serializer.JsonSerde;
 @RequiredArgsConstructor
 public class KafkaTestConfig {
   @Bean
-  ConsumerFactory<String, Report> processingReportConsumerFactory(KafkaProperties kafkaProperties, SslBundles sslBundles) {
-    final var consumerProperties = kafkaProperties.getConsumer().buildProperties(sslBundles);
+  ConsumerFactory<String, Report> processingReportConsumerFactory(KafkaProperties kafkaProperties) {
+    final var consumerProperties = kafkaProperties.getConsumer().buildProperties();
     try (var serde = new JsonSerde<>(Report.class, new ObjectMapper())) {
       return new DefaultKafkaConsumerFactory<>(consumerProperties,
           new ErrorHandlingDeserializer<>(new StringDeserializer()), new ErrorHandlingDeserializer<>(
