@@ -4,7 +4,7 @@
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.1-6DB33F?logo=springboot)](https://spring.io/projects/spring-boot)
 [![Build](https://img.shields.io/badge/Build-Maven-informational?logo=apachemaven)](https://maven.apache.org/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
-[![Code Coverage](https://img.shields.io/badge/Coverage-80%25-green)]()
+[![Code Coverage](https://img.shields.io/badge/Coverage-56%25-green)]()
 
 Lorem ipsum text processor based on the **[loripsum.net](https://loripsum.net/)** API.
 
