@@ -59,7 +59,7 @@
         <hibernate.version>7.2.4.Final</hibernate.version>
         <postgresql.version>42.7.10</postgresql.version>
         <ehcache.version>3.11.1</ehcache.version>
-        <junit.jupiter-params.version>5.12.2</junit.jupiter-params.version>
+        <junit.jupiter-params.version>6.0.3</junit.jupiter-params.version>
         <archunit.version>1.4.1</archunit.version>
         <testcontainers.version>1.21.4</testcontainers.version>
         <spring-cloud-starter-bootstrap.version>5.0.1</spring-cloud-starter-bootstrap.version>
