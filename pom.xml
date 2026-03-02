@@ -40,7 +40,7 @@
         <spring-boot.version>4.0.3</spring-boot.version>
         <spring-kafka.version>4.0.3</spring-kafka.version>
         <lombok.version>1.18.42</lombok.version>
-        <springdoc-webmvc.version>3.0.1</springdoc-webmvc.version>
+        <springdoc-webmvc.version>3.0.2</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2025.1.1</spring-cloud-dependencies.version>
 
         <micrometer.version>1.16.3</micrometer.version>
