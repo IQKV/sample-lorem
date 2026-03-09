@@ -116,7 +116,7 @@ The project follows Google Java Style Guide with additional conventions:
 
 ```bash
 # Format code with Prettier (if configured)
-npm run prettier:write
+npm run formatter:write
 
 # Check code style
 ./mvnw checkstyle:check
