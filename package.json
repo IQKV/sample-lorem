@@ -14,19 +14,6 @@
     "node_modules:clear": "rm -rf node_modules",
     "prepare": "husky"
   },
-  "lint-staged": {
-    "*": [
-      "pnpm formatter:check"
-    ],
-    "package.json": [
-      "sort-package-json"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-conventional-changelog"
-    }
-  },
   "devDependencies": {
     "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^20.4.3",
@@ -47,6 +34,19 @@
     "stylelint": "^16.26.1",
     "stylelint-config-standard-scss": "^16.0.0",
     "tsdown": "^0.21.1"
+  },
+  "lint-staged": {
+    "*": [
+      "pnpm formatter:check"
+    ],
+    "package.json": [
+      "sort-package-json"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "engines": {
     "node": ">=22.15.0"
