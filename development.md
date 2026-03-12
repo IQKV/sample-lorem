@@ -115,7 +115,7 @@ The project follows Google Java Style Guide with additional conventions:
 #### Code Formatting
 
 ```bash
-# Format code with Prettier (if configured)
+# Format code with oxfmt (if configured)
 npm run formatter:write
 
 # Check code style
