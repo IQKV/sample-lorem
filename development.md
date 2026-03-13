@@ -116,7 +116,7 @@ The project follows Google Java Style Guide with additional conventions:
 
 ```bash
 # Format code with oxfmt (if configured)
-npm run formatter:write
+pnpm run formatter:write
 
 # Check code style
 ./mvnw checkstyle:check
