@@ -14,7 +14,7 @@ A Spring Boot microservices example showing how to fetch and process dummy text,
 
 #### Core Technologies
 
-- **Runtime**: Java 21 (with Java 21 features), Spring Boot 4.0, Spring Framework 7.x
+- **Runtime**: Java 25, Spring Boot 4.0, Spring Framework 7.x
 - **Messaging**: Apache Kafka (Confluent 7.8.3) with Spring Kafka
 - **Database**: PostgreSQL 16.6 with Liquibase migrations
 - **Caching**: EhCache with Spring Cache abstraction
