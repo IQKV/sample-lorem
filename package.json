@@ -11,7 +11,7 @@
     "formatter:write": "oxfmt --write",
     "lint": "pnpm lint:stylelint && pnpm formatter:check",
     "lint:stylelint": "stylelint \"**/*.css\" --aei",
-    "node_modules:clear": "rm -rf node_modules",
+    "node_modules:cleanup": "rm -rf node_modules",
     "prepare": "husky"
   },
   "devDependencies": {
