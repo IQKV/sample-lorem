@@ -523,8 +523,6 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 <properties>
     <!-- Use Java 21 LTS -->
     <java.version>25</java.version>
-    <maven.compiler.source>${java.version}</maven.compiler.source>
-    <maven.compiler.target>${java.version}</maven.compiler.target>
     
     <!-- Enable preview features if needed -->
     <maven.compiler.parameters>true</maven.compiler.parameters>
