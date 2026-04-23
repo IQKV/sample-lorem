@@ -521,14 +521,14 @@ public class DatabaseHealthIndicator implements HealthIndicator {
 ### Maven Configuration Best Practices
 ```xml
 <properties>
-    <!-- Use Java 21 LTS -->
+    <!-- Use Java 25 LTS -->
     <java.version>25</java.version>
     
     <!-- Enable preview features if needed -->
     <maven.compiler.parameters>true</maven.compiler.parameters>
     
-    <!-- Spring Boot 3.2+ -->
-    <spring-boot.version>3.2.0</spring-boot.version>
+    <!-- Spring Boot 4.0+ -->
+    <spring-boot.version>4.0.2</spring-boot.version>
     
     <!-- Testing -->
     <testcontainers.version>1.19.0</testcontainers.version>
