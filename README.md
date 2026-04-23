@@ -95,7 +95,7 @@ docker compose -f docker-compose.yml down
 ### Prerequisites
 
 - **Git**: Version control
-- **JDK 21+**: OpenJDK or Oracle JDK (Java 21 features supported)
+- **JDK 21+**: OpenJDK or Oracle JDK (Java 25 features supported)
 - **Docker & Docker Compose**: For infrastructure services
 - **Maven 3.8+**: Build tool (wrapper included)
 - **IDE**: IntelliJ IDEA, VS Code, or Eclipse with Spring Boot support
@@ -474,7 +474,7 @@ docker compose -f compose.yaml up -d postgres
 # JVM tuning for containers
 export JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
 
-# Enable virtual threads (Java 21+)
+# Enable virtual threads (Java 25+)
 export JAVA_OPTS="$JAVA_OPTS --enable-preview"
 
 # Database connection tuning

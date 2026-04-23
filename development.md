@@ -8,7 +8,7 @@ This guide helps developers set up their local environment and understand the de
 
 ### Required Software
 
-- **Java 21+**: OpenJDK or Oracle JDK
+- **Java 25+**: OpenJDK or Oracle JDK
 
   ```bash
   java -version  # Should show 21 or higher
