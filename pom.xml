@@ -36,7 +36,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <spring-boot.version>4.0.6</spring-boot.version>
-        <spring-kafka.version>4.0.5</spring-kafka.version>
+        <spring-kafka.version>4.0.6</spring-kafka.version>
         <lombok.version>1.18.46</lombok.version>
         <springdoc-webmvc.version>3.0.3</springdoc-webmvc.version>
         <spring-cloud-dependencies.version>2025.1.1</spring-cloud-dependencies.version>
